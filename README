@@ -3,7 +3,7 @@ This is the buildsystem for the CFE BCM63XX bootloader.
 You need to have installed gcc, make, libstdc++5, unzip, libz-dev and libc headers.
 
 Go to the main directory for building.
-cd cfe/cfe/build/broadcom/bcm63xx_rom
+cd cfe/build/broadcom/bcm63xx_rom
 
 make clean
 make BRCM_CHIP=6338
