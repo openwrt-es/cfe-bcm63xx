@@ -28,8 +28,8 @@ ASM_FILE = flashimg.S
 RAM_BUILD = ../bcm63xx_ram
 
 # TOOLS=/usr/local/sbtools/x86-linux-rh6.0/sb1-elf-2.5.11/bin/
-TOOLS=/opt/specifix/broadcom_2004d_341/i686-pc-linux-gnu/bin/
-#TOOLS=../../../../broadcom_2004d_341/i686-pc-linux-gnu/bin/
+#TOOLS=/opt/specifix/broadcom_2004d_341/i686-pc-linux-gnu/bin/
+TOOLS=../../../../broadcom_2004d_341/i686-pc-linux-gnu/bin/
 #TOOLS=/opt/toolchains/uclibc-crosstools/mips-linux/bin/
 include $(TOP)/arch/mips/board/$(BOARD)/src/rom_cfe.mk
 
