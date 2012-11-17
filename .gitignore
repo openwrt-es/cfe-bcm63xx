@@ -16,3 +16,6 @@ cfe/build/broadcom/bcm63xx_ram/cfe6348
 cfe/build/broadcom/bcm63xx_rom/cfe6348
 cfe/build/broadcom/bcm63xx_rom/flashimg.S
 
+#Other
+*.bak
+
