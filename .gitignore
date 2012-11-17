@@ -1,3 +1,18 @@
+#Generic files
 *.a
 *.o
 *.bin
+*.w
+*.dis
+*.map
+
+#Toolchain binaries
+hostTools/addvtoken
+hostTools/cmplzma
+
+#Source unwanted files
+cfe/build/broadcom/bcm63xx_ram/build_date.c
+cfe/build/broadcom/bcm63xx_ram/cfe6348
+cfe/build/broadcom/bcm63xx_rom/cfe6348
+cfe/build/broadcom/bcm63xx_rom/flashimg.S
+
