@@ -1,0 +1,117 @@
+#!/bin/sh
+# set_tool_paths
+# version broadcom_2004c_341
+
+scriptdir="`dirname $0`"
+scriptdir="`cd $scriptdir && pwd`"
+
+default_syntax=sh
+case "$SHELL" in
+*csh)
+  default_syntax=csh
+  ;;
+esac
+
+usage() {
+  echo "usage:" 1>&2
+  echo "    $0 [-c | -s] [-h host_type] [-M]" 1>&2
+  echo "" 1>&2
+  echo "    -c: force output to be in 'csh' syntax" 1>&2
+  echo "    -s: force output to be in 'sh' syntax" 1>&2
+  echo "    -h: assume given host type, rather than trying to guess" 1>&2
+  echo "    -M: do not attempt to set MANPATH" 1>&2
+  echo "" 1>&2
+  echo "    The default output syntax is chosen based on the" 1>&2
+  echo "    SHELL environment varable ('$SHELL'), and would" 1>&2
+  echo "    be '$default_syntax' syntax." 1>&2
+  exit 1
+}
+
+host=
+need_manpath=t
+syntax=
+while getopts ch:Ms c; do
+  case $c in
+  c) syntax=csh ;;
+  h) host="$OPTARG" ;;
+  M) need_manpath= ;;
+  s) syntax=sh ;;
+  *) usage ;;
+  esac
+done
+shift `expr $OPTIND - 1`
+
+if [ "$#" -ne 0 ]; then
+  usage
+fi
+
+: ${syntax:=$default_syntax}
+if [ -z "$host" ]; then
+  host="`$scriptdir/config.guess`"
+fi
+
+if [ -d "$scriptdir/$host" ]; then
+  :
+else
+  echo "echo \"Unsupported host type $host\""
+  echo ";"
+  echo "false"
+  exit 1
+fi
+
+if [ -n "$need_manpath" ] && [ "${MANPATH+set}" != "set" ]; then
+  # OK, we need to figure out default MANPATH.  Ugh.
+  MANPATH=
+  case $host in
+  *solaris* )
+    # default is /usr/share/man.
+    MANPATH=/usr/share/man
+    ;;
+  *linux* )
+    # default is directories specified by MANPATH lines in
+    # /etc/man.config.
+    mp_w_spaces=
+    if [ -f /etc/man.config ] && [ -r /etc/man.config ]; then
+      mp_w_spaces=`awk '$1 == "MANPATH" { print $2 }' /etc/man.config`
+      MANPATH=`echo $mp_w_spaces | sed -e 's,[ ][ ]*,:,g'`
+    fi
+    ;;
+  *netbsd* )
+    # default is directories specified by (last) _default line
+    # in /etc/man.conf.  They can use csh globbing patterns {},
+    # so we must run them through csh -f.  Bonus ugh.
+    mp_w_spaces=
+    if [ -f /etc/man.conf ] && [ -r /etc/man.conf ]; then
+      mp_w_spaces=`awk '$1 == "_default" { print }' /etc/man.conf \
+		   | sed -e 's,_default,,' \
+		   | tail -1 \
+          	   | awk '{ printf "echo %s\n", $0 }' \
+		   csh -f`
+      MANPATH=`echo $mp_w_spaces | sed -e 's,[ ][ ]*,:,g'`
+    fi
+    ;;
+  esac
+fi
+
+case "$syntax" in
+csh)
+  echo "setenv PATH \"$scriptdir/$host/bin:$PATH\""
+  if [ -n "$need_manpath" ]; then
+    echo ";"
+    echo "setenv MANPATH \"$scriptdir/$host/man:$MANPATH\""
+  fi
+  ;;
+sh)
+  echo "PATH=\"$scriptdir/$host/bin:$PATH\""
+  echo ";"
+  echo "export PATH"
+  if [ -n "$need_manpath" ]; then
+    echo ";"
+    echo "MANPATH=\"$scriptdir/$host/man:$MANPATH\""
+    echo ";"
+    echo "export MANPATH"
+  fi
+  ;;
+esac
+
+exit 0

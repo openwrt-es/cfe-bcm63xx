@@ -1,0 +1,398 @@
+#!/bin/bash
+
+#****************************************************************************
+#
+#  Copyright (c) 2001, 2002, 2003, 2004  Broadcom Corporation
+#  All Rights Reserved
+#  No portions of this material may be reproduced in any form without the
+#  written permission of:
+#          Broadcom Corporation
+#          16251 Laguna Canyon Road
+#          Irvine, California 92618
+#  All information contained in this document is Broadcom Corporation
+#  company private, proprietary, and trade secret.
+#
+#****************************************************************************
+
+driver_setup ()
+{
+
+  BRCM_DRIVER_NAME=BRCM_DRIVER_$1
+  eval BRCM_DRIVER_VAL=\$$BRCM_DRIVER_NAME
+  LINUX_CONFIG_NAME=CONFIG_BCM_"$2"
+  LINUX_IMPL_NAME=CONFIG_BCM9"$BRCM_CHIP"_"$2"_IMPL
+
+  if [ "$BRCM_DRIVER_VAL" != "" ]; then
+     SEDCMD="$SEDCMD -e 's/# $LINUX_CONFIG_NAME is not set/$LINUX_CONFIG_NAME="$BRCM_DRIVER_VAL"/'"
+  fi
+  SEDCMD="$SEDCMD -e 's/# "$LINUX_IMPL_NAME"/"$LINUX_CONFIG_NAME"_IMPL/'"
+}
+
+
+netfilter_setup ()
+{
+
+  SEDCMD="$SEDCMD -e 's/# CONFIG_IP_NF_"$1" is not set/CONFIG_IP_NF_"$1"="$2"/'"
+
+}
+
+general_setup ()
+{
+
+  SEDCMD="$SEDCMD -e 's/# "$1" is not set/"$1"="$2"/'"
+
+}
+
+TEMPLATE=$HOSTTOOLS_DIR/scripts/defconfig-bcm.template
+#TEMPLATE=defconfig-bcm.template
+
+. $1
+
+############################################################
+# 	Driver config generation
+############################################################
+
+SEDCMD="$SEDCMD -e 's/# CONFIG_BCM9"$BRCM_CHIP" is not set/CONFIG_BCM9"$BRCM_CHIP"=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BCM_BOARD is not set/CONFIG_BCM_BOARD=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BCM9"$BRCM_CHIP"_BOARD_IMPL/CONFIG_BCM_BOARD_IMPL/'"
+
+driver_setup "ATM" "ATMAPI"
+
+driver_setup "ATM" "BLAA"
+
+# 63xx Chip ATM Diagnostic
+if [ "$BUILD_DIAGAPP" != "" ]; then
+   general_setup CONFIG_BCM_ATMTEST $BRCM_DRIVER_ATM
+fi
+SEDCMD="$SEDCMD -e 's/# CONFIG_BCM9"$BRCM_CHIP"_ATMTEST_IMPL/CONFIG_BCM_ATMTEST_IMPL/'"
+
+driver_setup "ADSL" "ADSL"
+
+driver_setup "ETHERNET" "ENET"
+
+driver_setup "USB" "USB"
+
+driver_setup "WIRELESS" "WLAN"
+if [ "$BRCM_DRIVER_WIRELESS" != "" ]; then
+   SEDCMD="$SEDCMD -e 's/# CONFIG_NET_RADIO is not set/CONFIG_NET_RADIO=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_HOTPLUG is not set/CONFIG_HOTPLUG=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_SYSFS is not set/CONFIG_SYSFS=y/'"   
+if [ "$BRCM_CHIP" = "6348" -o "$BRCM_CHIP" = "6358" ]; then
+   SEDCMD="$SEDCMD -e 's/# CONFIG_PCI is not set/CONFIG_PCI=y/'"
+fi
+fi
+
+if [ "$BRCM_CHIP" = "6348" -o "$BRCM_CHIP" = "6358" ]; then
+driver_setup "PCI" "PCI"
+if [ "$BRCM_DRIVER_PCI" != "" ]; then
+   SEDCMD="$SEDCMD -e 's/# CONFIG_PCI is not set/CONFIG_PCI=y/'"
+fi
+fi
+
+if [ "$LINUX_DRIVER_USB_HOST" != "" ]; then
+   SEDCMD="$SEDCMD -e 's/# CONFIG_USB is not set/CONFIG_USB=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_USB_OHCI_HCD is not set/CONFIG_USB_OHCI_HCD=y/'"
+if [ "$BRCM_CHIP" != "6348" ]; then
+   SEDCMD="$SEDCMD -e 's/# CONFIG_USB_EHCI_HCD is not set/CONFIG_USB_EHCI_HCD=y/'"
+fi
+   SEDCMD="$SEDCMD -e 's/# CONFIG_PCI is not set/CONFIG_PCI=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_USB_PRINTER is not set/CONFIG_USB_PRINTER=y/'"
+if [ "$LINUX_DRIVER_CDCETHER" != "" ]; then
+   SEDCMD="$SEDCMD -e 's/# CONFIG_USB_USBNET is not set/CONFIG_USB_USBNET=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_USB_CDCETHER is not set/CONFIG_USB_CDCETHER=y/'"
+fi
+fi
+
+driver_setup "VDSL" "VDSL"
+
+driver_setup "PHONE" "ENDPOINT"
+
+driver_setup "BCMPROF" "BCMPROF"
+
+driver_setup "HPNA" "HPNA"
+
+driver_setup "SECURITY" "SECURITY"
+
+driver_setup "PROCFS" "PROCFS"
+
+driver_setup "SERIAL" "SERIAL"
+
+# CFI Not needed anymore and all flash sectores used for rootfs are treated as ROM
+# CFI only used by JFFS2
+if [ "$BRCM_KERNEL_ROOTFS" = "squashfs" -o "$BRCM_KERNEL_ROOTFS" = "cramfs" ]; then
+ 
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_BLOCK_RO is not set/CONFIG_MTD_BLOCK_RO=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_BCM963XX is not set/CONFIG_MTD_BCM963XX=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_ROM is not set/CONFIG_MTD_ROM=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_COMPLEX_MAPPINGS is not set/CONFIG_MTD_COMPLEX_MAPPINGS=y/'"
+
+elif [ "$BRCM_KERNEL_ROOTFS" = "jffs2" ]; then
+
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_BLOCK is not set/CONFIG_MTD_BLOCK=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_PARTITIONS is not set/CONFIG_MTD_PARTITIONS=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_CFI is not set/CONFIG_MTD_CFI=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_JEDECPROBE is not set/CONFIG_MTD_JEDECPROBE=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_GEN_PROBE is not set/CONFIG_MTD_GEN_PROBE=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_CFI_ADV_OPTIONS is not set/CONFIG_MTD_CFI_ADV_OPTIONS=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_CFI_NOSWAP is not set/CONFIG_MTD_CFI_NOSWAP=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_CFI_B1 is not set/CONFIG_MTD_CFI_B1=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_CFI_B2 is not set/CONFIG_MTD_CFI_B2=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_CFI_I2 is not set/CONFIG_MTD_CFI_I1=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_CFI_I2 is not set/CONFIG_MTD_CFI_I2=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_CFI_AMDSTD is not set/CONFIG_MTD_CFI_AMDSTD=y/'"
+# Change Mbytes to bytes in Hex
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_PHYSMAP is not set/CONFIG_MTD_PHYSMAP=y/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_PHYSMAP_START is not set/CONFIG_MTD_PHYSMAP_START=BFC00000/'"
+ BRCM_FLASH_SIZE=$(($BRCM_FLASH_SIZE*100000))
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_PHYSMAP_LEN is not set/CONFIG_MTD_PHYSMAP_LEN="$BRCM_FLASH_SIZE"/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_PHYSMAP_BUSWIDTH is not set/CONFIG_MTD_PHYSMAP_BUSWIDTH=2/'"
+ SEDCMD="$SEDCMD -e 's/# CONFIG_MTD_COMPLEX_MAPPINGS is not set/CONFIG_MTD_COMPLEX_MAPPINGS=y/'"
+fi
+
+
+############################################################
+# 	Root file system config generation
+############################################################
+if [ "$BRCM_KERNEL_ROOTFS" = "nfs" ]; then
+  SEDCMD="$SEDCMD -e 's/CONFIG_BCM_ENET=m/CONFIG_BCM_ENET=y/'"
+  SEDCMD="$SEDCMD -e 's?# CONFIG_ROOT_NFS_DIR is not set?CONFIG_ROOT_NFS_DIR=\"$PROFILE_DIR/fs\"?'"
+  SEDCMD="$SEDCMD -e 's/# CONFIG_ROOTFS_NFS is not set/CONFIG_ROOTFS_NFS=y/'"
+  SEDCMD="$SEDCMD -e 's/# CONFIG_NFS_FS is not set/CONFIG_NFS_FS=y/'"
+  SEDCMD="$SEDCMD -e 's/# CONFIG_ROOT_NFS is not set/CONFIG_ROOT_NFS=y/'"
+  SEDCMD="$SEDCMD -e 's/# CONFIG_IP_PNP is not set/CONFIG_IP_PNP=y/'"
+  SEDCMD="$SEDCMD -e 's/# CONFIG_SUNRPC is not set/CONFIG_SUNRPC=y/'"
+  SEDCMD="$SEDCMD -e 's/# CONFIG_LOCKD is not set/CONFIG_LOCKD=y/'"
+elif [ "$BRCM_KERNEL_ROOTFS" = "jffs2" ]; then
+  SEDCMD="$SEDCMD -e 's/# CONFIG_ROOTFS_JFFS2 is not set/CONFIG_ROOTFS_JFFS2=y/'"
+  #ROOTDEV="root=/dev/mtdblock2 ro"
+  ROOTDEV="root=31:2 ro noinitrd"
+  SEDCMD="$SEDCMD -e 's?# CONFIG_ROOT_FLASHFS is not set?CONFIG_ROOT_FLASHFS=\"$ROOTDEV\"?'"
+  SEDCMD="$SEDCMD -e 's/# CONFIG_JFFS2_FS is not set/CONFIG_JFFS2_FS=y/'"
+  SEDCMD="$SEDCMD -e 's/# CONFIG_JFFS2_FS_DEBUG/CONFIG_JFFS2_FS_DEBUG/'"
+else
+  if [ "$BRCM_KERNEL_ROOTFS" = "squashfs" ]; then
+     SEDCMD="$SEDCMD -e 's/# CONFIG_ROOTFS_SQUASHFS is not set/CONFIG_ROOTFS_SQUASHFS=y/'"
+     SEDCMD="$SEDCMD -e 's/# CONFIG_SQUASHFS is not set/CONFIG_SQUASHFS=y/'"
+     #SEDCMD="$SEDCMD -e 's/# CONFIG_ZLIB_FS_INFLATE is not set/CONFIG_ZLIB_FS_INFLATE=y/'"
+     SEDCMD="$SEDCMD -e 's/# CONFIG_LZMA_FS_INFLATE is not set/CONFIG_LZMA_FS_INFLATE=y/'"
+  fi
+  if [ "$BRCM_KERNEL_ROOTFS" = "cramfs" ]; then
+     SEDCMD="$SEDCMD -e 's/# CONFIG_ROOTFS_CRAMFS is not set/CONFIG_ROOTFS_CRAMFS=y/'"
+     SEDCMD="$SEDCMD -e 's/# CONFIG_CRAMFS is not set/CONFIG_CRAMFS=y/'"
+     SEDCMD="$SEDCMD -e 's/# CONFIG_LZMA_FS_INFLATE is not set/CONFIG_LZMA_FS_INFLATE=y/'"
+  fi  
+
+  #ROOTDEV="root=/dev/mtdblock0 ro noinitrd"
+  ROOTDEV="root=31:0 ro noinitrd"
+  SEDCMD="$SEDCMD -e 's?# CONFIG_ROOT_FLASHFS is not set?CONFIG_ROOT_FLASHFS=\"$ROOTDEV\"?'"
+fi
+
+
+############################################################
+# 	Kernel Debug config generation
+############################################################
+
+if [ "$BRCM_KERNEL_DEBUG" = "y" ]; then
+SEDCMD="$SEDCMD -e 's/# CONFIG_REMOTE_DEBUG is not set/CONFIG_REMOTE_DEBUG=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_GDB_CONSOLE is not set/CONFIG_GDB_CONSOLE=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_KALLSYMS is not set/CONFIG_KALLSYMS=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_KALLSYMS_EXTRA_PASS is not set/CONFIG_KALLSYMS_EXTRA_PASS=y/'"
+fi
+
+
+############################################################
+# 	Kernel preemption
+############################################################
+
+if [ "$BRCM_KERNEL_PREEMPT" = "y" ]; then
+SEDCMD="$SEDCMD -e 's/# CONFIG_PREEMPT is not set/CONFIG_PREEMPT=y/'"
+fi
+
+
+############################################################
+# 	Netfilter config generation
+############################################################
+NETFILTER_MODULES="CONNTRACK FTP TFTP TALK H323 IRC PPTP IPSEC DTX8 WM PT IPTABLES \
+                  MATCH_STATE MATCH_LIMIT MATCH_MARK RTSP \
+                  FILTER MANGLE NAT NAT_NEEDED NAT_TALK NAT_H323 NAT_SNMP_BASIC NAT_IRC NAT_FTP NAT_TFTP \
+                  TARGET_MASQUERADE TARGET_REDIRECT TARGET_LOG TARGET_TCPMSS TARGET_FTOS TARGET_MARK"
+
+NF_FIREWALL_MODULES="IPTABLES MATCH_STATE MATCH_LIMIT FILTER TARGET_TCPMSS" 
+
+NF_MANGLE_MODULES="MANGLE MATCH_MARK TARGET_FTOS TARGET_MARK"
+
+NF_NAT_MODULES="IPTABLES CONNTRACK NAT NAT_NEEDED TARGET_MASQUERADE TARGET_REDIRECT"
+
+NF_PPPREMOTE_MODULES="IPTABLES CONNTRACK NAT NAT_NEEDED FILTER TARGET_TCPMSS MATCH_LIMIT" 
+
+ALGS="FTP TFTP TALK H323 IRC PPTP IPSEC SNMP DTX8 WM PT RTSP"
+FTP_ALG_MODULES="FTP NAT_FTP"
+TFTP_ALG_MODULES="TFTP NAT_TFTP"
+H323_ALG_MODULES="H323 NAT_H323"
+IRC_ALG_MODULES="IRC NAT_IRC"
+DTX8_ALG_MODULES="DTX8"
+WM_ALG_MODULES="WM"
+PT_ALG_MODULES="PT"
+PPTP_ALG_MODULES="PPTP"
+IPSEC_ALG_MODULES="IPSEC"
+RTSP_ALG_MODULES="RTSP"
+SNMP_ALG_MODULES="NAT_SNMP_BASIC"
+TALK_ALG_MODULES="TALK NAT_TALK"
+
+
+NF_LOG_MODULES="TARGET_LOG"
+
+
+if [ "$BRCM_KERNEL_NETFILTER" != "" ]; then
+#   for mod in $NETFILTER_MODULES; do
+#      netfilter_setup $mod $BRCM_KERNEL_NETFILTER
+#   done
+   # set up firewall related modules
+   if [ "$BRCM_KERNEL_NF_FIREWALL" != "" ]; then
+      for mod in $NF_FIREWALL_MODULES; do
+          netfilter_setup $mod $BRCM_KERNEL_NF_FIREWALL
+      done
+   fi
+
+   # set up packet mangling related modules
+   if [ "$BRCM_KERNEL_NF_MANGLE" != "" ]; then
+      for mod in $NF_MANGLE_MODULES; do
+          netfilter_setup $mod $BRCM_KERNEL_NF_MANGLE
+      done
+   fi
+
+   # set up NAT related modules
+   if [ "$BRCM_KERNEL_NF_NAT" != "" ]; then
+      # set up required NAT modules
+      for mod in $NF_NAT_MODULES; do
+          netfilter_setup $mod $BRCM_KERNEL_NF_NAT
+      done
+      #set up ALGs
+      for alg in $ALGS; do
+        ALG_NAME=BRCM_KERNEL_NF_NAT_ALG_"$alg"
+        ALG_MODULE_NAME="$alg"_ALG_MODULES
+        eval ALG_VAL=\$$ALG_NAME
+        eval ALG_MODULE_VAL=\$$ALG_MODULE_NAME
+        if [ "$ALG_VAL" != "" ]; then
+          for mod in $ALG_MODULE_VAL; do
+              netfilter_setup $mod $ALG_VAL
+          done
+        fi
+      done
+   fi
+
+   # set up logging module
+   if [ "$BRCM_KERNEL_NF_LOG" != "" ]; then
+      for mod in $NF_LOG_MODULES; do
+          netfilter_setup $mod $BRCM_KERNEL_NF_LOG
+      done
+   fi
+
+   # set up special remote access support modules in PPP IP extension mode
+   if [ "$BRCM_KERNEL_NF_PPPREMOTE" != "" ]; then
+      for mod in $NF_PPPREMOTE_MODULES; do
+          netfilter_setup $mod $BRCM_KERNEL_NF_PPPREMOTE
+      done
+   fi
+
+fi
+
+############################################################
+# 	Cryptographic config generation
+############################################################
+if [ "$BRCM_KERNEL_CRYPTO" != "" ]; then
+
+   # set up networking options
+   SEDCMD="$SEDCMD -e 's/# CONFIG_NET_KEY is not set/CONFIG_NET_KEY=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_INET_AH is not set/CONFIG_INET_AH=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_INET_ESP is not set/CONFIG_INET_ESP=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_XFRM_USER is not set/CONFIG_XFRM_USER=y/'"
+   
+   # set up cryptographic options
+   SEDCMD="$SEDCMD -e 's/# CONFIG_CRYPTO is not set/CONFIG_CRYPTO=y/'"
+   if [ "$BRCM_KERNEL_CRYPTO_HMAC" != "" ]; then
+	  SEDCMD="$SEDCMD -e 's/# CONFIG_CRYPTO_HMAC is not set/CONFIG_CRYPTO_HMAC=y/'"
+   fi
+   if [ "$BRCM_KERNEL_CRYPTO_NULL" != "" ]; then
+	  SEDCMD="$SEDCMD -e 's/# CONFIG_CRYPTO_NULL is not set/CONFIG_CRYPTO_NULL=y/'"
+   fi
+   if [ "$BRCM_KERNEL_CRYPTO_MD5" != "" ]; then
+	  SEDCMD="$SEDCMD -e 's/# CONFIG_CRYPTO_MD5 is not set/CONFIG_CRYPTO_MD5=y/'"
+   fi
+   if [ "$BRCM_KERNEL_CRYPTO_SHA1" != "" ]; then
+	  SEDCMD="$SEDCMD -e 's/# CONFIG_CRYPTO_SHA1 is not set/CONFIG_CRYPTO_SHA1=y/'"
+   fi
+   if [ "$BRCM_KERNEL_CRYPTO_DES" != "" ]; then
+	  SEDCMD="$SEDCMD -e 's/# CONFIG_CRYPTO_DES is not set/CONFIG_CRYPTO_DES=y/'"
+   fi
+   if [ "$BRCM_KERNEL_CRYPTO_AES" != "" ]; then
+	  SEDCMD="$SEDCMD -e 's/# CONFIG_CRYPTO_AES is not set/CONFIG_CRYPTO_AES=y/'"
+   fi
+fi
+
+############################################################
+# 	Bridge Layer filter config generation
+############################################################
+if [ "$BUILD_EBTABLES" != "" ]; then
+SEDCMD="$SEDCMD -e 's/# CONFIG_BRIDGE_NF_EBTABLES is not set/CONFIG_BRIDGE_NF_EBTABLES=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BRIDGE_EBT_T_FILTER is not set/CONFIG_BRIDGE_EBT_T_FILTER=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BRIDGE_EBT_BROUTE is not set/CONFIG_BRIDGE_EBT_BROUTE=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BRIDGE_EBT_IP is not set/CONFIG_BRIDGE_EBT_IP=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BRIDGE_EBT_VLAN is not set/CONFIG_BRIDGE_EBT_VLAN=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BRIDGE_EBT_TIME is not set/CONFIG_BRIDGE_EBT_TIME=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BRIDGE_EBT_MARK_T is not set/CONFIG_BRIDGE_EBT_MARK_T=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_BRIDGE_EBT_FTOS_T is not set/CONFIG_BRIDGE_EBT_FTOS_T=y/'"
+fi
+
+############################################################
+# 	IGMP PROXY filter config generation
+############################################################
+if [ "$BUILD_IGMP" != "" ]; then
+SEDCMD="$SEDCMD -e 's/# CONFIG_IP_MROUTE is not set/CONFIG_IP_MROUTE=y/'"
+SEDCMD="$SEDCMD -e 's/# CONFIG_IP_MULTICAST is not set/CONFIG_IP_MULTICAST=y/'"
+fi
+
+############################################################
+# 	Network QoS config generation
+############################################################
+if [ "$BRCM_KERNEL_NETQOS" != "" ]; then
+   SEDCMD="$SEDCMD -e 's/# CONFIG_NET_SCHED is not set/CONFIG_NET_SCHED=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_NET_SCH_CLK_JIFFIES is not set/CONFIG_NET_SCH_CLK_JIFFIES=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_NET_CLS is not set/CONFIG_NET_CLS=y/'"
+   SEDCMD="$SEDCMD -e 's/# CONFIG_NET_CLS_POLICE is not set/CONFIG_NET_CLS_POLICE=y/'"
+   general_setup CONFIG_NET_SCH_CBQ  $BRCM_KERNEL_NETQOS
+   general_setup CONFIG_NET_SCH_HTB  $BRCM_KERNEL_NETQOS
+   general_setup CONFIG_NET_SCH_PRIO $BRCM_KERNEL_NETQOS
+   general_setup CONFIG_NET_SCH_SFQ $BRCM_KERNEL_NETQOS
+   general_setup CONFIG_NET_CLS_FW $BRCM_KERNEL_NETQOS
+   general_setup CONFIG_NET_CLS_U32 $BRCM_KERNEL_NETQOS
+   general_setup CONFIG_NET_CLS_POLICE $BRCM_KERNEL_NETQOS
+fi
+
+############################################################
+# 	VLAN config generation
+############################################################
+if [ "$BUILD_VCONFIG" != "" ]; then
+SEDCMD="$SEDCMD -e 's/# CONFIG_VLAN_8021Q is not set/CONFIG_VLAN_8021Q=y/'"
+fi
+
+############################################################
+#       WAN operation over Ethernet
+############################################################
+if [ "$BUILD_ETHWAN" != "" ]; then
+SEDCMD="$SEDCMD -e 's/# CONFIG_ETHWAN is not set/CONFIG_ETHWAN=y/'"
+fi
+
+############################################################
+# 	PTHREADS support	
+############################################################
+if [ "$BRCM_PTHREADS" != "" ]; then
+   general_setup CONFIG_BRCM_USING_PTHREADS $BRCM_PTHREADS
+fi
+
+gen="sed $SEDCMD $TEMPLATE"
+#echo $gen
+#eval $gen
+eval $gen > $KERNEL_DIR/arch/mips/defconfig
+
+

@@ -1,0 +1,1216 @@
+../../../../broadcom_2004d_341/i686-pc-linux-gnu:
+total 64
+drwxr-xr-x 2 root root 4096 jui  6 13:25 bin
+drwxr-xr-x 3 root root 4096 jui  6 11:18 include
+drwxr-xr-x 2 root root 4096 jui  6 11:18 info
+drwxr-xr-x 3 root root 4096 jui  6 11:18 lib
+drwxr-xr-x 3 root root 4096 jui  6 11:18 libexec
+drwxr-xr-x 4 root root 4096 jui  6 11:18 man
+drwxr-xr-x 5 root root 4096 jui  6 11:18 sb1-elf
+drwxr-xr-x 3 root root 4096 jui  6 11:18 share
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/bin:
+total 38164
+-rwxr--r-- 1 root root 1832162 aoû  9  2006 sb1-elf-addr2line
+-rwxr--r-- 1 root root 1823750 aoû  9  2006 sb1-elf-ar
+-rwxr--r-- 1 root root 2814674 aoû  9  2006 sb1-elf-as
+-rwxr--r-- 1 root root  185554 aoû  9  2006 sb1-elf-c++
+-rwxr--r-- 1 root root 1800831 aoû  9  2006 sb1-elf-c++filt
+-rwxr--r-- 1 root root  185357 aoû  9  2006 sb1-elf-cpp
+-rwxr--r-- 1 root root  185554 aoû  9  2006 sb1-elf-g++
+-rwxr--r-- 1 root root  184658 aoû  9  2006 sb1-elf-gcc
+-rwxr--r-- 1 root root  184658 aoû  9  2006 sb1-elf-gcc-3.4.1
+-rwxr--r-- 1 root root   15848 aoû  9  2006 sb1-elf-gccbug
+-rwxr--r-- 1 root root   59379 aoû  9  2006 sb1-elf-gcov
+-rwxr--r-- 1 root root 9428384 aoû  9  2006 sb1-elf-gdb
+-rwxr--r-- 1 root root 2436682 aoû  9  2006 sb1-elf-ld
+-rwxr--r-- 1 root root 1860952 aoû  9  2006 sb1-elf-nm
+-rwxr--r-- 1 root root 2273057 aoû  9  2006 sb1-elf-objcopy
+-rwxr--r-- 1 root root 2423832 aoû  9  2006 sb1-elf-objdump
+-rwxr--r-- 1 root root 1823717 aoû  9  2006 sb1-elf-ranlib
+-rwxr--r-- 1 root root  341212 aoû  9  2006 sb1-elf-readelf
+-rwxr--r-- 1 root root 3237092 aoû  9  2006 sb1-elf-run
+-rwxr--r-- 1 root root 1744932 aoû  9  2006 sb1-elf-size
+-rwxr--r-- 1 root root 1727001 aoû  9  2006 sb1-elf-strings
+-rwxr--r-- 1 root root 2273052 aoû  9  2006 sb1-elf-strip
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include:
+total 240
+-r--r--r-- 1 root root  10540 aoû  9  2006 ansidecl.h
+-r--r--r-- 1 root root 148739 aoû  9  2006 bfd.h
+-r--r--r-- 1 root root  26192 aoû  9  2006 bfdlink.h
+drwxr-xr-x 3 root root   4096 jui  6 11:17 c++
+-r--r--r-- 1 root root  14230 aoû  9  2006 dis-asm.h
+-r--r--r-- 1 root root   1897 aoû  9  2006 symcat.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++:
+total 8
+drwxr-xr-x 7 root root 4096 jui  6 11:18 3.4.1
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++/3.4.1:
+total 764
+-r--r--r-- 1 root root  2944 aoû  9  2006 algorithm
+drwxr-xr-x 2 root root  4096 jui  6 11:17 backward
+drwxr-xr-x 2 root root  4096 jui  6 11:17 bits
+-r--r--r-- 1 root root 33846 aoû  9  2006 bitset
+-r--r--r-- 1 root root  1933 aoû  9  2006 cassert
+-r--r--r-- 1 root root  2499 aoû  9  2006 cctype
+-r--r--r-- 1 root root  2046 aoû  9  2006 cerrno
+-r--r--r-- 1 root root  1968 aoû  9  2006 cfloat
+-r--r--r-- 1 root root  1770 aoû  9  2006 ciso646
+-r--r--r-- 1 root root  1976 aoû  9  2006 climits
+-r--r--r-- 1 root root  2173 aoû  9  2006 clocale
+-r--r--r-- 1 root root 13992 aoû  9  2006 cmath
+-r--r--r-- 1 root root 32606 aoû  9  2006 complex
+-r--r--r-- 1 root root  2217 aoû  9  2006 csetjmp
+-r--r--r-- 1 root root  2123 aoû  9  2006 csignal
+-r--r--r-- 1 root root  2095 aoû  9  2006 cstdarg
+-r--r--r-- 1 root root  1998 aoû  9  2006 cstddef
+-r--r--r-- 1 root root  4367 aoû  9  2006 cstdio
+-r--r--r-- 1 root root  4948 aoû  9  2006 cstdlib
+-r--r--r-- 1 root root  3396 aoû  9  2006 cstring
+-r--r--r-- 1 root root  2409 aoû  9  2006 ctime
+-r--r--r-- 1 root root  6034 aoû  9  2006 cwchar
+-r--r--r-- 1 root root  2991 aoû  9  2006 cwctype
+-r--r--r-- 1 root root 16113 aoû  9  2006 cxxabi.h
+drwxr-xr-x 2 root root  4096 jui  6 11:17 debug
+-r--r--r-- 1 root root  3106 aoû  9  2006 deque
+-r--r--r-- 1 root root  4631 aoû  9  2006 exception
+-r--r--r-- 1 root root  1805 aoû  9  2006 exception_defines.h
+drwxr-xr-x 2 root root  4096 jui  6 11:17 ext
+-r--r--r-- 1 root root 25374 aoû  9  2006 fstream
+-r--r--r-- 1 root root  2353 aoû  9  2006 functional
+-r--r--r-- 1 root root  9084 aoû  9  2006 iomanip
+-r--r--r-- 1 root root  2127 aoû  9  2006 ios
+-r--r--r-- 1 root root  6568 aoû  9  2006 iosfwd
+-r--r--r-- 1 root root  3073 aoû  9  2006 iostream
+-r--r--r-- 1 root root 27421 aoû  9  2006 istream
+-r--r--r-- 1 root root  3084 aoû  9  2006 iterator
+-r--r--r-- 1 root root 41578 aoû  9  2006 limits
+-r--r--r-- 1 root root  3104 aoû  9  2006 list
+-r--r--r-- 1 root root  1888 aoû  9  2006 locale
+-r--r--r-- 1 root root  2924 aoû  9  2006 map
+-r--r--r-- 1 root root 12228 aoû  9  2006 memory
+-r--r--r-- 1 root root  3784 aoû  9  2006 new
+-r--r--r-- 1 root root  2936 aoû  9  2006 numeric
+-r--r--r-- 1 root root 18600 aoû  9  2006 ostream
+-r--r--r-- 1 root root  3110 aoû  9  2006 queue
+drwxr-xr-x 3 root root  4096 jui  6 11:18 sb1-elf
+-r--r--r-- 1 root root  2924 aoû  9  2006 set
+-r--r--r-- 1 root root 20931 aoû  9  2006 sstream
+-r--r--r-- 1 root root  2976 aoû  9  2006 stack
+-r--r--r-- 1 root root  4602 aoû  9  2006 stdexcept
+-r--r--r-- 1 root root 27348 aoû  9  2006 streambuf
+-r--r--r-- 1 root root  2254 aoû  9  2006 string
+-r--r--r-- 1 root root  5313 aoû  9  2006 typeinfo
+-r--r--r-- 1 root root  2892 aoû  9  2006 utility
+-r--r--r-- 1 root root 35312 aoû  9  2006 valarray
+-r--r--r-- 1 root root  3146 aoû  9  2006 vector
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++/3.4.1/backward:
+total 304
+-r--r--r-- 1 root root 3392 aoû  9  2006 algobase.h
+-r--r--r-- 1 root root 4658 aoû  9  2006 algo.h
+-r--r--r-- 1 root root 2161 aoû  9  2006 alloc.h
+-r--r--r-- 1 root root 1853 aoû  9  2006 backward_warning.h
+-r--r--r-- 1 root root 2768 aoû  9  2006 bvector.h
+-r--r--r-- 1 root root 1686 aoû  9  2006 complex.h
+-r--r--r-- 1 root root 3880 aoû  9  2006 defalloc.h
+-r--r--r-- 1 root root 2753 aoû  9  2006 deque.h
+-r--r--r-- 1 root root 1791 aoû  9  2006 fstream.h
+-r--r--r-- 1 root root 4342 aoû  9  2006 function.h
+-r--r--r-- 1 root root 2842 aoû  9  2006 hash_map.h
+-r--r--r-- 1 root root 2802 aoû  9  2006 hash_set.h
+-r--r--r-- 1 root root 2955 aoû  9  2006 hashtable.h
+-r--r--r-- 1 root root 2813 aoû  9  2006 heap.h
+-r--r--r-- 1 root root 2278 aoû  9  2006 iomanip.h
+-r--r--r-- 1 root root 1891 aoû  9  2006 iostream.h
+-r--r--r-- 1 root root 1543 aoû  9  2006 istream.h
+-r--r--r-- 1 root root 6443 aoû  9  2006 iterator.h
+-r--r--r-- 1 root root 2753 aoû  9  2006 list.h
+-r--r--r-- 1 root root 2725 aoû  9  2006 map.h
+-r--r--r-- 1 root root 2745 aoû  9  2006 multimap.h
+-r--r--r-- 1 root root 2745 aoû  9  2006 multiset.h
+-r--r--r-- 1 root root 1584 aoû  9  2006 new.h
+-r--r--r-- 1 root root 1538 aoû  9  2006 ostream.h
+-r--r--r-- 1 root root 2773 aoû  9  2006 pair.h
+-r--r--r-- 1 root root 1575 aoû  9  2006 queue.h
+-r--r--r-- 1 root root 2308 aoû  9  2006 rope.h
+-r--r--r-- 1 root root 2725 aoû  9  2006 set.h
+-r--r--r-- 1 root root 2179 aoû  9  2006 slist.h
+-r--r--r-- 1 root root 2793 aoû  9  2006 stack.h
+-r--r--r-- 1 root root 1564 aoû  9  2006 streambuf.h
+-r--r--r-- 1 root root 1536 aoû  9  2006 stream.h
+-r--r--r-- 1 root root 5740 aoû  9  2006 strstream
+-r--r--r-- 1 root root 3007 aoû  9  2006 tempbuf.h
+-r--r--r-- 1 root root 2152 aoû  9  2006 tree.h
+-r--r--r-- 1 root root 2758 aoû  9  2006 vector.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++/3.4.1/bits:
+total 1844
+-r--r--r-- 1 root root   4194 aoû  9  2006 allocator.h
+-r--r--r-- 1 root root   1792 aoû  9  2006 atomicity.h
+-r--r--r-- 1 root root  14975 aoû  9  2006 basic_ios.h
+-r--r--r-- 1 root root   6622 aoû  9  2006 basic_ios.tcc
+-r--r--r-- 1 root root  88488 aoû  9  2006 basic_string.h
+-r--r--r-- 1 root root  34031 aoû  9  2006 basic_string.tcc
+-r--r--r-- 1 root root  32172 aoû  9  2006 boost_concept_check.h
+-r--r--r-- 1 root root  11780 aoû  9  2006 char_traits.h
+-r--r--r-- 1 root root   1849 aoû  9  2006 cmath.tcc
+-r--r--r-- 1 root root  16348 aoû  9  2006 codecvt.h
+-r--r--r-- 1 root root   3659 aoû  9  2006 concept_check.h
+-r--r--r-- 1 root root   2341 aoû  9  2006 concurrence.h
+-r--r--r-- 1 root root   6855 aoû  9  2006 cpp_type_traits.h
+-r--r--r-- 1 root root  23449 aoû  9  2006 deque.tcc
+-r--r--r-- 1 root root  24747 aoû  9  2006 fstream.tcc
+-r--r--r-- 1 root root   2419 aoû  9  2006 functexcept.h
+-r--r--r-- 1 root root   7972 aoû  9  2006 gslice_array.h
+-r--r--r-- 1 root root   5572 aoû  9  2006 gslice.h
+-r--r--r-- 1 root root   8095 aoû  9  2006 indirect_array.h
+-r--r--r-- 1 root root  27979 aoû  9  2006 ios_base.h
+-r--r--r-- 1 root root  33222 aoû  9  2006 istream.tcc
+-r--r--r-- 1 root root  10630 aoû  9  2006 list.tcc
+-r--r--r-- 1 root root  16941 aoû  9  2006 locale_classes.h
+-r--r--r-- 1 root root 156822 aoû  9  2006 locale_facets.h
+-r--r--r-- 1 root root  84235 aoû  9  2006 locale_facets.tcc
+-r--r--r-- 1 root root   5522 aoû  9  2006 localefwd.h
+-r--r--r-- 1 root root   7809 aoû  9  2006 mask_array.h
+-r--r--r-- 1 root root  20140 aoû  9  2006 ostream.tcc
+-r--r--r-- 1 root root   7403 aoû  9  2006 postypes.h
+-r--r--r-- 1 root root   9553 aoû  9  2006 slice_array.h
+-r--r--r-- 1 root root   7792 aoû  9  2006 sstream.tcc
+-r--r--r-- 1 root root  30201 aoû  9  2006 stl_algobase.h
+-r--r--r-- 1 root root 176879 aoû  9  2006 stl_algo.h
+-r--r--r-- 1 root root  24393 aoû  9  2006 stl_bvector.h
+-r--r--r-- 1 root root   5341 aoû  9  2006 stl_construct.h
+-r--r--r-- 1 root root  51916 aoû  9  2006 stl_deque.h
+-r--r--r-- 1 root root  29327 aoû  9  2006 stl_function.h
+-r--r--r-- 1 root root  16066 aoû  9  2006 stl_heap.h
+-r--r--r-- 1 root root   6504 aoû  9  2006 stl_iterator_base_funcs.h
+-r--r--r-- 1 root root   6736 aoû  9  2006 stl_iterator_base_types.h
+-r--r--r-- 1 root root  25363 aoû  9  2006 stl_iterator.h
+-r--r--r-- 1 root root  40964 aoû  9  2006 stl_list.h
+-r--r--r-- 1 root root  26289 aoû  9  2006 stl_map.h
+-r--r--r-- 1 root root  25705 aoû  9  2006 stl_multimap.h
+-r--r--r-- 1 root root  20992 aoû  9  2006 stl_multiset.h
+-r--r--r-- 1 root root  12371 aoû  9  2006 stl_numeric.h
+-r--r--r-- 1 root root   5754 aoû  9  2006 stl_pair.h
+-r--r--r-- 1 root root  16086 aoû  9  2006 stl_queue.h
+-r--r--r-- 1 root root   3721 aoû  9  2006 stl_raw_storage_iter.h
+-r--r--r-- 1 root root   4820 aoû  9  2006 stl_relops.h
+-r--r--r-- 1 root root  21387 aoû  9  2006 stl_set.h
+-r--r--r-- 1 root root   9427 aoû  9  2006 stl_stack.h
+-r--r--r-- 1 root root   5436 aoû  9  2006 stl_tempbuf.h
+-r--r--r-- 1 root root   5403 aoû  9  2006 stl_threads.h
+-r--r--r-- 1 root root  38002 aoû  9  2006 stl_tree.h
+-r--r--r-- 1 root root   9957 aoû  9  2006 stl_uninitialized.h
+-r--r--r-- 1 root root  33460 aoû  9  2006 stl_vector.h
+-r--r--r-- 1 root root   7980 aoû  9  2006 streambuf_iterator.h
+-r--r--r-- 1 root root   4802 aoû  9  2006 streambuf.tcc
+-r--r--r-- 1 root root   6716 aoû  9  2006 stream_iterator.h
+-r--r--r-- 1 root root   2207 aoû  9  2006 stringfwd.h
+-r--r--r-- 1 root root  12433 aoû  9  2006 type_traits.h
+-r--r--r-- 1 root root  22082 aoû  9  2006 valarray_after.h
+-r--r--r-- 1 root root  21080 aoû  9  2006 valarray_array.h
+-r--r--r-- 1 root root   7347 aoû  9  2006 valarray_array.tcc
+-r--r--r-- 1 root root  18294 aoû  9  2006 valarray_before.h
+-r--r--r-- 1 root root  14871 aoû  9  2006 vector.tcc
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++/3.4.1/debug:
+total 356
+-r--r--r-- 1 root root  7708 aoû  9  2006 bitset
+-r--r--r-- 1 root root 20974 aoû  9  2006 debug.h
+-r--r--r-- 1 root root 10231 aoû  9  2006 deque
+-r--r--r-- 1 root root 11362 aoû  9  2006 formatter.h
+-r--r--r-- 1 root root  1609 aoû  9  2006 hash_map
+-r--r--r-- 1 root root  8842 aoû  9  2006 hash_map.h
+-r--r--r-- 1 root root  8668 aoû  9  2006 hash_multimap.h
+-r--r--r-- 1 root root  7748 aoû  9  2006 hash_multiset.h
+-r--r--r-- 1 root root  1609 aoû  9  2006 hash_set
+-r--r--r-- 1 root root  7965 aoû  9  2006 hash_set.h
+-r--r--r-- 1 root root 13600 aoû  9  2006 list
+-r--r--r-- 1 root root  1566 aoû  9  2006 map
+-r--r--r-- 1 root root 10340 aoû  9  2006 map.h
+-r--r--r-- 1 root root 10257 aoû  9  2006 multimap.h
+-r--r--r-- 1 root root 10182 aoû  9  2006 multiset.h
+-r--r--r-- 1 root root  7750 aoû  9  2006 safe_base.h
+-r--r--r-- 1 root root 20855 aoû  9  2006 safe_iterator.h
+-r--r--r-- 1 root root  4531 aoû  9  2006 safe_iterator.tcc
+-r--r--r-- 1 root root  6354 aoû  9  2006 safe_sequence.h
+-r--r--r-- 1 root root  1566 aoû  9  2006 set
+-r--r--r-- 1 root root 10184 aoû  9  2006 set.h
+-r--r--r-- 1 root root 28622 aoû  9  2006 string
+-r--r--r-- 1 root root 11743 aoû  9  2006 vector
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++/3.4.1/ext:
+total 608
+-r--r--r-- 1 root root 17543 aoû  9  2006 algorithm
+-r--r--r-- 1 root root 27271 aoû  9  2006 bitmap_allocator.h
+-r--r--r-- 1 root root  4232 aoû  9  2006 debug_allocator.h
+-r--r--r-- 1 root root 84214 aoû  9  2006 demangle.h
+-r--r--r-- 1 root root  2709 aoû  9  2006 enc_filebuf.h
+-r--r--r-- 1 root root 13797 aoû  9  2006 functional
+-r--r--r-- 1 root root  4256 aoû  9  2006 hash_fun.h
+-r--r--r-- 1 root root 17148 aoû  9  2006 hash_map
+-r--r--r-- 1 root root 16566 aoû  9  2006 hash_set
+-r--r--r-- 1 root root 31455 aoû  9  2006 hashtable.h
+-r--r--r-- 1 root root  4349 aoû  9  2006 iterator
+-r--r--r-- 1 root root  3780 aoû  9  2006 malloc_allocator.h
+-r--r--r-- 1 root root  6395 aoû  9  2006 memory
+-r--r--r-- 1 root root 22781 aoû  9  2006 mt_allocator.h
+-r--r--r-- 1 root root  3700 aoû  9  2006 new_allocator.h
+-r--r--r-- 1 root root  4948 aoû  9  2006 numeric
+-r--r--r-- 1 root root  4839 aoû  9  2006 pod_char_traits.h
+-r--r--r-- 1 root root 12839 aoû  9  2006 pool_allocator.h
+-r--r--r-- 1 root root  3617 aoû  9  2006 rb_tree
+-r--r--r-- 1 root root 89868 aoû  9  2006 rope
+-r--r--r-- 1 root root 46692 aoû  9  2006 ropeimpl.h
+-r--r--r-- 1 root root 28179 aoû  9  2006 slist
+-r--r--r-- 1 root root  5704 aoû  9  2006 stdio_filebuf.h
+-r--r--r-- 1 root root  7868 aoû  9  2006 stdio_sync_filebuf.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++/3.4.1/sb1-elf:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 bits
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++/3.4.1/sb1-elf/bits:
+total 200
+-r--r--r-- 1 root root  1531 aoû  9  2006 atomic_word.h
+-r--r--r-- 1 root root  2983 aoû  9  2006 basic_file.h
+-r--r--r-- 1 root root  1630 aoû  9  2006 c++allocator.h
+-r--r--r-- 1 root root 38397 aoû  9  2006 c++config.h
+-r--r--r-- 1 root root  3221 aoû  9  2006 c++io.h
+-r--r--r-- 1 root root  2890 aoû  9  2006 c++locale.h
+-r--r--r-- 1 root root  1620 aoû  9  2006 codecvt_specializations.h
+-r--r--r-- 1 root root  2252 aoû  9  2006 ctype_base.h
+-r--r--r-- 1 root root  2271 aoû  9  2006 ctype_inline.h
+-r--r--r-- 1 root root  3024 aoû  9  2006 ctype_noninline.h
+-r--r--r-- 1 root root  5571 aoû  9  2006 gthr-default.h
+-r--r--r-- 1 root root  3625 aoû  9  2006 gthr.h
+-r--r--r-- 1 root root 12406 aoû  9  2006 gthr-posix.h
+-r--r--r-- 1 root root  5571 aoû  9  2006 gthr-single.h
+-r--r--r-- 1 root root  3123 aoû  9  2006 messages_members.h
+-r--r--r-- 1 root root  1602 aoû  9  2006 os_defines.h
+drwxr-xr-x 2 root root  4096 jui  6 11:18 stdc++.h.gch
+-r--r--r-- 1 root root  2627 aoû  9  2006 time_members.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/include/c++/3.4.1/sb1-elf/bits/stdc++.h.gch:
+total 33792
+-r--r--r-- 1 root root 17274479 aoû  9  2006 O0g
+-r--r--r-- 1 root root 17266286 aoû  9  2006 O2g
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/info:
+total 2820
+-r--r--r-- 1 root root  44679 aoû  9  2006 annotate.info
+-r--r--r-- 1 root root  11903 aoû  9  2006 as.info
+-r--r--r-- 1 root root  50403 aoû  9  2006 as.info-1
+-r--r--r-- 1 root root  50219 aoû  9  2006 as.info-10
+-r--r--r-- 1 root root  25392 aoû  9  2006 as.info-11
+-r--r--r-- 1 root root  93420 aoû  9  2006 as.info-12
+-r--r--r-- 1 root root  49861 aoû  9  2006 as.info-2
+-r--r--r-- 1 root root  50247 aoû  9  2006 as.info-3
+-r--r--r-- 1 root root  52266 aoû  9  2006 as.info-4
+-r--r--r-- 1 root root  44168 aoû  9  2006 as.info-5
+-r--r--r-- 1 root root  50526 aoû  9  2006 as.info-6
+-r--r--r-- 1 root root  49912 aoû  9  2006 as.info-7
+-r--r--r-- 1 root root  50589 aoû  9  2006 as.info-8
+-r--r--r-- 1 root root  49691 aoû  9  2006 as.info-9
+-r--r--r-- 1 root root   2651 aoû  9  2006 bfd.info
+-r--r--r-- 1 root root 286246 aoû  9  2006 bfd.info-1
+-r--r--r-- 1 root root  76693 aoû  9  2006 bfd.info-2
+-r--r--r-- 1 root root  16475 aoû  9  2006 bfd.info-3
+-r--r--r-- 1 root root  50613 aoû  9  2006 bfd.info-4
+-r--r--r-- 1 root root  45193 aoû  9  2006 bfd.info-5
+-r--r--r-- 1 root root  45246 aoû  9  2006 bfd.info-6
+-r--r--r-- 1 root root  40449 aoû  9  2006 bfd.info-7
+-r--r--r-- 1 root root  20392 aoû  9  2006 bfd.info-8
+-r--r--r-- 1 root root  54520 aoû  9  2006 bfd.info-9
+-r--r--r-- 1 root root      0 aoû  9  2006 binutils.info
+-r--r--r-- 1 root root 112903 aoû  9  2006 configure.info
+-r--r--r-- 1 root root  48782 aoû  9  2006 configure.info-1
+-r--r--r-- 1 root root  50262 aoû  9  2006 configure.info-2
+-r--r--r-- 1 root root  14034 aoû  9  2006 configure.info-3
+-r--r--r-- 1 root root 216916 aoû  9  2006 cpp.info
+-r--r--r-- 1 root root  49750 aoû  9  2006 cppinternals.info
+-r--r--r-- 1 root root   1267 aoû  9  2006 dir
+-r--r--r-- 1 root root 162516 aoû  9  2006 gccinstall.info
+-r--r--r-- 1 root root      0 aoû  9  2006 gdb.info
+-r--r--r-- 1 root root      0 aoû  9  2006 gdbint.info
+-r--r--r-- 1 root root 103984 aoû  9  2006 gprof.info
+-r--r--r-- 1 root root  48575 aoû  9  2006 gprof.info-1
+-r--r--r-- 1 root root  34844 aoû  9  2006 gprof.info-2
+-r--r--r-- 1 root root  19112 aoû  9  2006 gprof.info-3
+-r--r--r-- 1 root root      0 aoû  9  2006 ld.info
+-r--r--r-- 1 root root   8265 aoû  9  2006 mmalloc.info
+-r--r--r-- 1 root root 175284 aoû  9  2006 stabs.info
+-r--r--r-- 1 root root 181969 aoû  9  2006 standards.info
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib:
+total 25028
+drwxr-xr-x 3 root root    4096 jui  6 11:18 gcc
+-r--r--r-- 1 root root 3512786 aoû  9  2006 libbfd.a
+-r--r--r-- 1 root root  166651 aoû  9  2006 libgcc_s.so
+-r--r--r-- 1 root root  166651 aoû  9  2006 libgcc_s.so.1
+-r--r--r-- 1 root root  427708 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   25552 aoû  9  2006 libmmalloc.a
+-r--r--r-- 1 root root  328074 aoû  9  2006 libopcodes.a
+-r--r--r-- 1 root root 3154870 aoû  9  2006 libsb1-elf-sim.a
+-r--r--r-- 1 root root 6394902 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root 3664202 aoû  9  2006 libstdc++.so
+-r--r--r-- 1 root root 3664202 aoû  9  2006 libstdc++.so.6
+-r--r--r-- 1 root root 3664202 aoû  9  2006 libstdc++.so.6.0.1
+-r--r--r-- 1 root root  321826 aoû  9  2006 libsupc++.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 sb1-elf
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf:
+total 8
+drwxr-xr-x 8 root root 4096 jui  6 11:18 3.4.1
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1:
+total 636
+drwxr-xr-x 5 root root   4096 jui  6 11:18 el
+drwxr-xr-x 2 root root   4096 jui  6 11:18 fix-sb1
+drwxr-xr-x 2 root root   4096 jui  6 11:18 include
+drwxr-xr-x 3 root root   4096 jui  6 11:18 install-tools
+-r--r--r-- 1 root root 560260 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11784 aoû  9  2006 libgcov.a
+drwxr-xr-x 3 root root   4096 jui  6 11:18 long64
+drwxr-xr-x 3 root root   4096 jui  6 11:18 o32
+-r--r--r-- 1 root root   8839 aoû  9  2006 specs
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/el:
+total 600
+drwxr-xr-x 2 root root   4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root 564964 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11784 aoû  9  2006 libgcov.a
+drwxr-xr-x 3 root root   4096 jui  6 11:18 long64
+drwxr-xr-x 3 root root   4096 jui  6 11:18 o32
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/el/fix-sb1:
+total 576
+-r--r--r-- 1 root root 564964 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11784 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/el/long64:
+total 588
+drwxr-xr-x 2 root root   4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root 568904 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11888 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/el/long64/fix-sb1:
+total 580
+-r--r--r-- 1 root root 568904 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11888 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/el/o32:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 mips32
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/el/o32/mips32:
+total 584
+drwxr-xr-x 2 root root   4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root 564304 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11764 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/el/o32/mips32/fix-sb1:
+total 576
+-r--r--r-- 1 root root 564304 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11764 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/fix-sb1:
+total 572
+-r--r--r-- 1 root root 560260 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11784 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/include:
+total 116
+-r--r--r-- 1 root root    10 aoû  9  2006 fixed
+-r--r--r-- 1 root root  5360 aoû  9  2006 float.h
+-r--r--r-- 1 root root  1428 aoû  9  2006 iso646.h
+-r--r--r-- 1 root root  2745 aoû  9  2006 limits.h
+-r--r--r-- 1 root root   750 aoû  9  2006 README
+-r--r--r-- 1 root root  4313 aoû  9  2006 stdarg.h
+-r--r--r-- 1 root root  1600 aoû  9  2006 stdbool.h
+-r--r--r-- 1 root root 13025 aoû  9  2006 stddef.h
+-r--r--r-- 1 root root   330 aoû  9  2006 syslimits.h
+-r--r--r-- 1 root root  8892 aoû  9  2006 unwind.h
+-r--r--r-- 1 root root   139 aoû  9  2006 varargs.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/install-tools:
+total 24
+-r--r--r-- 1 root root  330 aoû  9  2006 gsyslimits.h
+drwxr-xr-x 2 root root 4096 jui  6 11:18 include
+-r--r--r-- 1 root root  227 aoû  9  2006 mkheaders.conf
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/install-tools/include:
+total 100
+-r--r--r-- 1 root root  5360 aoû  9  2006 float.h
+-r--r--r-- 1 root root  1428 aoû  9  2006 iso646.h
+-r--r--r-- 1 root root  2745 aoû  9  2006 limits.h
+-r--r--r-- 1 root root   750 aoû  9  2006 README
+-r--r--r-- 1 root root  4313 aoû  9  2006 stdarg.h
+-r--r--r-- 1 root root  1600 aoû  9  2006 stdbool.h
+-r--r--r-- 1 root root 13025 aoû  9  2006 stddef.h
+-r--r--r-- 1 root root  8892 aoû  9  2006 unwind.h
+-r--r--r-- 1 root root   139 aoû  9  2006 varargs.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/long64:
+total 584
+drwxr-xr-x 2 root root   4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root 564128 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11888 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/long64/fix-sb1:
+total 576
+-r--r--r-- 1 root root 564128 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11888 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/o32:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 mips32
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/o32/mips32:
+total 580
+drwxr-xr-x 2 root root   4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root 559572 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11764 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/lib/gcc/sb1-elf/3.4.1/o32/mips32/fix-sb1:
+total 572
+-r--r--r-- 1 root root 559572 aoû  9  2006 libgcc.a
+-r--r--r-- 1 root root  11764 aoû  9  2006 libgcov.a
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/libexec:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 gcc
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/libexec/gcc:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 sb1-elf
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/libexec/gcc/sb1-elf:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 3.4.1
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/libexec/gcc/sb1-elf/3.4.1:
+total 15672
+-r--r--r-- 1 root root 7235431 aoû  9  2006 cc1
+-r--r--r-- 1 root root 8551987 aoû  9  2006 cc1plus
+-r--r--r-- 1 root root  203413 aoû  9  2006 collect2
+drwxr-xr-x 2 root root    4096 jui  6 11:18 install-tools
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/libexec/gcc/sb1-elf/3.4.1/install-tools:
+total 740
+-r--r--r-- 1 root root 413951 aoû  9  2006 fix-header
+-r--r--r-- 1 root root 266440 aoû  9  2006 fixincl
+-r--r--r-- 1 root root  12883 aoû  9  2006 fixinc.sh
+-r--r--r-- 1 root root  10696 aoû  9  2006 fixproto
+-r--r--r-- 1 root root   3425 aoû  9  2006 mkheaders
+-r--r--r-- 1 root root   1988 aoû  9  2006 mkinstalldirs
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/man:
+total 16
+drwxr-xr-x 2 root root 4096 jui  6 11:18 man1
+drwxr-xr-x 2 root root 4096 jui  6 11:18 man7
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/man/man1:
+total 1428
+-r--r--r-- 1 root root   7535 aoû  9  2006 sb1-elf-addr2line.1
+-r--r--r-- 1 root root  14837 aoû  9  2006 sb1-elf-ar.1
+-r--r--r-- 1 root root  36838 aoû  9  2006 sb1-elf-as.1
+-r--r--r-- 1 root root   8512 aoû  9  2006 sb1-elf-c++filt.1
+-r--r--r-- 1 root root  37738 aoû  9  2006 sb1-elf-cpp.1
+-r--r--r-- 1 root root  16230 aoû  9  2006 sb1-elf-dlltool.1
+-r--r--r-- 1 root root 466110 aoû  9  2006 sb1-elf-g++.1
+-r--r--r-- 1 root root 466110 aoû  9  2006 sb1-elf-gcc.1
+-r--r--r-- 1 root root  23640 aoû  9  2006 sb1-elf-gcov.1
+-r--r--r-- 1 root root   8347 aoû  9  2006 sb1-elf-gdb.1
+-r--r--r-- 1 root root  86200 aoû  9  2006 sb1-elf-ld.1
+-r--r--r-- 1 root root   7527 aoû  9  2006 sb1-elf-nlmconv.1
+-r--r--r-- 1 root root  13965 aoû  9  2006 sb1-elf-nm.1
+-r--r--r-- 1 root root  31731 aoû  9  2006 sb1-elf-objcopy.1
+-r--r--r-- 1 root root  21594 aoû  9  2006 sb1-elf-objdump.1
+-r--r--r-- 1 root root   5354 aoû  9  2006 sb1-elf-ranlib.1
+-r--r--r-- 1 root root  10609 aoû  9  2006 sb1-elf-readelf.1
+-r--r--r-- 1 root root  21827 aoû  9  2006 sb1-elf-run.1
+-r--r--r-- 1 root root   7981 aoû  9  2006 sb1-elf-size.1
+-r--r--r-- 1 root root   7632 aoû  9  2006 sb1-elf-strings.1
+-r--r--r-- 1 root root  12086 aoû  9  2006 sb1-elf-strip.1
+-r--r--r-- 1 root root  11737 aoû  9  2006 sb1-elf-windres.1
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/man/man7:
+total 76
+-r--r--r-- 1 root root  6396 aoû  9  2006 fsf-funding.7
+-r--r--r-- 1 root root 25885 aoû  9  2006 gfdl.7
+-r--r--r-- 1 root root 24687 aoû  9  2006 gpl.7
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf:
+total 24
+drwxr-xr-x 2 root root 4096 jui  6 11:18 bin
+drwxr-xr-x 5 root root 4096 jui  6 11:18 include
+drwxr-xr-x 7 root root 4096 jui  6 11:18 lib
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/bin:
+total 13364
+-r--r--r-- 1 root root 1823750 aoû  9  2006 ar
+-r--r--r-- 1 root root 2814674 aoû  9  2006 as
+-r--r--r-- 1 root root  185554 aoû  9  2006 c++
+-r--r--r-- 1 root root  185554 aoû  9  2006 g++
+-r--r--r-- 1 root root  184658 aoû  9  2006 gcc
+-r--r--r-- 1 root root 2436682 aoû  9  2006 ld
+-r--r--r-- 1 root root 1860952 aoû  9  2006 nm
+-r--r--r-- 1 root root 1823717 aoû  9  2006 ranlib
+-r--r--r-- 1 root root 2273052 aoû  9  2006 strip
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/include:
+total 472
+-r--r--r-- 1 root root   405 aoû  9  2006 alloca.h
+-r--r--r-- 1 root root  2332 aoû  9  2006 _ansi.h
+-r--r--r-- 1 root root  1233 aoû  9  2006 argz.h
+-r--r--r-- 1 root root  2958 aoû  9  2006 ar.h
+-r--r--r-- 1 root root   485 aoû  9  2006 assert.h
+-r--r--r-- 1 root root  8904 aoû  9  2006 cfe_api.h
+-r--r--r-- 1 root root  3411 aoû  9  2006 cfe_error.h
+-r--r--r-- 1 root root  1934 aoû  9  2006 ctype.h
+-r--r--r-- 1 root root   234 aoû  9  2006 dirent.h
+-r--r--r-- 1 root root   781 aoû  9  2006 envz.h
+-r--r--r-- 1 root root   174 aoû  9  2006 errno.h
+-r--r--r-- 1 root root 13278 aoû  9  2006 exlib.h
+-r--r--r-- 1 root root   185 aoû  9  2006 fastmath.h
+-r--r--r-- 1 root root    23 aoû  9  2006 fcntl.h
+-r--r--r-- 1 root root  3429 aoû  9  2006 grp.h
+-r--r--r-- 1 root root  2114 aoû  9  2006 iconv.h
+-r--r--r-- 1 root root  5069 aoû  9  2006 ieeefp.h
+-r--r--r-- 1 root root  4510 aoû  9  2006 langinfo.h
+-r--r--r-- 1 root root  3484 aoû  9  2006 limits.h
+-r--r--r-- 1 root root  1111 aoû  9  2006 locale.h
+drwxr-xr-x 2 root root  4096 jui  6 11:18 machine
+-r--r--r-- 1 root root  4292 aoû  9  2006 malloc.h
+-r--r--r-- 1 root root 11788 aoû  9  2006 math.h
+-r--r--r-- 1 root root 12008 aoû  9  2006 mips_fpu.h
+-r--r--r-- 1 root root  1335 aoû  9  2006 newlib.h
+-r--r--r-- 1 root root   121 aoû  9  2006 paths.h
+-r--r--r-- 1 root root  1511 aoû  9  2006 process.h
+-r--r--r-- 1 root root  9719 aoû  9  2006 pthread.h
+-r--r--r-- 1 root root  2837 aoû  9  2006 pwd.h
+-r--r--r-- 1 root root  3987 aoû  9  2006 reent.h
+-r--r--r-- 1 root root   220 aoû  9  2006 regdef.h
+drwxr-xr-x 2 root root  4096 jui  6 11:18 sb1250-include
+-r--r--r-- 1 root root  6683 aoû  9  2006 sbprof.h
+-r--r--r-- 1 root root  1286 aoû  9  2006 search.h
+-r--r--r-- 1 root root   269 aoû  9  2006 setjmp.h
+-r--r--r-- 1 root root   601 aoû  9  2006 signal.h
+-r--r--r-- 1 root root 14121 aoû  9  2006 stdio.h
+-r--r--r-- 1 root root  8112 aoû  9  2006 stdlib.h
+-r--r--r-- 1 root root  3055 aoû  9  2006 string.h
+drwxr-xr-x 2 root root  4096 jui  6 11:18 sys
+-r--r--r-- 1 root root   720 aoû  9  2006 _syslist.h
+-r--r--r-- 1 root root    92 aoû  9  2006 termios.h
+-r--r--r-- 1 root root  6459 aoû  9  2006 time.h
+-r--r--r-- 1 root root  2178 aoû  9  2006 unctrl.h
+-r--r--r-- 1 root root    89 aoû  9  2006 unistd.h
+-r--r--r-- 1 root root   185 aoû  9  2006 utime.h
+-r--r--r-- 1 root root    90 aoû  9  2006 utmp.h
+-r--r--r-- 1 root root  2734 aoû  9  2006 wchar.h
+-r--r--r-- 1 root root   988 aoû  9  2006 wctype.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/include/machine:
+total 96
+-r--r--r-- 1 root root   48 aoû  9  2006 ansi.h
+-r--r--r-- 1 root root 2829 aoû  9  2006 fastmath.h
+-r--r--r-- 1 root root 5416 aoû  9  2006 ieeefp.h
+-r--r--r-- 1 root root  138 aoû  9  2006 malloc.h
+-r--r--r-- 1 root root  572 aoû  9  2006 regdef.h
+-r--r--r-- 1 root root  932 aoû  9  2006 setjmp-dj.h
+-r--r--r-- 1 root root 4153 aoû  9  2006 setjmp.h
+-r--r--r-- 1 root root  138 aoû  9  2006 stdlib.h
+-r--r--r-- 1 root root   29 aoû  9  2006 termios.h
+-r--r--r-- 1 root root  269 aoû  9  2006 time.h
+-r--r--r-- 1 root root 1083 aoû  9  2006 types.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/include/sb1250-include:
+total 452
+-r--r--r-- 1 root root 33203 aoû  9  2006 pci_cfg.h
+-r--r--r-- 1 root root 10389 aoû  9  2006 sb1250_defs.h
+-r--r--r-- 1 root root 26002 aoû  9  2006 sb1250_dma.h
+-r--r--r-- 1 root root 18610 aoû  9  2006 sb1250_genbus.h
+-r--r--r-- 1 root root 11725 aoû  9  2006 sb1250_int.h
+-r--r--r-- 1 root root 10272 aoû  9  2006 sb1250_jtag.h
+-r--r--r-- 1 root root  6149 aoû  9  2006 sb1250_l2c.h
+-r--r--r-- 1 root root 18914 aoû  9  2006 sb1250_ldt.h
+-r--r--r-- 1 root root 28962 aoû  9  2006 sb1250_mac.h
+-r--r--r-- 1 root root 24181 aoû  9  2006 sb1250_mc.h
+-r--r--r-- 1 root root  3101 aoû  9  2006 sb1250_pass2.h
+-r--r--r-- 1 root root 12607 aoû  9  2006 sb1250_pci.h
+-r--r--r-- 1 root root 34851 aoû  9  2006 sb1250_regs.h
+-r--r--r-- 1 root root 26234 aoû  9  2006 sb1250_scd.h
+-r--r--r-- 1 root root  8820 aoû  9  2006 sb1250_smbus.h
+-r--r--r-- 1 root root  6939 aoû  9  2006 sb1250_syncser.h
+-r--r--r-- 1 root root 13882 aoû  9  2006 sb1250_uart.h
+-r--r--r-- 1 root root  8846 aoû  9  2006 sb1250_wid.h
+-r--r--r-- 1 root root 38049 aoû  9  2006 sbmips.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/include/sys:
+total 288
+-r--r--r-- 1 root root  4315 aoû  9  2006 cdefs.h
+-r--r--r-- 1 root root  4159 aoû  9  2006 config.h
+-r--r--r-- 1 root root   513 aoû  9  2006 dirent.h
+-r--r--r-- 1 root root  6600 aoû  9  2006 errno.h
+-r--r--r-- 1 root root  5938 aoû  9  2006 fcntl.h
+-r--r--r-- 1 root root  2869 aoû  9  2006 features.h
+-r--r--r-- 1 root root    24 aoû  9  2006 file.h
+-r--r--r-- 1 root root   664 aoû  9  2006 lock.h
+-r--r--r-- 1 root root   627 aoû  9  2006 param.h
+-r--r--r-- 1 root root 15264 aoû  9  2006 queue.h
+-r--r--r-- 1 root root 24907 aoû  9  2006 reent.h
+-r--r--r-- 1 root root   307 aoû  9  2006 resource.h
+-r--r--r-- 1 root root  1825 aoû  9  2006 sched.h
+-r--r--r-- 1 root root 10352 aoû  9  2006 signal.h
+-r--r--r-- 1 root root  1502 aoû  9  2006 stat-dj.h
+-r--r--r-- 1 root root  4359 aoû  9  2006 stat.h
+-r--r--r-- 1 root root   306 aoû  9  2006 stdio.h
+-r--r--r-- 1 root root  3211 aoû  9  2006 syslimits.h
+-r--r--r-- 1 root root   752 aoû  9  2006 timeb.h
+-r--r--r-- 1 root root  2390 aoû  9  2006 time.h
+-r--r--r-- 1 root root   548 aoû  9  2006 times.h
+-r--r--r-- 1 root root   904 aoû  9  2006 _types.h
+-r--r--r-- 1 root root 10154 aoû  9  2006 types.h
+-r--r--r-- 1 root root 11530 aoû  9  2006 unistd.h
+-r--r--r-- 1 root root   363 aoû  9  2006 utime.h
+-r--r--r-- 1 root root   937 aoû  9  2006 wait.h
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib:
+total 10952
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+drwxr-xr-x 5 root root    4096 jui  6 11:18 el
+drwxr-xr-x 2 root root    4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+drwxr-xr-x 2 root root    4096 jui  6 11:18 ldscripts
+-r--r--r-- 1 root root 2343546 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   77376 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   48072 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2343546 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  540992 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44410 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45614 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  893788 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6106 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63308 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45178 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45428 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   47682 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4120206 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  315226 aoû  9  2006 libsupc++.a
+drwxr-xr-x 3 root root    4096 jui  6 11:18 long64
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+drwxr-xr-x 3 root root    4096 jui  6 11:18 o32
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/el:
+total 10944
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+drwxr-xr-x 2 root root    4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2347070 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   77380 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   48076 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2347070 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  540752 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44418 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45618 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  893788 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6106 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63308 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45182 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45436 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   47690 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4119550 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  315218 aoû  9  2006 libsupc++.a
+drwxr-xr-x 3 root root    4096 jui  6 11:18 long64
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+drwxr-xr-x 3 root root    4096 jui  6 11:18 o32
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/el/fix-sb1:
+total 10924
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2347138 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   77396 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   48092 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2347138 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  540760 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44450 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45650 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  896664 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6106 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63308 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45198 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45468 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   47690 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4121154 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  315226 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/el/long64:
+total 11108
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+drwxr-xr-x 2 root root    4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2367022 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   77344 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   48556 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2367022 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  553404 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44558 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45762 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  905592 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6118 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63116 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45310 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45580 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   48130 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4237264 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  320538 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/el/long64/fix-sb1:
+total 11100
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2367094 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   77360 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   48572 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2367094 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  553420 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44590 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45794 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  908588 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6118 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63116 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45326 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45612 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   48130 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4238864 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  320546 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/el/o32:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 mips32
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/el/o32/mips32:
+total 10916
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+drwxr-xr-x 2 root root    4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2341996 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   78504 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   46820 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2341996 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  537112 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44326 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45562 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  897236 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6090 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63152 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45054 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45380 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   46712 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4124054 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  313118 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/el/o32/mips32/fix-sb1:
+total 10916
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2342052 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   78520 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   46836 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2342052 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  537144 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44358 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45594 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  900372 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6090 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63152 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45070 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45412 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   46712 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4125654 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  313126 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/fix-sb1:
+total 10916
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2343614 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   77392 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   48088 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2343614 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  541000 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44442 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45646 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  896664 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6106 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63308 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45194 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45460 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   47682 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4121810 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  315234 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/ldscripts:
+total 96
+-r--r--r-- 1 root root 8116 aoû  9  2006 elf32ebmip.x
+-r--r--r-- 1 root root 8016 aoû  9  2006 elf32ebmip.xbn
+-r--r--r-- 1 root root 7663 aoû  9  2006 elf32ebmip.xc
+-r--r--r-- 1 root root 8116 aoû  9  2006 elf32ebmip.xn
+-r--r--r-- 1 root root 5363 aoû  9  2006 elf32ebmip.xr
+-r--r--r-- 1 root root 7839 aoû  9  2006 elf32ebmip.xs
+-r--r--r-- 1 root root 7403 aoû  9  2006 elf32ebmip.xsc
+-r--r--r-- 1 root root 5409 aoû  9  2006 elf32ebmip.xu
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/long64:
+total 11108
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+drwxr-xr-x 2 root root    4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2363466 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   77340 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   48552 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2363466 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  554024 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44554 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45746 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  905592 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6118 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63116 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45306 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45564 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   48122 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4236932 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  320538 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/long64/fix-sb1:
+total 11100
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2363538 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   77356 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   48568 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2363538 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  554040 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44586 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45778 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  908588 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6118 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63116 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45322 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45596 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   48122 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4238532 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  320546 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/o32:
+total 8
+drwxr-xr-x 3 root root 4096 jui  6 11:18 mips32
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/o32/mips32:
+total 10908
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+drwxr-xr-x 2 root root    4096 jui  6 11:18 fix-sb1
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2338508 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   78544 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   46824 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2338508 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  537384 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44310 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45550 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  897876 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6090 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63152 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45046 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45368 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   46724 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4123554 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  313118 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/sb1-elf/lib/o32/mips32/fix-sb1:
+total 10908
+-r--r--r-- 1 root root    3848 aoû  9  2006 cfe.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb-kseg0.ld
+-r--r--r-- 1 root root    3762 aoû  9  2006 ddb.ld
+-r--r--r-- 1 root root    1926 aoû  9  2006 idtecoff.ld
+-r--r--r-- 1 root root    3899 aoû  9  2006 idt.ld
+-r--r--r-- 1 root root 2338564 aoû  9  2006 libc.a
+-r--r--r-- 1 root root   78560 aoû  9  2006 libcfe.a
+-r--r--r-- 1 root root   46840 aoû  9  2006 libexception.a
+-r--r--r-- 1 root root 2338564 aoû  9  2006 libg.a
+-r--r--r-- 1 root root  537416 aoû  9  2006 libiberty.a
+-r--r--r-- 1 root root   44342 aoû  9  2006 libidt.a
+-r--r--r-- 1 root root   45582 aoû  9  2006 liblsi.a
+-r--r--r-- 1 root root  900988 aoû  9  2006 libm.a
+-r--r--r-- 1 root root    6090 aoû  9  2006 libmips_fpu.a
+-r--r--r-- 1 root root   63152 aoû  9  2006 libnosys.a
+-r--r--r-- 1 root root   45062 aoû  9  2006 libnullmon.a
+-r--r--r-- 1 root root   45400 aoû  9  2006 libpmon.a
+-r--r--r-- 1 root root   46724 aoû  9  2006 libsbprof.a
+-r--r--r-- 1 root root 4125154 aoû  9  2006 libstdc++.a
+-r--r--r-- 1 root root  313126 aoû  9  2006 libsupc++.a
+-r--r--r-- 1 root root    2720 aoû  9  2006 lsi.ld
+-r--r--r-- 1 root root    3796 aoû  9  2006 nullmon.ld
+-r--r--r-- 1 root root    3774 aoû  9  2006 pmon.ld
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share:
+total 8
+drwxr-xr-x 18 root root 4096 jui  6 11:18 locale
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale:
+total 128
+drwxr-xr-x 3 root root 4096 jui  6 11:18 be
+drwxr-xr-x 3 root root 4096 jui  6 11:18 ca
+drwxr-xr-x 3 root root 4096 jui  6 11:18 da
+drwxr-xr-x 3 root root 4096 jui  6 11:18 de
+drwxr-xr-x 3 root root 4096 jui  6 11:18 el
+drwxr-xr-x 3 root root 4096 jui  6 11:18 es
+drwxr-xr-x 3 root root 4096 jui  6 11:18 fr
+drwxr-xr-x 3 root root 4096 jui  6 11:18 id
+drwxr-xr-x 3 root root 4096 jui  6 11:18 ja
+drwxr-xr-x 3 root root 4096 jui  6 11:18 nl
+drwxr-xr-x 3 root root 4096 jui  6 11:18 pt_BR
+drwxr-xr-x 3 root root 4096 jui  6 11:18 ro
+drwxr-xr-x 3 root root 4096 jui  6 11:18 ru
+drwxr-xr-x 3 root root 4096 jui  6 11:18 sv
+drwxr-xr-x 3 root root 4096 jui  6 11:18 tr
+drwxr-xr-x 3 root root 4096 jui  6 11:18 zh_CN
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/be:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/be/LC_MESSAGES:
+total 32
+-r--r--r-- 1 root root 25251 aoû  9  2006 gcc.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/ca:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/ca/LC_MESSAGES:
+total 368
+-r--r--r-- 1 root root 367179 aoû  9  2006 gcc.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/da:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/da/LC_MESSAGES:
+total 632
+-r--r--r-- 1 root root  60556 aoû  9  2006 bfd.mo
+-r--r--r-- 1 root root  80846 aoû  9  2006 binutils.mo
+-r--r--r-- 1 root root 399178 aoû  9  2006 gcc.mo
+-r--r--r-- 1 root root   9586 aoû  9  2006 gprof.mo
+-r--r--r-- 1 root root  40607 aoû  9  2006 ld.mo
+-r--r--r-- 1 root root   8332 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/de:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/de/LC_MESSAGES:
+total 236
+-r--r--r-- 1 root root 197779 aoû  9  2006 gcc.mo
+-r--r--r-- 1 root root   9721 aoû  9  2006 gprof.mo
+-r--r--r-- 1 root root    170 aoû  9  2006 libstdc++.mo
+-r--r--r-- 1 root root   1437 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/el:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/el/LC_MESSAGES:
+total 20
+-r--r--r-- 1 root root 12630 aoû  9  2006 gcc.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/es:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/es/LC_MESSAGES:
+total 1132
+-r--r--r-- 1 root root  71201 aoû  9  2006 bfd.mo
+-r--r--r-- 1 root root 120925 aoû  9  2006 binutils.mo
+-r--r--r-- 1 root root 286958 aoû  9  2006 gas.mo
+-r--r--r-- 1 root root 544826 aoû  9  2006 gcc.mo
+-r--r--r-- 1 root root  10045 aoû  9  2006 gprof.mo
+-r--r--r-- 1 root root  44776 aoû  9  2006 ld.mo
+-r--r--r-- 1 root root  16621 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/fr:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/fr/LC_MESSAGES:
+total 1144
+-r--r--r-- 1 root root  71707 aoû  9  2006 bfd.mo
+-r--r--r-- 1 root root 119583 aoû  9  2006 binutils.mo
+-r--r--r-- 1 root root 288175 aoû  9  2006 gas.mo
+-r--r--r-- 1 root root 554700 aoû  9  2006 gcc.mo
+-r--r--r-- 1 root root  10044 aoû  9  2006 gprof.mo
+-r--r--r-- 1 root root  43539 aoû  9  2006 ld.mo
+-r--r--r-- 1 root root    172 aoû  9  2006 libstdc++.mo
+-r--r--r-- 1 root root  16241 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/id:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/id/LC_MESSAGES:
+total 32
+-r--r--r-- 1 root root 9735 aoû  9  2006 gprof.mo
+-r--r--r-- 1 root root 8307 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/ja:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/ja/LC_MESSAGES:
+total 332
+-r--r--r-- 1 root root  38616 aoû  9  2006 bfd.mo
+-r--r--r-- 1 root root  97376 aoû  9  2006 binutils.mo
+-r--r--r-- 1 root root 177733 aoû  9  2006 gcc.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/nl:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/nl/LC_MESSAGES:
+total 88
+-r--r--r-- 1 root root 60696 aoû  9  2006 gcc.mo
+-r--r--r-- 1 root root 16097 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/pt_BR:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/pt_BR/LC_MESSAGES:
+total 32
+-r--r--r-- 1 root root 9984 aoû  9  2006 gprof.mo
+-r--r--r-- 1 root root 8467 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/ro:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/ro/LC_MESSAGES:
+total 96
+-r--r--r-- 1 root root 69038 aoû  9  2006 bfd.mo
+-r--r--r-- 1 root root 15986 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/ru:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/ru/LC_MESSAGES:
+total 124
+-r--r--r-- 1 root root 115866 aoû  9  2006 binutils.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/sv:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/sv/LC_MESSAGES:
+total 348
+-r--r--r-- 1 root root  67266 aoû  9  2006 bfd.mo
+-r--r--r-- 1 root root 103077 aoû  9  2006 binutils.mo
+-r--r--r-- 1 root root  65994 aoû  9  2006 gcc.mo
+-r--r--r-- 1 root root   9555 aoû  9  2006 gprof.mo
+-r--r--r-- 1 root root  43131 aoû  9  2006 ld.mo
+-r--r--r-- 1 root root  15872 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/tr:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/tr/LC_MESSAGES:
+total 1080
+-r--r--r-- 1 root root  69529 aoû  9  2006 bfd.mo
+-r--r--r-- 1 root root 119049 aoû  9  2006 binutils.mo
+-r--r--r-- 1 root root 277453 aoû  9  2006 gas.mo
+-r--r--r-- 1 root root 512178 aoû  9  2006 gcc.mo
+-r--r--r-- 1 root root  11327 aoû  9  2006 gprof.mo
+-r--r--r-- 1 root root  44359 aoû  9  2006 ld.mo
+-r--r--r-- 1 root root  16094 aoû  9  2006 opcodes.mo
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/zh_CN:
+total 8
+drwxr-xr-x 2 root root 4096 jui  6 11:18 LC_MESSAGES
+
+../../../../broadcom_2004d_341/i686-pc-linux-gnu/share/locale/zh_CN/LC_MESSAGES:
+total 116
+-r--r--r-- 1 root root 28132 aoû  9  2006 bfd.mo
+-r--r--r-- 1 root root 75903 aoû  9  2006 binutils.mo

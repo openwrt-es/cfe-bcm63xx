@@ -1,0 +1,94 @@
+#include "7z.h"
+
+#ifdef _HOST_TOOL
+#include "stdio.h"
+#endif
+
+#include "LZMADecoder.h"
+
+void AAlertLed_On(void);//roy
+void AAlertLed_Off(void);//roy
+#define GPIODIR 0xFFFE0404  //roy GPIO31~GPIO0
+#define GPIODATA 0xFFFE040C //roy GPIO31~GPIO0
+
+static LzmaDecoder   cc;
+ISequentialInStream  in_stream;
+ISequentialOutStream out_stream;
+int decompress_lzma_7z( unsigned char* in_data, 
+                        unsigned in_size, 
+                        unsigned char* out_data, 
+                        unsigned out_size) {
+//		LzmaDecoder cc;
+        int RC;
+	UINT64 in_size_l  = in_size;
+	UINT64 out_size_l = out_size;
+
+printf("ggggggggggggggggggggggggggggggggggggggggggggggg\n");
+        InStreamInit(in_data, in_size);
+
+	OutStreamInit((char *)out_data, out_size);
+
+        LzmaDecoderConstructor(&cc);
+
+        if ((RC = LzmaDecoderReadCoderProperties(&cc)) != S_OK)
+        {
+		return RC;
+        }
+//AAlertLed_On();//roy
+	if (LzmaDecoderCode(&cc, &in_size_l, &out_size_l) != S_OK)
+        {
+		return -2;
+        }
+//AAlertLed_On();//roy
+	if (out_stream.size != out_size)
+        {
+		return -3;
+        }
+
+        if ( out_stream.overflow )
+        {
+            return -4;
+        }
+
+	return 0;
+}
+
+void AAlertLed_On(void)
+{ 
+//printk("roy LED on\n");     
+    unsigned int GPIOVal1Mask1= 0xffffffdf; //GPIODIR use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
+    unsigned int GPIOVal2Mask1= 0xffffffdf; //GPIODATA use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
+    unsigned int GPIOVal2Mask2= 0x00000000; //GPIO5=0=>On, low activate
+    //unsigned int GPIOVal2Mask3= 0x00000020; //GPIO5=1=>Off, low activate
+		
+//		//AlertLed_OnState = 1;		
+		//Set GPIODIR====================================================================
+		*((volatile unsigned int *)GPIODIR)=((*((volatile unsigned int *)GPIODIR)& GPIOVal1Mask1) | ~(GPIOVal1Mask1));
+		//Alert LED ON (Set GPIODATA)====================================================
+	  *((volatile unsigned int *)GPIODATA) = ((*((volatile unsigned int *)GPIODATA)& GPIOVal2Mask1) | (GPIOVal2Mask2));  	
+} 
+
+void AAlertLed_Off(void)
+{ 
+//printk("roy LED off\n"); 				    
+    unsigned int GPIOVal1Mask1= 0xffffffdf; //GPIODIR use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
+    unsigned int GPIOVal2Mask1= 0xffffffdf; //GPIODATA use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
+    //unsigned int GPIOVal2Mask2= 0x00000000; //GPIO5=0=>On, low activate
+    unsigned int GPIOVal2Mask3= 0x00000020; //GPIO5=1=>Off, low activate
+				
+		//AlertLed_OffState = 1;
+		//Set GPIODIR====================================================================
+		*((volatile unsigned int *)GPIODIR)=((*((volatile unsigned int *)GPIODIR)& GPIOVal1Mask1) | ~(GPIOVal1Mask1));
+		//Alert LED OFF (Set GPIODATA)====================================================
+    *((volatile unsigned int *)GPIODATA) = ((*((volatile unsigned int *)GPIODATA)& GPIOVal2Mask1) | (GPIOVal2Mask3));  	
+} 
+
+
+
+
+//BRCM modification
+#ifdef __KERNEL__
+EXPORT_SYMBOL(decompress_lzma_7z);
+#endif
+
+

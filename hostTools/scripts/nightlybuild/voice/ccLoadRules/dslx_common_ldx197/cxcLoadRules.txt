@@ -1,0 +1,89 @@
+load \ldx_apps\makefile
+load \ldx_apps\apps\buildHostLib.sh
+load \ldx_apps\apps\dsl_setenv.bat
+load \ldx_apps\apps\ldxApps.mk
+load \ldx_apps\apps\makefile
+load \ldx_apps\apps\readme.txt
+load \ldx_apps\apps\setenv.bat
+load \ldx_apps\apps\chip3341_common
+load \ldx_apps\apps\dspApp3341
+load \ldx_apps\apps\dspApp3341_ext
+load \ldx_apps\apps\dspApp3341_faxr
+load \ldx_apps\apps\dspApp3341_faxrinternal
+load \ldx_apps\apps\dspApp3341_fxo
+load \ldx_apps\apps\dspApp3341_fxo_ext
+load \ldx_apps\apps\dspApp3341_hybrid
+load \ldx_apps\apps\dspApp3341_hybrid_ext
+load \ldx_apps\apps\dspApp3341_hybrid_fxo_ext
+load \ldx_apps\apps\dspApp3341_tdm
+load \ldx_apps\apps\xtp6348_hausware_libs
+load \ldx_apps\apps\xtp6348fxo_hausware_libs
+load \ldx_apps\apps\xtp6348hybrid_hausware_libs
+load \ldx_apps\apps\xtp6348hybrid_fxo_hausware_libs
+load \ldx_apps\apps\xtp6348tdm_hausware_libs
+load \ldx_apps\common\source\hal_3341
+load \ldx_apps\common\source\hal_3341_hybrid
+load \ldx_apps\common\source\hal_3341tdm
+load \ldx_apps\common\source\resample
+load \ldx_apps\common\inc\dspImageArchive.h
+load \ldx_apps\common\inc\hal3341.h
+load \ldx_apps\common\inc\hal3341hybrid.h
+load \ldx_apps\common\inc\hal3341tdm.h
+load \ldx_apps\common\inc\hal_ipc.h
+load \ldx_apps\common\inc\hal_ipc_slave.h
+load \ldx_apps\common\inc\resample.h
+load \ldx_apps\common\commoncode_targets.mak
+load \ldx_apps\common\commoncode.mak
+load \ldx_apps\drivers\drivers.mak
+load \ldx_apps\drivers\drivers_targets.mak
+
+load \ldx_hausware\ldxhausware.cfg
+load \ldx_hausware\makefile
+load \ldx_hausware\hausware
+
+load \ldx_tools
+
+load \voice_res_gw\battCtl
+load \voice_res_gw\boardHal\inc 
+load \voice_res_gw\boardHal\src\bcm6348gw
+load \voice_res_gw\boardHal\src\bcm6345gw
+load \voice_res_gw\boardHal\src\bcm6348gw_pcm
+load \voice_res_gw\boardHal\src\bcm6348LE9502
+load \voice_res_gw\boardHal\src\bcm6348gw_hybrid
+load \voice_res_gw\boardHal\src\bcm6348lv
+load \voice_res_gw\boardHal\src\bcm6348_Le9502FXO
+load \voice_res_gw\boardHal\src\bcm6348_Le9500FXO
+load \voice_res_gw\boardHal\src\common
+load \voice_res_gw\casCtl
+load \voice_res_gw\classStm
+load \voice_res_gw\codec
+load \voice_res_gw\cmtdCtl
+load \voice_res_gw\endpt
+load \voice_res_gw\hdsp
+load \voice_res_gw\inc
+load \voice_res_gw\lhapi
+load \voice_res_gw\pstnCtl
+load \voice_res_gw\voice_res_gw.mk
+load \voice_res_gw\voice_res_gw_env.mk
+load \voice_res_gw\voice_res_gw_targets.mk
+
+load \xchg_common\assert
+load \xchg_common\bos
+load \xchg_common\containers
+load \xchg_common\crt
+load \xchg_common\mem
+load \xchg_common\rules
+load \xchg_common\sme
+load \xchg_common\str
+load \xchg_common\tools\bin
+load \xchg_common\trace
+load \xchg_common\xchg_common.mk
+load \xchg_common\xchg_common_app_template.mk
+load \xchg_common\xchg_common_env.mk
+load \xchg_common\xchg_common_targets.mk
+
+load \xchg_drivers
+
+#load \zOEMtools_zsp
+
+

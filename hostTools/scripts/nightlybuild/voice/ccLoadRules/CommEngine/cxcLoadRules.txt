@@ -1,0 +1,10 @@
+load \CommEngine\cfe
+load \CommEngine\docs
+load \CommEngine\hostTools
+load \CommEngine\Makefile
+load \CommEngine\release
+load \CommEngine\toolChains
+load \CommEngine\sgibcm_2_4_17
+load \CommEngine\targets
+load \CommEngine\userapps
+load \CommEngine\xChange

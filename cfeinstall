@@ -1,0 +1,106 @@
+#! /bin/bash
+
+bi_src_base=/opt/bcm963xx
+bi_src_base_cfe=$bi_src_base/cfe
+bi_src_base_hostTools=$bi_src_base/hostTools
+bi_src_base_targets=$bi_src_base/targets
+bi_src_base_docs=$bi_src_base/docs
+bi_cfe_toolchain_base=/opt/specifix
+bi_this_dir=`pwd`
+
+clear
+echo ""
+echo "This script installs BCM963xx CFE toolchain and source code onto your Linux PC."
+echo "The installation will overwrite existing files.  You will be prompted before a component"
+echo "is installed."
+echo ""
+echo "This script may create directories and overwrite existing files.  Therefore,"
+echo "you will need to have root privilages to run this script."
+echo ""
+read -p "Press 'y' to continue: " -n 1 dr_continue
+echo ""
+if [ "$dr_continue" != "y" ] ; then
+    echo "";
+    echo "exiting script";
+    echo "";
+    exit
+fi
+
+for f in *
+do
+    case $f in
+    broadcom_2004d_341.i686-pc-linux-gnu.sb1-elf.tar.bz2)
+        echo ""
+        echo "The BCM963xx CFE toolchain is ready to be installed"
+        echo "at $bi_cfe_toolchain_base.  It will overwrite existing toolchain"
+        echo "if any."
+        echo ""
+        read -p "Press 'y' to install the BCM963xx CFE toolchain: " -n 1 dr_continue
+        echo ""
+        echo ""
+        if [ "$dr_continue" == "y" ] ; then
+            echo ""
+            if ! [ -d $bi_cfe_toolchain_base ] ; then
+                echo "Creating directory $bi_cfe_toolchain_base."
+                echo ""
+                mkdir -p $bi_cfe_toolchain_base
+            fi
+            if [ -d $bi_cfe_toolchain_base ] ; then
+                echo "Installing files from $bi_this_dir/$f."
+                echo ""
+                cd $bi_cfe_toolchain_base
+                tar xfj $bi_this_dir/$f
+                cd $bi_cfe_toolchain_base
+                chmod -R a+rwx .
+                echo "Done installing CFE toolchain in $bi_cfe_toolchain_base."
+            else
+                echo "The directory $bi_toolchain does not exist."
+                echo "The BCM963xx CFE toolchain was not installed."
+            fi
+        else
+            echo "The BCM963xx CFE toolchain was not installed."
+        fi
+        echo ""
+        ;;
+    bcm963*_cfe_src_*.tar.gz)
+        echo ""
+        echo "The BCM963xx CFE source code is ready to be installed at "
+        echo "$bi_src_base_cfe and $bi_src_base_hostTools. It will overwrite "
+        echo "existing source code, if any."
+        echo ""
+        read -p "Press 'y' to install the BCM963xx CFE source code: " -n 1 dr_continue
+        echo ""
+        echo ""
+        if [ "$dr_continue" == "y" ] ; then
+            echo ""
+            if ! [ -d $bi_src_base ] ; then
+                echo "Creating directory $bi_src_base."
+                echo ""
+                mkdir -p $bi_src_base
+            fi
+            if [ -d $bi_src_base ] ; then
+                echo "Installing files from $bi_this_dir/$f."
+                echo ""
+                cd $bi_src_base
+                tar xfz $bi_this_dir/$f
+                cd $bi_src_base_cfe
+                chmod -R a+rwx .
+                cd $bi_src_base_hostTools
+                chmod -R a+rwx .
+                cd $bi_src_base_targets
+                chmod -R a+rwx .
+                cd $bi_src_base_docs
+                chmod -R a+rwx .
+                echo "Done installing CFE source code in $bi_src_base."
+            else
+                echo "The directory $bi_src_base does not exist."
+                echo "The BCM963xx CFE source code was not installed."
+            fi
+        else
+            echo "The BCM963xx CFE source code was not installed."
+        fi
+        echo ""
+        ;;
+    esac
+done
+

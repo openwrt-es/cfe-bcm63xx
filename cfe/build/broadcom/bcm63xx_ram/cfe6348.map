@@ -1,0 +1,1470 @@
+Membre de l'archive est inclu en raison du fichier (symbole)
+
+./libcfe.a(exchandler.o)      bcm63xx_main.o (cfe_setup_exceptions)
+./libcfe.a(bcmcore_cpuinit.o)
+                              init_ram.o (bcmcore_cpuinit)
+./libcfe.a(bcmcore_l1cache.o)
+                              ./libcfe.a(bcmcore_cpuinit.o) (bcmcore_l1cache_init)
+./libcfe.a(bcmcore_arena.o)   bcm63xx_main.o (mem_bootarea_start)
+./libcfe.a(lib_malloc.o)      bcm63xx_main.o (kmeminit)
+./libcfe.a(lib_printf.o)      dev_bcm63xx_uart.o (xsprintf)
+./libcfe.a(lib_queue.o)       bcm63xx_env_subr.o (q_enqueue)
+./libcfe.a(lib_string.o)      bcm63xx_board.o (lib_strcpy)
+./libcfe.a(lib_setjmp.o)      ./libcfe.a(exchandler.o) (lib_setjmp)
+./libcfe.a(lib_arena.o)       ./libcfe.a(bcmcore_arena.o) (arena_init)
+./libcfe.a(cfe_attach.o)      dev_bcm6348_eth.o (cfe_attach)
+./libcfe.a(cfe_iocb_dispatch.o)
+                              bcm63xx_main.o (cfe_device_poll)
+./libcfe.a(cfe_devfuncs.o)    ./libcfe.a(exchandler.o) (cfe_flushcache)
+./libcfe.a(cfe_console.o)     bcm63xx_cmd.o (console_name)
+./libcfe.a(cfe_mem.o)         bcm63xx_main.o (cfe_arena_init)
+./libcfe.a(cfe_timer.o)       bcm63xx_main.o (cfe_cpu_speed)
+./libcfe.a(cfe_background.o)  bcm63xx_main.o (cfe_bg_init)
+./libcfe.a(build_date.o)      bcm63xx_main.o (builduser)
+./libcfe.a(cfe_xreq.o)        init_ram.o (cfe_doxreq)
+./libcfe.a(cfe_filesys.o)     bcm63xx_ldr_raw.o (cfe_findfilesys)
+./libcfe.a(ui_command.o)      bcm63xx_cmd.o (cmd_getarg)
+./libcfe.a(ui_cmddisp.o)      bcm63xx_cmd.o (ui_showerror)
+./libcfe.a(net_tftp.o)        ./libcfe.a(cfe_filesys.o) (tftp_fileops)
+./libcfe.a(net_ip.o)          bcm63xx_net_icmp.o (_ip_alloc)
+./libcfe.a(net_dns.o)         ./libcfe.a(net_tftp.o) (dns_lookup)
+./libcfe.a(net_arp.o)         ./libcfe.a(net_ip.o) (_arp_lookup_and_send)
+./libcfe.a(net_api.o)         ./libcfe.a(net_tftp.o) (udp_alloc)
+./libcfe.a(net_tcp.o)         ./libcfe.a(net_api.o) (_tcp_init)
+./libcfe.a(net_tcpbuf.o)      ./libcfe.a(net_tcp.o) (tmb_init)
+./libcfe.a(7zlzma.o)          bcm63xx_cmd.o (decompress_lzma_7z)
+./libcfe.a(LZMADecoder.o)     ./libcfe.a(7zlzma.o) (LzmaDecoderConstructor)
+./libcfe.a(IInOutStreams.o)   ./libcfe.a(LZMADecoder.o) (InStreamRead)
+./libcfe.a(mips_arena.o)      ./libcfe.a(cfe_mem.o) (cfe_bootarea_init)
+./libcfe.a(lib_string2.o)     ./libcfe.a(cfe_attach.o) (lib_strdup)
+./libcfe.a(net_ether.o)       ./libcfe.a(net_ip.o) (eth_broadcast)
+./libcfe.a(net_udp.o)         ./libcfe.a(net_api.o) (_udp_socket)
+
+Allocation des symboles communs
+Symbole commun      taille            fichier
+
+cmd_root            0x4               ./libcfe.a(ui_command.o)
+out_stream          0x10              ./libcfe.a(7zlzma.o)
+out_window          0x8               ./libcfe.a(LZMADecoder.o)
+bootInfo            0xb8              bcm63xx_util.o
+exc_handler         0x10              ./libcfe.a(exchandler.o)
+nvramData           0x12c             bcm63xx_util.o
+in_stream           0x8               ./libcfe.a(7zlzma.o)
+cfe_handle_table    0x100             ./libcfe.a(cfe_iocb_dispatch.o)
+__junk              0x4               init_ram.o
+kmempool            0xc               ./libcfe.a(lib_malloc.o)
+cfe_arena           0x18              ./libcfe.a(cfe_mem.o)
+mem_bootarea_start  0x4               ./libcfe.a(bcmcore_arena.o)
+mem_bootarea_size   0x4               ./libcfe.a(bcmcore_arena.o)
+cfe_ticks           0x8               ./libcfe.a(cfe_timer.o)
+
+Configuration mémoire
+
+Nom              Origine            Longueur           Attributs
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Script de l'éditeurs de liens and table de projection mémoire
+
+                0x0000000080401000                . = 0x80401000
+
+.text           0x0000000080401000    0x1b554
+                0x0000000080401000                _ftext = .
+ *(.init)
+                0x0000000080401000                eprol = .
+ *(.text)
+ .text          0x0000000080401000      0x404 init_ram.o
+                0x0000000080401040                init_table
+                0x0000000080401018                segment_table
+                0x00000000804013ac                _getticks
+                0x00000000804012cc                cpu_apientry
+                0x00000000804013c4                _setcontext
+                0x00000000804011d4                _cfe_flushcache
+                0x00000000804013e8                _wbflush
+                0x0000000080401000                vec_reset
+                0x0000000080401254                RunProgram
+                0x0000000080401194                cfe_warmstart
+                0x00000000804013d0                _getsegtbl
+                0x00000000804013b8                _setalarm
+                0x0000000080401388                _getstatus
+                0x0000000080401394                _setstatus
+                0x0000000080401280                cfe_leds
+                0x00000000804013a0                _getcause
+                0x000000008040136c                cpu_kseg0_switch
+                0x0000000080401218                cfe_launch
+ .text          0x0000000080401404      0x32c exception.o
+                0x0000000080401550                _exc_entry
+                0x000000008040152c                _exc_cache_crash_sim
+                0x0000000080401514                _exc_crash_sim
+                0x0000000080401404                _exc_cerr_htable
+                0x00000000804014f8                _exc_setvector
+                0x000000008040143c                _exc_setup_locore
+                0x00000000804016fc                _exc_clear_sr_erl
+                0x00000000804016c8                _exc_clear_sr_exl
+                0x0000000080401544                _exc_restart
+                0x000000008040140c                _exc_cerr_template
+ .text          0x0000000080401730      0xa30 dev_bcm6348_eth.o
+ .text          0x0000000080402160      0xce4 bcmmii.o
+                0x0000000080402a44                mii_init
+                0x00000000804021c4                mii_write
+                0x0000000080402160                mii_read
+ .text          0x0000000080402e44      0x2d4 dev_bcm63xx_uart.o
+ .text          0x0000000080403118      0xbec dev_bcm63xx_flash.o
+                0x0000000080403794                kerSysPsiSet
+                0x000000008040330c                kerSysNvRamSet
+                0x0000000080403930                kerSysThreadNumSet
+                0x0000000080403a40                kerSysBcmImageSet
+                0x000000008040390c                kerSysMemoryTypeGet
+                0x0000000080403c38                getBootToCfe
+                0x0000000080403c78                getMacAddress
+                0x0000000080403118                kerSysFlashAddrInfoGet
+                0x0000000080403a1c                kerSysThreadNumGet
+                0x000000008040361c                kerSysMemoryTypeSet
+                0x00000000804033cc                kerSysFlashInit
+                0x0000000080403574                kerSysNvRamGet
+                0x0000000080403708                kerSysEraseNvRam
+                0x0000000080403860                kerSysErasePsi
+                0x0000000080403c98                kerSysReadFromFlash
+ .text          0x0000000080403d04      0x26c flash_api.o
+                0x0000000080403ed0                flash_get_numsectors
+                0x0000000080403d24                flash_init
+                0x0000000080403eb0                flash_write_buf
+                0x0000000080403f30                flash_get_blk
+                0x0000000080403e90                flash_read_buf
+                0x0000000080403d04                flash_get_total_size
+                0x0000000080403e70                flash_sector_erase_int
+                0x0000000080403ef0                flash_get_sector_size
+                0x0000000080403f50                flash_get_total_memory_mapped_size
+                0x0000000080403f10                flash_get_memptr
+ .text          0x0000000080403f70       0x28 bcm63xx_ram_boot.o
+                0x0000000080403f80                board_draminit
+                0x0000000080403f70                board_earlyinit
+                0x0000000080403f90                bcmcore_tp1_switch
+                0x0000000080403f78                board_draminfo
+                0x0000000080403f88                board_setleds
+ .text          0x0000000080403f98      0x548 bcm63xx_devs.o
+                0x00000000804043a8                board_device_init
+                0x0000000080404120                checkForResetHold
+                0x0000000080404278                board_final_init
+                0x0000000080404460                kerSysMipsSoftReset
+                0x0000000080404078                setLedOff
+                0x0000000080404318                setBreakIntoCfeLed
+                0x0000000080403f98                board_console_init
+                0x0000000080403fd0                setLedOn
+                0x0000000080404364                setPowerOnLedOn
+ .text          0x00000000804044e0      0x56c bcm63xx_board.o
+                0x0000000080404694                setBoardParam
+                0x00000000804047b0                displayBoardParam
+                0x0000000080404a44                getNumberBoardIdNames
+                0x000000008040499c                setDefaultBootline
+                0x0000000080404a10                setBoardIdName
+                0x00000000804044e0                getBoardParam
+ .text          0x0000000080404a4c     0x1090 bcm63xx_cmd.o
+                0x00000000804058cc                bcm63xx_run
+                0x0000000080405230                cfe_go
+                0x0000000080404a74                yesno
+ .text          0x0000000080405adc     0x1c3c bcm63xx_util.o
+                0x00000000804064fc                getTagFromPartition
+                0x00000000804060ac                parseMacAddrCount
+                0x0000000080406414                verifyTag
+                0x0000000080407430                bootLineChanged
+                0x0000000080406e94                flashImage
+                0x0000000080405c94                parsexdigit
+                0x0000000080406064                parseBoardIdStr
+                0x00000000804075b4                changeBootLine
+                0x0000000080407480                runFromFlash
+                0x00000000804066a0                convertBootInfo
+                0x0000000080405b54                lib_parseipaddr
+                0x00000000804067c4                processPrompt
+                0x0000000080405e90                parsehwaddr
+                0x0000000080407364                inet_addr
+                0x0000000080406048                parseMacAddr
+                0x00000000804062d8                getCrc32
+                0x0000000080406a88                readNvramData
+                0x0000000080406320                checkChipId
+                0x00000000804074b8                printSysInfo
+                0x0000000080406de0                getBootImageTag
+                0x0000000080406b0c                writeWholeImage
+                0x0000000080406138                enet_init
+                0x00000000804060d4                macNumToStr
+                0x0000000080406a40                writeNvramData
+                0x00000000804065e4                getPartitionFromTag
+ .text          0x0000000080407718      0x2b4 bcm63xx_ldr_raw.o
+                0x0000000080407718                bcm63xx_cfe_rawload
+ .text          0x00000000804079cc      0x46c bcm63xx_ldr_elf.o
+                0x00000000804079cc                bcm63xx_cfe_elfload
+ .text          0x0000000080407e38      0x5fc bcm63xx_main.o
+                0x0000000080407eb4                cfe_command_loop
+                0x0000000080407f40                cfe_main
+                0x0000000080407e38                cfe_ledstr
+                0x0000000080407e40                cfe_command_restart
+                0x0000000080407e48                cfe_restart
+                0x00000000804083fc                cfe_errortext
+                0x0000000080407e88                AlertLed_Off
+                0x0000000080407e58                AlertLed_On
+                0x0000000080407e50                cfe_start
+ .text          0x0000000080408434      0x2e0 bcm63xx_env_subr.o
+                0x000000008040870c                env_save
+                0x000000008040849c                env_enum
+                0x0000000080408568                env_delenv
+                0x000000008040853c                env_envtype
+                0x00000000804085d0                env_getenv
+                0x00000000804085fc                env_setenv
+ .text          0x0000000080408714      0x200 bcm63xx_net_icmp.o
+                0x000000008040890c                _icmp_ping
+                0x00000000804088d4                _icmp_uninit
+                0x000000008040885c                _icmp_init
+ .text          0x0000000080408914     0x120c bcm63xx_httpd.o
+                0x0000000080408bf0                memmove
+                0x0000000080408920                cfe_web_fg_process
+                0x0000000080409224                cfe_web_poll
+                0x0000000080408914                cfe_web_check
+ .text          0x0000000080409b20      0xa28 boardparms.o
+                0x0000000080409fb4                BpGetWirelessLedGpio
+                0x000000008040a2c0                BpGetVoipLedGpio
+                0x0000000080409c84                BpGetEthernetMacInfo
+                0x000000008040a0a4                BpGetWirelessSesLedGpio
+                0x0000000080409e08                BpGetVoipResetGpio
+                0x000000008040a11c                BpGetHpnaLedGpio
+                0x000000008040a20c                BpGetBootloaderPowerOnLedGpio
+                0x0000000080409e78                BpGetVoipIntrGpio
+                0x0000000080409c24                BpGetBoardIds
+                0x0000000080409b20                BpGetVoipDspConfig
+                0x000000008040a440                BpGetVoipChipSelect
+                0x0000000080409f78                BpGetAdslFailLedGpio
+                0x000000008040a330                BpGetAdslDyingGaspExtIntr
+                0x000000008040a158                BpGetWanDataLedGpio
+                0x000000008040a364                BpGetVoipExtIntr
+                0x0000000080409d4c                BpGetPsiSize
+                0x000000008040a40c                BpGetHpnaChipSelect
+                0x000000008040a284                BpGetBootloaderStopLedGpio
+                0x0000000080409d20                BpGetSdramSize
+                0x0000000080409d78                BpGetRj11InnerOuterPairGpios
+                0x000000008040a248                BpGetBootloaderResetCfgLedGpio
+                0x0000000080409dcc                BpGetPressAndHoldResetGpio
+                0x0000000080409b6c                BpSetBoardId
+                0x000000008040a1d0                BpGetPppFailLedGpio
+                0x0000000080409ff0                BpGetWirelessAntInUse
+                0x000000008040a4e8                BpGetVcopeGpio
+                0x000000008040a3d8                BpGetHpnaExtIntr
+                0x000000008040a0e0                BpGetUsbLedGpio
+                0x000000008040a4b4                BpGetCMTThread
+                0x000000008040a068                BpGetWirelessSesExtIntr
+                0x0000000080409f3c                BpGetAdslLedGpio
+                0x000000008040a02c                BpGetWirelessSesBtnGpio
+                0x000000008040a194                BpGetPppLedGpio
+                0x0000000080409ee8                BpGetRtsCtsUartGpios
+ .text          0x000000008040a548      0xf20 cfiflash.o
+                0x000000008040abac                cfi_flash_init
+ .text          0x000000008040b468      0x5cc ./libcfe.a(exchandler.o)
+                0x000000008040b6ec                exc_cleanup_handler
+                0x000000008040b934                mem_poke
+                0x000000008040b5d4                exc_initialize_block
+                0x000000008040b724                cfe_exception
+                0x000000008040b694                exc_longjmp_handler
+                0x000000008040b4b4                cfe_setup_exceptions
+                0x000000008040b634                exc_cleanup_block
+                0x000000008040b83c                mem_peek
+ .text          0x000000008040ba34      0x2d4 ./libcfe.a(bcmcore_cpuinit.o)
+                0x000000008040ba48                bcmcore_cp0_init
+                0x000000008040bbc0                bcmcore_cpurestart
+                0x000000008040bc90                bcmcore_tlbhandler
+                0x000000008040bb9c                bcmcore_kseg0_switch
+                0x000000008040bbb8                bcmcore_null
+                0x000000008040baec                bcmcore_cpuinit
+                0x000000008040bbc8                bcmcore_cacheops
+ .text          0x000000008040bd08      0x274 ./libcfe.a(bcmcore_l1cache.o)
+                0x000000008040be14                bcmcore_l1cache_inval_i
+                0x000000008040bea0                bcmcore_l1cache_flush_d
+                0x000000008040bd08                bcmcore_l1cache_init
+ .text          0x000000008040bf7c      0x104 ./libcfe.a(bcmcore_arena.o)
+                0x000000008040c04c                bcmcore_pagetable_init
+                0x000000008040bf7c                bcmcore_arena_init
+ .text          0x000000008040c080      0x360 ./libcfe.a(lib_malloc.o)
+                0x000000008040c0c4                kfree
+                0x000000008040c184                lib_outofmemory
+                0x000000008040c0bc                kmempoolsize
+                0x000000008040c2dc                kmemstats
+                0x000000008040c190                kmalloc
+                0x000000008040c0b4                kmempoolbase
+                0x000000008040c080                kmeminit
+ .text          0x000000008040c3e0      0x924 ./libcfe.a(lib_printf.o)
+                0x000000008040ccbc                xvprintf
+                0x000000008040cc68                xprintf
+                0x000000008040c510                xvsprintf
+                0x000000008040cc44                xsprintf
+ .text          0x000000008040cd04      0x134 ./libcfe.a(lib_queue.o)
+                0x000000008040cd04                q_enqueue
+                0x000000008040cd60                q_map
+                0x000000008040cddc                q_count
+                0x000000008040cd1c                q_dequeue
+                0x000000008040ce08                q_find
+                0x000000008040cd34                q_deqnext
+ .text          0x000000008040ce38      0x6d0 ./libcfe.a(lib_string.o)
+                0x000000008040cfa4                lib_toupper
+                0x000000008040d134                lib_memcmp
+                0x000000008040cfd0                lib_strcmpi
+                0x000000008040d100                lib_strrchr
+                0x000000008040d200                lib_strcat
+                0x000000008040cefc                lib_strlen
+                0x000000008040cf20                lib_strcmp
+                0x000000008040d1c0                lib_strupr
+                0x000000008040ceb8                lib_xstrncpy
+                0x000000008040d0c4                lib_strnchr
+                0x000000008040d33c                lib_xtoi
+                0x000000008040d1a0                lib_memset
+                0x000000008040d44c                lib_xtoq
+                0x000000008040d090                lib_strchr
+                0x000000008040d178                lib_memcpy
+                0x000000008040ce64                lib_strncpy
+                0x000000008040d244                lib_gettoken
+                0x000000008040d3d8                lib_atoi
+                0x000000008040ce38                lib_strcpy
+ .text          0x000000008040d508       0x70 ./libcfe.a(lib_setjmp.o)
+                0x000000008040d540                lib_longjmp
+                0x000000008040d508                lib_setjmp
+ .text          0x000000008040d578      0x484 ./libcfe.a(lib_arena.o)
+                0x000000008040d578                arena_init
+                0x000000008040d840                arena_markrange
+ .text          0x000000008040d9fc      0x258 ./libcfe.a(cfe_attach.o)
+                0x000000008040daa8                cfe_attach_idx
+                0x000000008040da58                cfe_device_reset
+                0x000000008040d9fc                cfe_finddev
+                0x000000008040dc38                cfe_attach_init
+                0x000000008040dc48                cfe_device_name
+                0x000000008040dbb4                cfe_attach
+ .text          0x000000008040dc54      0x6c4 ./libcfe.a(cfe_iocb_dispatch.o)
+                0x000000008040dc54                cfe_device_poll
+                0x000000008040dcbc                cfe_iocb_dispatch
+ .text          0x000000008040e318      0x430 ./libcfe.a(cfe_devfuncs.o)
+                0x000000008040e5f4                cfe_getenv
+                0x000000008040e6ac                cfe_flushcache
+                0x000000008040e4e8                cfe_ioctl
+                0x000000008040e558                cfe_inpstat
+                0x000000008040e3d8                cfe_readblk
+                0x000000008040e438                cfe_read
+                0x000000008040e5a4                cfe_getticks
+                0x000000008040e33c                cfe_open
+                0x000000008040e4c0                cfe_write
+                0x000000008040e668                cfe_exit
+                0x000000008040e3a0                cfe_close
+                0x000000008040e6e4                cfe_getdevinfo
+                0x000000008040e460                cfe_writeblk
+ .text          0x000000008040e748      0x4e0 ./libcfe.a(cfe_console.o)
+                0x000000008040e7d4                console_open
+                0x000000008040ebc0                cfe_set_console
+                0x000000008040e97c                console_readline_noedit
+                0x000000008040e748                console_log
+                0x000000008040ec20                console_readline
+                0x000000008040e824                console_read
+                0x000000008040e850                console_write
+                0x000000008040e8c0                console_status
+                0x000000008040e798                console_close
+ .text          0x000000008040ec28      0x1d8 ./libcfe.a(cfe_mem.o)
+                0x000000008040ec28                cfe_arena_init
+                0x000000008040ed1c                cfe_arena_loadcheck
+                0x000000008040ec9c                cfe_arena_enum
+ .text          0x000000008040ee00      0x274 ./libcfe.a(cfe_timer.o)
+                0x000000008040eee4                cfe_timer_init
+                0x000000008040ef84                cfe_sleep
+                0x000000008040f00c                cfe_usleep
+ .text          0x000000008040f074      0x158 ./libcfe.a(cfe_background.o)
+                0x000000008040f170                background
+                0x000000008040f088                cfe_bg_add
+                0x000000008040f0d4                cfe_bg_remove
+                0x000000008040f074                cfe_bg_init
+ .text          0x000000008040f1cc      0x478 ./libcfe.a(cfe_xreq.o)
+                0x000000008040f1cc                cfe_doxreq
+ .text          0x000000008040f644      0x248 ./libcfe.a(cfe_filesys.o)
+                0x000000008040f874                fs_seek
+                0x000000008040f644                cfe_findfilesys
+                0x000000008040f804                fs_open
+                0x000000008040f6a8                fs_init
+                0x000000008040f844                fs_read
+                0x000000008040f754                fs_hook
+                0x000000008040f81c                fs_close
+                0x000000008040f85c                fs_write
+                0x000000008040f7c0                fs_uninit
+ .text          0x000000008040f88c     0x1640 ./libcfe.a(ui_command.o)
+                0x000000008040fb20                cmd_sw_validate
+                0x000000008040fa80                cmd_free
+                0x000000008040febc                cmd_free_tokens
+                0x0000000080410604                cmd_showusage
+                0x000000008040f9d0                cmd_sw_isset
+                0x000000008040fa50                cmd_getarg
+                0x0000000080410ac8                cmd_readcommand
+                0x000000008040f920                cmd_sw_posn
+                0x000000008040f9a0                cmd_sw_name
+                0x000000008040f88c                cmd_sw_value
+                0x000000008041049c                cmd_lookup
+                0x00000000804106e4                cmd_build_list
+                0x000000008041082c                cmd_addcmd
+                0x0000000080410960                cmd_init
+                0x000000008040fd18                cmd_build_cmdline
+                0x0000000080410d44                cmd_walk_and_expand
+ .text          0x0000000080410ecc      0x2b4 ./libcfe.a(ui_cmddisp.o)
+                0x0000000080410f24                ui_showerror
+                0x0000000080410f88                ui_init_cmddisp
+                0x0000000080410f74                ui_restart
+                0x0000000080410ecc                dumplist
+                0x0000000080410fa8                ui_showusage
+                0x0000000080410f1c                ui_errstring
+                0x0000000080410fc8                ui_docommands
+ .text          0x0000000080411180      0xb9c ./libcfe.a(net_tftp.o)
+ .text          0x0000000080411d1c      0x900 ./libcfe.a(net_ip.o)
+                0x00000000804123b8                _ip_free
+                0x0000000080411dd4                _ip_send
+                0x00000000804123b0                _ip_timer_tick
+                0x0000000080412444                _ip_setparam
+                0x00000000804123c0                _ip_getaddr
+                0x00000000804123d4                _ip_getparam
+                0x00000000804125ec                _ip_deregister
+                0x0000000080412338                _ip_uninit
+                0x0000000080411d60                ip_chksum
+                0x000000008041259c                _ip_register
+                0x0000000080411d1c                _ip_alloc
+                0x000000008041226c                _ip_init
+ .text          0x000000008041261c      0x5a0 ./libcfe.a(net_dns.o)
+                0x000000008041261c                dns_lookup
+ .text          0x0000000080412bbc      0xbb4 ./libcfe.a(net_arp.o)
+                0x0000000080413738                _arp_delete
+                0x0000000080413044                _arp_add
+                0x0000000080413464                _arp_timer_tick
+                0x000000008041351c                _arp_send_gratuitous
+                0x00000000804136b8                _arp_enumerate
+                0x0000000080413554                _arp_init
+                0x0000000080413638                _arp_uninit
+                0x000000008041301c                _arp_lookup
+                0x0000000080412ef0                _arp_lookup_and_send
+ .text          0x0000000080413770      0xb9c ./libcfe.a(net_api.o)
+                0x0000000080413d94                tcp_status
+                0x0000000080413b8c                tcp_recv
+                0x0000000080413e78                icmp_ping
+                0x0000000080413dd8                tcp_debug
+                0x0000000080413a60                tcp_close
+                0x0000000080413770                udp_alloc
+                0x00000000804137a8                udp_socket
+                0x0000000080413f90                net_uninit
+                0x0000000080413e18                arp_lookup
+                0x0000000080413ce4                tcp_bind
+                0x0000000080413df8                arp_add
+                0x0000000080413948                tcp_socket
+                0x0000000080413d50                tcp_getflags
+                0x0000000080413d70                tcp_listen
+                0x0000000080413ed0                net_setparam
+                0x0000000080413ea0                net_getparam
+                0x0000000080413854                udp_recv
+                0x00000000804137c8                udp_close
+                0x0000000080413d08                tcp_peeraddr
+                0x0000000080413830                udp_connect
+                0x0000000080413a7c                tcp_send
+                0x000000008041404c                net_init
+                0x0000000080413964                tcp_connect
+                0x0000000080413d30                tcp_setflags
+                0x0000000080413e34                arp_enumerate
+                0x000000008041380c                udp_bind
+                0x00000000804137e4                udp_send
+                0x0000000080414178                net_setnetvars
+                0x0000000080413e5c                arp_delete
+                0x000000008041378c                udp_free
+                0x0000000080413870                udp_recv_with_timeout
+ .text          0x000000008041430c     0x1bf4 ./libcfe.a(net_tcp.o)
+                0x00000000804144dc                _tcp_socket
+                0x00000000804151e4                _tcp_connect
+                0x00000000804146b8                _tcp_recv
+                0x0000000080415bb4                _tcp_poll
+                0x0000000080414d2c                _tcp_send
+                0x0000000080414784                _tcp_getflags
+                0x00000000804149b0                _tcp_debug
+                0x00000000804147ac                _tcp_peeraddr
+                0x000000008041511c                _tcp_close
+                0x0000000080414760                _tcp_setflags
+                0x0000000080414440                _tcp_uninit
+                0x000000008041430c                _tcp_init
+                0x0000000080414904                _tcp_status
+                0x0000000080414704                _tcp_bind
+                0x0000000080414830                _tcp_listen
+ .text          0x0000000080415f00      0x344 ./libcfe.a(net_tcpbuf.o)
+                0x00000000804160bc                tmb_copyout
+                0x0000000080415fe0                tmb_copyin
+                0x0000000080415f44                tmb_alloc
+                0x0000000080415fa0                tmb_free
+                0x0000000080415f00                tmb_init
+                0x0000000080415f10                tmb_adjust
+                0x000000008041618c                tmb_copyout2
+ .text          0x0000000080416244       0xbc ./libcfe.a(7zlzma.o)
+                0x0000000080416244                decompress_lzma_7z
+ .text          0x0000000080416300     0x22d8 ./libcfe.a(LZMADecoder.o)
+                0x0000000080416494                LzmaDecoderInit
+                0x00000000804163c4                LzmaDecoderSetPosBitsProperties
+                0x0000000080416300                LzmaDecoderSetDictionarySize
+                0x00000000804163f4                LzmaDecoderCreate
+                0x0000000080416328                LzmaDecoderSetLiteralProperties
+                0x000000008041846c                LzmaDecoderCode
+                0x00000000804184b4                LzmaDecoderReadCoderProperties
+                0x00000000804169d4                LzmaDecoderCodeReal
+                0x00000000804169a4                AAlertLed_On
+                0x0000000080416488                LzmaDecoderConstructor
+ .text          0x00000000804185d8       0x54 ./libcfe.a(IInOutStreams.o)
+                0x00000000804185d8                InStreamRead
+ .text          0x000000008041862c       0xb8 ./libcfe.a(mips_arena.o)
+                0x000000008041862c                cfe_bootarea_init
+ .text          0x00000000804186e4       0xf0 ./libcfe.a(lib_string2.o)
+                0x00000000804186e4                lib_strdup
+                0x0000000080418740                lib_trimleading
+                0x000000008041876c                lib_chop_filename
+ .text          0x00000000804187d4      0x700 ./libcfe.a(net_ether.o)
+                0x000000008041888c                eth_poll
+                0x0000000080418a20                eth_sethwaddr
+                0x0000000080418d04                eth_getmtu
+                0x0000000080418ac8                eth_setloopback
+                0x0000000080418b0c                eth_getspeed
+                0x0000000080418a0c                eth_gethwaddr
+                0x000000008041884c                eth_close
+                0x0000000080418e80                eth_uninit
+                0x000000008041887c                eth_free
+                0x00000000804187d4                eth_open
+                0x0000000080418d20                eth_init
+                0x0000000080418a84                eth_setspeed
+                0x0000000080418c74                eth_alloc
+                0x0000000080418b4c                eth_getloopback
+                0x0000000080418b8c                eth_send
+ .text          0x0000000080418ed4      0x698 ./libcfe.a(net_udp.o)
+                0x0000000080419040                _udp_send
+                0x000000008041949c                _udp_uninit
+                0x00000000804193d8                _udp_recv
+                0x0000000080419524                _udp_alloc
+                0x0000000080419564                _udp_free
+                0x00000000804193f0                _udp_init
+                0x00000000804191dc                _udp_connect
+                0x0000000080418f14                _udp_socket
+                0x0000000080418fd8                _udp_close
+                0x0000000080419184                _udp_bind
+ *(.fini)
+ *(.rodata)
+ .rodata        0x000000008041956c       0x34 dev_bcm6348_eth.o
+                0x000000008041956c                bcm6348_enet
+ .rodata        0x00000000804195a0       0x14 bcmmii.o
+ .rodata        0x00000000804195b4       0x34 dev_bcm63xx_uart.o
+                0x00000000804195b4                bcm63xx_uart
+ .rodata        0x00000000804195e8        0x4 flash_api.o
+ .rodata        0x00000000804195ec       0x18 bcm63xx_board.o
+ .rodata        0x0000000080419604        0x4 bcm63xx_cmd.o
+ .rodata        0x0000000080419608        0x4 bcm63xx_util.o
+ .rodata        0x000000008041960c        0xc bcm63xx_ldr_raw.o
+                0x000000008041960c                rawloader
+ .rodata        0x0000000080419618        0xc bcm63xx_ldr_elf.o
+                0x0000000080419618                elfloader
+ .rodata        0x0000000080419624       0x14 bcm63xx_main.o
+ .rodata        0x0000000080419638      0x3b4 cfiflash.o
+ .rodata        0x00000000804199ec       0x28 ./libcfe.a(lib_printf.o)
+ .rodata        0x0000000080419a14      0x180 ./libcfe.a(cfe_iocb_dispatch.o)
+ .rodata        0x0000000080419b94      0x1c0 ./libcfe.a(cfe_xreq.o)
+ .rodata        0x0000000080419d54        0x4 ./libcfe.a(ui_command.o)
+ .rodata        0x0000000080419d58       0x24 ./libcfe.a(net_tftp.o)
+                0x0000000080419d58                tftp_fileops
+ .rodata        0x0000000080419d7c       0x48 ./libcfe.a(net_ip.o)
+ .rodata        0x0000000080419dc4       0x40 ./libcfe.a(net_tcp.o)
+ .rodata        0x0000000080419e04       0x68 ./libcfe.a(LZMADecoder.o)
+ *(.rodata.str1.4)
+ .rodata.str1.4
+                0x0000000080419e6c      0x1f7 dev_bcm6348_eth.o
+                                        0x1f8 (taille avant relaxe)
+ *fill*         0x000000008041a063        0x1 00
+ .rodata.str1.4
+                0x000000008041a064      0x11c bcmmii.o
+ .rodata.str1.4
+                0x000000008041a180       0x26 dev_bcm63xx_uart.o
+                                         0x28 (taille avant relaxe)
+ *fill*         0x000000008041a1a6        0x2 00
+ .rodata.str1.4
+                0x000000008041a1a8       0xae dev_bcm63xx_flash.o
+                                         0xb8 (taille avant relaxe)
+ *fill*         0x000000008041a256        0x2 00
+ .rodata.str1.4
+                0x000000008041a258       0xc0 flash_api.o
+ .rodata.str1.4
+                0x000000008041a318       0x82 bcm63xx_devs.o
+                                         0x84 (taille avant relaxe)
+ *fill*         0x000000008041a39a        0x2 00
+ .rodata.str1.4
+                0x000000008041a39c      0x4e6 bcm63xx_board.o
+                                        0x4ec (taille avant relaxe)
+ *fill*         0x000000008041a882        0x2 00
+ .rodata.str1.4
+                0x000000008041a884      0x6d1 bcm63xx_cmd.o
+                                        0x6e0 (taille avant relaxe)
+ *fill*         0x000000008041af55        0x3 00
+ .rodata.str1.4
+                0x000000008041af58      0x5cc bcm63xx_util.o
+                                        0x5e8 (taille avant relaxe)
+ .rodata.str1.4
+                0x000000008041b524       0x14 bcm63xx_ldr_raw.o
+                                         0x1c (taille avant relaxe)
+ .rodata.str1.4
+                0x000000008041b538        0xd bcm63xx_ldr_elf.o
+                                         0x14 (taille avant relaxe)
+ *fill*         0x000000008041b545        0x3 00
+ .rodata.str1.4
+                0x000000008041b548      0x31d bcm63xx_main.o
+                                        0x328 (taille avant relaxe)
+ *fill*         0x000000008041b865        0x3 00
+ .rodata.str1.4
+                0x000000008041b868      0x56c bcm63xx_httpd.o
+                                        0x594 (taille avant relaxe)
+ .rodata.str1.4
+                0x000000008041bdd4       0x45 cfiflash.o
+                                         0x48 (taille avant relaxe)
+ *fill*         0x000000008041be19        0x3 00
+ .rodata.str1.4
+                0x000000008041be1c      0x1fd ./libcfe.a(exchandler.o)
+                                        0x204 (taille avant relaxe)
+ *fill*         0x000000008041c019        0x3 00
+ .rodata.str1.4
+                0x000000008041c01c       0x17 ./libcfe.a(lib_malloc.o)
+                                         0x18 (taille avant relaxe)
+ *fill*         0x000000008041c033        0x1 00
+ .rodata.str1.4
+                0x000000008041c034        0x7 ./libcfe.a(lib_printf.o)
+                                          0x8 (taille avant relaxe)
+ *fill*         0x000000008041c03b        0x1 00
+ .rodata.str1.4
+                0x000000008041c03c        0x5 ./libcfe.a(cfe_attach.o)
+                                          0xc (taille avant relaxe)
+ *fill*         0x000000008041c041        0x3 00
+ .rodata.str1.4
+                0x000000008041c044       0x25 ./libcfe.a(cfe_console.o)
+                                         0x2c (taille avant relaxe)
+ *fill*         0x000000008041c069        0x3 00
+ .rodata.str1.4
+                0x000000008041c06c       0x2e ./libcfe.a(build_date.o)
+                                         0x30 (taille avant relaxe)
+ *fill*         0x000000008041c09a        0x2 00
+ .rodata.str1.4
+                0x000000008041c09c      0x299 ./libcfe.a(ui_command.o)
+                                        0x2ac (taille avant relaxe)
+ *fill*         0x000000008041c335        0x3 00
+ .rodata.str1.4
+                0x000000008041c338       0x1c ./libcfe.a(ui_cmddisp.o)
+                                         0x28 (taille avant relaxe)
+ .rodata.str1.4
+                0x000000008041c354       0x7b ./libcfe.a(net_tftp.o)
+                                         0x84 (taille avant relaxe)
+ *fill*         0x000000008041c3cf        0x1 00
+ .rodata.str1.4
+                0x000000008041c3d0        0x6 ./libcfe.a(net_dns.o)
+                                          0x8 (taille avant relaxe)
+ *fill*         0x000000008041c3d6        0x2 00
+ .rodata.str1.4
+                0x000000008041c3d8       0x4f ./libcfe.a(net_api.o)
+                                         0x50 (taille avant relaxe)
+ *fill*         0x000000008041c427        0x1 00
+ .rodata.str1.4
+                0x000000008041c428       0x40 ./libcfe.a(net_tcp.o)
+ .rodata.str1.4
+                0x000000008041c468       0xec ./libcfe.a(LZMADecoder.o)
+ *(.gnu.linkonce.r.*)
+                0x000000008041c554                _etext = .
+
+.data           0x000000008041c554     0x1ee8
+                0x000000008041c560                _fdata = ALIGN (0x10)
+ *(.data)
+ .data          0x000000008041c554      0x120 bcm63xx_board.o
+ .data          0x000000008041c674      0x688 bcm63xx_util.o
+ .data          0x000000008041ccfc       0x40 bcm63xx_httpd.o
+ .data          0x000000008041cd3c      0x694 boardparms.o
+ .data          0x000000008041d3d0      0x344 cfiflash.o
+ .data          0x000000008041d714      0x5fc ul.o
+                0x000000008041d714                ul_html
+ .data          0x000000008041dd10      0x680 ulinfo.o
+                0x000000008041dd10                ulinfo_html
+                0x000000008041e390                . = ALIGN (0x10)
+                0x0000000080426390                _gp = (. + 0x8000)
+ *(.sdata)
+ .sdata         0x000000008041e390       0x24 init_ram.o
+                0x000000008041e390                mem_textreloc
+                0x000000008041e3ac                mem_datareloc
+                0x000000008041e3a8                mem_bottomofmem
+                0x000000008041e3b0                cpu_prid
+                0x000000008041e39c                mem_totalsize
+                0x000000008041e398                mem_textsize
+                0x000000008041e3a0                mem_topofmem
+                0x000000008041e394                mem_textbase
+                0x000000008041e3a4                mem_heapstart
+ .sdata         0x000000008041e3b4       0x1c exception.o
+                0x000000008041e3b4                _exc_vectab
+ .sdata         0x000000008041e3d0        0x4 flash_api.o
+                0x000000008041e3d0                g_include_cfi_flash_driver
+ .sdata         0x000000008041e3d4        0x4 bcm63xx_cmd.o
+                0x000000008041e3d4                fakeConsole
+ .sdata         0x000000008041e3d8        0x4 bcm63xx_util.o
+ .sdata         0x000000008041e3dc        0x8 bcm63xx_main.o
+                0x000000008041e3e0                cfe_boardname
+                0x000000008041e3dc                cfe_sdramsize
+ .sdata         0x000000008041e3e4        0x8 bcm63xx_env_subr.o
+                0x000000008041e3e4                env_envvars
+ .sdata         0x000000008041e3ec        0xc bcm63xx_httpd.o
+ .sdata         0x000000008041e3f8        0x4 ul.o
+                0x000000008041e3f8                ul_html_size
+ .sdata         0x000000008041e3fc        0x4 ulinfo.o
+                0x000000008041e3fc                ulinfo_html_size
+ .sdata         0x000000008041e400        0x8 ./libcfe.a(exchandler.o)
+ .sdata         0x000000008041e408        0x8 ./libcfe.a(cfe_attach.o)
+                0x000000008041e408                cfe_devices
+ .sdata         0x000000008041e410        0x4 ./libcfe.a(cfe_console.o)
+                0x000000008041e410                console_handle
+ .sdata         0x000000008041e414        0x4 ./libcfe.a(cfe_timer.o)
+                0x000000008041e414                cfe_cpu_speed
+ .sdata         0x000000008041e418        0x8 ./libcfe.a(build_date.o)
+                0x000000008041e41c                builddate
+                0x000000008041e418                builduser
+ .sdata         0x000000008041e420        0x8 ./libcfe.a(cfe_filesys.o)
+ .sdata         0x000000008041e428        0xc ./libcfe.a(ui_command.o)
+                0x000000008041e428                varchars
+ .sdata         0x000000008041e434        0x8 ./libcfe.a(net_ether.o)
+                0x000000008041e434                eth_broadcast
+                0x000000008041e440                . = ALIGN (0x10)
+                0x000000008041e440                _edata = .
+                0x000000008041e440                _fbss = .
+
+.sbss           0x000000008041e440       0xa4
+ *(.sbss)
+ .sbss          0x000000008041e440        0x8 flash_api.o
+                0x000000008041e444                g_flash_info
+                0x000000008041e440                g_include_spi_flash_driver
+ .sbss          0x000000008041e448        0x4 bcm63xx_board.o
+ .sbss          0x000000008041e44c        0x4 bcm63xx_cmd.o
+                0x000000008041e44c                g_processing_cmd
+ .sbss          0x000000008041e450        0xc bcm63xx_main.o
+                0x000000008041e450                cfe_ref_speed
+                0x000000008041e454                cfe_bus_speed
+                0x000000008041e458                cfe_startflags
+ .sbss          0x000000008041e45c       0x1c bcm63xx_httpd.o
+ .sbss          0x000000008041e478        0x4 boardparms.o
+ .sbss          0x000000008041e47c        0x8 cfiflash.o
+ .sbss          0x000000008041e484        0x4 ./libcfe.a(lib_printf.o)
+                0x000000008041e484                xprinthook
+ .sbss          0x000000008041e488       0x10 ./libcfe.a(cfe_console.o)
+                0x000000008041e488                console_name
+                0x000000008041e48c                g_console_abort
+ .sbss          0x000000008041e498       0x14 ./libcfe.a(cfe_timer.o)
+ .sbss          0x000000008041e4ac        0x4 ./libcfe.a(net_api.o)
+ .sbss          0x000000008041e4b0        0x4 ./libcfe.a(net_tcp.o)
+                0x000000008041e4b0                _tcp_dumpflags
+ .sbss          0x000000008041e4b4        0x4 ./libcfe.a(mips_arena.o)
+                0x000000008041e4b4                cfe_pagetable
+ *(.scommon)
+ .scommon       0x000000008041e4b8        0x4 init_ram.o
+                                          0x0 (taille avant relaxe)
+                0x000000008041e4b8                __junk
+ .scommon       0x000000008041e4bc        0x8 ./libcfe.a(bcmcore_arena.o)
+                                          0x0 (taille avant relaxe)
+                0x000000008041e4bc                mem_bootarea_start
+                0x000000008041e4c0                mem_bootarea_size
+ *fill*         0x000000008041e4c4        0x4 00
+ .scommon       0x000000008041e4c8        0x8 ./libcfe.a(cfe_timer.o)
+                                          0x0 (taille avant relaxe)
+                0x000000008041e4c8                cfe_ticks
+ .scommon       0x000000008041e4d0        0x4 ./libcfe.a(ui_command.o)
+                                          0x0 (taille avant relaxe)
+                0x000000008041e4d0                cmd_root
+ .scommon       0x000000008041e4d4        0x8 ./libcfe.a(7zlzma.o)
+                                          0x0 (taille avant relaxe)
+                0x000000008041e4d4                in_stream
+ .scommon       0x000000008041e4dc        0x8 ./libcfe.a(LZMADecoder.o)
+                                          0x0 (taille avant relaxe)
+                0x000000008041e4dc                out_window
+
+.bss            0x000000008041e4e8     0x4838
+ *(.bss)
+ .bss           0x000000008041e4e8       0x20 dev_bcm63xx_flash.o
+ .bss           0x000000008041e508      0x100 bcm63xx_board.o
+ .bss           0x000000008041e608      0x200 bcm63xx_util.o
+ .bss           0x000000008041e808       0x18 bcm63xx_main.o
+ .bss           0x000000008041e820      0x640 bcm63xx_httpd.o
+ .bss           0x000000008041ee60     0x3060 cfiflash.o
+ .bss           0x0000000080421ec0       0x80 ./libcfe.a(cfe_background.o)
+ .bss           0x0000000080421f40       0x58 ./libcfe.a(ui_cmddisp.o)
+ .bss           0x0000000080421f98      0x980 ./libcfe.a(7zlzma.o)
+ .bss           0x0000000080422918       0xe0 ./libcfe.a(LZMADecoder.o)
+ *(COMMON)
+ COMMON         0x00000000804229f8      0x1e4 bcm63xx_util.o
+                                          0x0 (taille avant relaxe)
+                0x00000000804229f8                bootInfo
+                0x0000000080422ab0                nvramData
+ COMMON         0x0000000080422bdc       0x10 ./libcfe.a(exchandler.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080422bdc                exc_handler
+ COMMON         0x0000000080422bec        0xc ./libcfe.a(lib_malloc.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080422bec                kmempool
+ COMMON         0x0000000080422bf8      0x100 ./libcfe.a(cfe_iocb_dispatch.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080422bf8                cfe_handle_table
+ COMMON         0x0000000080422cf8       0x18 ./libcfe.a(cfe_mem.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080422cf8                cfe_arena
+ COMMON         0x0000000080422d10       0x10 ./libcfe.a(7zlzma.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080422d10                out_stream
+
+.rel.dyn
+                0x0000000080422d20                . = ALIGN (0x10)
+                0x0000000080422d20                _end = .
+LOAD init_ram.o
+LOAD exception.o
+LOAD dev_bcm6348_eth.o
+LOAD bcmmii.o
+LOAD dev_bcm63xx_uart.o
+LOAD dev_bcm63xx_flash.o
+LOAD flash_api.o
+LOAD bcm63xx_ram_boot.o
+LOAD bcm63xx_devs.o
+LOAD bcm63xx_board.o
+LOAD bcm63xx_cmd.o
+LOAD bcm63xx_util.o
+LOAD bcm63xx_ldr_raw.o
+LOAD bcm63xx_ldr_elf.o
+LOAD bcm63xx_main.o
+LOAD bcm63xx_env_subr.o
+LOAD bcm63xx_net_icmp.o
+LOAD bcm63xx_httpd.o
+LOAD boardparms.o
+LOAD cfiflash.o
+LOAD ul.o
+LOAD ulinfo.o
+LOAD ./libcfe.a
+OUTPUT(cfe6348 elf32-bigmips)
+
+.reginfo        0x0000000000000000       0x18
+ .reginfo       0x0000000000000000       0x18 init_ram.o
+
+.pdr            0x0000000000000000     0x4300
+ .pdr           0x0000000000000000      0x1e0 init_ram.o
+ .pdr           0x00000000000001e0      0x120 exception.o
+ .pdr           0x0000000000000300      0x100 dev_bcm6348_eth.o
+ .pdr           0x0000000000000400      0x160 bcmmii.o
+ .pdr           0x0000000000000560      0x100 dev_bcm63xx_uart.o
+ .pdr           0x0000000000000660      0x220 dev_bcm63xx_flash.o
+ .pdr           0x0000000000000880      0x140 flash_api.o
+ .pdr           0x00000000000009c0       0xa0 bcm63xx_ram_boot.o
+ .pdr           0x0000000000000a60      0x120 bcm63xx_devs.o
+ .pdr           0x0000000000000b80       0xc0 bcm63xx_board.o
+ .pdr           0x0000000000000c40      0x200 bcm63xx_cmd.o
+ .pdr           0x0000000000000e40      0x420 bcm63xx_util.o
+ .pdr           0x0000000000001260       0x20 bcm63xx_ldr_raw.o
+ .pdr           0x0000000000001280       0x20 bcm63xx_ldr_elf.o
+ .pdr           0x00000000000012a0      0x120 bcm63xx_main.o
+ .pdr           0x00000000000013c0       0xe0 bcm63xx_env_subr.o
+ .pdr           0x00000000000014a0       0x80 bcm63xx_net_icmp.o
+ .pdr           0x0000000000001520      0x140 bcm63xx_httpd.o
+ .pdr           0x0000000000001660      0x440 boardparms.o
+ .pdr           0x0000000000001aa0      0x180 cfiflash.o
+ .pdr           0x0000000000001c20      0x120 ./libcfe.a(exchandler.o)
+ .pdr           0x0000000000001d40       0xe0 ./libcfe.a(bcmcore_cpuinit.o)
+ .pdr           0x0000000000001e20       0x60 ./libcfe.a(bcmcore_l1cache.o)
+ .pdr           0x0000000000001e80       0x40 ./libcfe.a(bcmcore_arena.o)
+ .pdr           0x0000000000001ec0       0xe0 ./libcfe.a(lib_malloc.o)
+ .pdr           0x0000000000001fa0       0xc0 ./libcfe.a(lib_printf.o)
+ .pdr           0x0000000000002060       0xc0 ./libcfe.a(lib_queue.o)
+ .pdr           0x0000000000002120      0x260 ./libcfe.a(lib_string.o)
+ .pdr           0x0000000000002380       0x40 ./libcfe.a(lib_setjmp.o)
+ .pdr           0x00000000000023c0       0x80 ./libcfe.a(lib_arena.o)
+ .pdr           0x0000000000002440       0xc0 ./libcfe.a(cfe_attach.o)
+ .pdr           0x0000000000002500      0x2c0 ./libcfe.a(cfe_iocb_dispatch.o)
+ .pdr           0x00000000000027c0      0x1c0 ./libcfe.a(cfe_devfuncs.o)
+ .pdr           0x0000000000002980      0x140 ./libcfe.a(cfe_console.o)
+ .pdr           0x0000000000002ac0       0x60 ./libcfe.a(cfe_mem.o)
+ .pdr           0x0000000000002b20       0x80 ./libcfe.a(cfe_timer.o)
+ .pdr           0x0000000000002ba0       0x80 ./libcfe.a(cfe_background.o)
+ .pdr           0x0000000000002c20       0x20 ./libcfe.a(cfe_xreq.o)
+ .pdr           0x0000000000002c40      0x120 ./libcfe.a(cfe_filesys.o)
+ .pdr           0x0000000000002d60      0x320 ./libcfe.a(ui_command.o)
+ .pdr           0x0000000000003080       0xe0 ./libcfe.a(ui_cmddisp.o)
+ .pdr           0x0000000000003160      0x100 ./libcfe.a(net_tftp.o)
+ .pdr           0x0000000000003260      0x1a0 ./libcfe.a(net_ip.o)
+ .pdr           0x0000000000003400       0x20 ./libcfe.a(net_dns.o)
+ .pdr           0x0000000000003420      0x1e0 ./libcfe.a(net_arp.o)
+ .pdr           0x0000000000003600      0x400 ./libcfe.a(net_api.o)
+ .pdr           0x0000000000003a00      0x2c0 ./libcfe.a(net_tcp.o)
+ .pdr           0x0000000000003cc0       0xe0 ./libcfe.a(net_tcpbuf.o)
+ .pdr           0x0000000000003da0       0x20 ./libcfe.a(7zlzma.o)
+ .pdr           0x0000000000003dc0      0x140 ./libcfe.a(LZMADecoder.o)
+ .pdr           0x0000000000003f00       0x20 ./libcfe.a(IInOutStreams.o)
+ .pdr           0x0000000000003f20       0x20 ./libcfe.a(mips_arena.o)
+ .pdr           0x0000000000003f40       0x60 ./libcfe.a(lib_string2.o)
+ .pdr           0x0000000000003fa0      0x1e0 ./libcfe.a(net_ether.o)
+ .pdr           0x0000000000004180      0x180 ./libcfe.a(net_udp.o)
+
+.debug_line     0x0000000000000000     0x65eb
+ .debug_line    0x0000000000000000      0x12e init_ram.o
+ .debug_line    0x000000000000012e      0x114 exception.o
+ .debug_line    0x0000000000000242      0x35a dev_bcm6348_eth.o
+ .debug_line    0x000000000000059c      0x2fb bcmmii.o
+ .debug_line    0x0000000000000897      0x14a dev_bcm63xx_uart.o
+ .debug_line    0x00000000000009e1      0x276 dev_bcm63xx_flash.o
+ .debug_line    0x0000000000000c57       0xf9 flash_api.o
+ .debug_line    0x0000000000000d50       0x76 bcm63xx_ram_boot.o
+ .debug_line    0x0000000000000dc6      0x174 bcm63xx_devs.o
+ .debug_line    0x0000000000000f3a      0x196 bcm63xx_board.o
+ .debug_line    0x00000000000010d0      0x345 bcm63xx_cmd.o
+ .debug_line    0x0000000000001415      0x4ca bcm63xx_util.o
+ .debug_line    0x00000000000018df      0x143 bcm63xx_ldr_raw.o
+ .debug_line    0x0000000000001a22      0x164 bcm63xx_ldr_elf.o
+ .debug_line    0x0000000000001b86      0x206 bcm63xx_main.o
+ .debug_line    0x0000000000001d8c       0xfd bcm63xx_env_subr.o
+ .debug_line    0x0000000000001e89      0x132 bcm63xx_net_icmp.o
+ .debug_line    0x0000000000001fbb      0x2e9 bcm63xx_httpd.o
+ .debug_line    0x00000000000022a4      0x25a boardparms.o
+ .debug_line    0x00000000000024fe      0x2b7 cfiflash.o
+ .debug_line    0x00000000000027b5       0x22 ul.o
+ .debug_line    0x00000000000027d7       0x26 ulinfo.o
+ .debug_line    0x00000000000027fd      0x1ae ./libcfe.a(exchandler.o)
+ .debug_line    0x00000000000029ab       0xe8 ./libcfe.a(bcmcore_cpuinit.o)
+ .debug_line    0x0000000000002a93       0x9e ./libcfe.a(bcmcore_l1cache.o)
+ .debug_line    0x0000000000002b31       0xf3 ./libcfe.a(bcmcore_arena.o)
+ .debug_line    0x0000000000002c24      0x133 ./libcfe.a(lib_malloc.o)
+ .debug_line    0x0000000000002d57      0x1d6 ./libcfe.a(lib_printf.o)
+ .debug_line    0x0000000000002f2d       0xa4 ./libcfe.a(lib_queue.o)
+ .debug_line    0x0000000000002fd1      0x16b ./libcfe.a(lib_string.o)
+ .debug_line    0x000000000000313c       0x74 ./libcfe.a(lib_setjmp.o)
+ .debug_line    0x00000000000031b0      0x121 ./libcfe.a(lib_arena.o)
+ .debug_line    0x00000000000032d1       0xfc ./libcfe.a(cfe_attach.o)
+ .debug_line    0x00000000000033cd      0x231 ./libcfe.a(cfe_iocb_dispatch.o)
+ .debug_line    0x00000000000035fe      0x14e ./libcfe.a(cfe_devfuncs.o)
+ .debug_line    0x000000000000374c      0x1b1 ./libcfe.a(cfe_console.o)
+ .debug_line    0x00000000000038fd      0x105 ./libcfe.a(cfe_mem.o)
+ .debug_line    0x0000000000003a02       0xb0 ./libcfe.a(cfe_timer.o)
+ .debug_line    0x0000000000003ab2       0x80 ./libcfe.a(cfe_background.o)
+ .debug_line    0x0000000000003b32       0x2a ./libcfe.a(build_date.o)
+ .debug_line    0x0000000000003b5c      0x12f ./libcfe.a(cfe_xreq.o)
+ .debug_line    0x0000000000003c8b       0xe7 ./libcfe.a(cfe_filesys.o)
+ .debug_line    0x0000000000003d72      0x398 ./libcfe.a(ui_command.o)
+ .debug_line    0x000000000000410a      0x198 ./libcfe.a(ui_cmddisp.o)
+ .debug_line    0x00000000000042a2      0x26c ./libcfe.a(net_tftp.o)
+ .debug_line    0x000000000000450e      0x216 ./libcfe.a(net_ip.o)
+ .debug_line    0x0000000000004724      0x15d ./libcfe.a(net_dns.o)
+ .debug_line    0x0000000000004881      0x296 ./libcfe.a(net_arp.o)
+ .debug_line    0x0000000000004b17      0x285 ./libcfe.a(net_api.o)
+ .debug_line    0x0000000000004d9c      0x5f9 ./libcfe.a(net_tcp.o)
+ .debug_line    0x0000000000005395      0x116 ./libcfe.a(net_tcpbuf.o)
+ .debug_line    0x00000000000054ab      0x13a ./libcfe.a(7zlzma.o)
+ .debug_line    0x00000000000055e5      0x9ae ./libcfe.a(LZMADecoder.o)
+ .debug_line    0x0000000000005f93      0x107 ./libcfe.a(IInOutStreams.o)
+ .debug_line    0x000000000000609a       0xff ./libcfe.a(mips_arena.o)
+ .debug_line    0x0000000000006199       0x8b ./libcfe.a(lib_string2.o)
+ .debug_line    0x0000000000006224      0x1d1 ./libcfe.a(net_ether.o)
+ .debug_line    0x00000000000063f5      0x1f6 ./libcfe.a(net_udp.o)
+
+.debug_info     0x0000000000000000    0x185b5
+ .debug_info    0x0000000000000000       0x96 init_ram.o
+ .debug_info    0x0000000000000096       0x97 exception.o
+ .debug_info    0x000000000000012d     0x1300 dev_bcm6348_eth.o
+ .debug_info    0x000000000000142d     0x1269 bcmmii.o
+ .debug_info    0x0000000000002696      0x6c5 dev_bcm63xx_uart.o
+ .debug_info    0x0000000000002d5b      0x81f dev_bcm63xx_flash.o
+ .debug_info    0x000000000000357a      0x406 flash_api.o
+ .debug_info    0x0000000000003980       0xa9 bcm63xx_ram_boot.o
+ .debug_info    0x0000000000003a29      0x678 bcm63xx_devs.o
+ .debug_info    0x00000000000040a1      0x474 bcm63xx_board.o
+ .debug_info    0x0000000000004515      0xe82 bcm63xx_cmd.o
+ .debug_info    0x0000000000005397     0x1250 bcm63xx_util.o
+ .debug_info    0x00000000000065e7      0x55c bcm63xx_ldr_raw.o
+ .debug_info    0x0000000000006b43      0x872 bcm63xx_ldr_elf.o
+ .debug_info    0x00000000000073b5      0x5ad bcm63xx_main.o
+ .debug_info    0x0000000000007962      0x32e bcm63xx_env_subr.o
+ .debug_info    0x0000000000007c90      0x359 bcm63xx_net_icmp.o
+ .debug_info    0x0000000000007fe9      0xb7f bcm63xx_httpd.o
+ .debug_info    0x0000000000008b68      0xeb0 boardparms.o
+ .debug_info    0x0000000000009a18      0x8dc cfiflash.o
+ .debug_info    0x000000000000a2f4       0x70 ul.o
+ .debug_info    0x000000000000a364       0x70 ulinfo.o
+ .debug_info    0x000000000000a3d4      0x479 ./libcfe.a(exchandler.o)
+ .debug_info    0x000000000000a84d       0xa2 ./libcfe.a(bcmcore_cpuinit.o)
+ .debug_info    0x000000000000a8ef       0xa2 ./libcfe.a(bcmcore_l1cache.o)
+ .debug_info    0x000000000000a991      0x1b3 ./libcfe.a(bcmcore_arena.o)
+ .debug_info    0x000000000000ab44      0x458 ./libcfe.a(lib_malloc.o)
+ .debug_info    0x000000000000af9c      0x432 ./libcfe.a(lib_printf.o)
+ .debug_info    0x000000000000b3ce      0x25d ./libcfe.a(lib_queue.o)
+ .debug_info    0x000000000000b62b      0x5f9 ./libcfe.a(lib_string.o)
+ .debug_info    0x000000000000bc24       0x98 ./libcfe.a(lib_setjmp.o)
+ .debug_info    0x000000000000bcbc      0x382 ./libcfe.a(lib_arena.o)
+ .debug_info    0x000000000000c03e      0x5bb ./libcfe.a(cfe_attach.o)
+ .debug_info    0x000000000000c5f9      0xe25 ./libcfe.a(cfe_iocb_dispatch.o)
+ .debug_info    0x000000000000d41e      0x817 ./libcfe.a(cfe_devfuncs.o)
+ .debug_info    0x000000000000dc35      0x3cc ./libcfe.a(cfe_console.o)
+ .debug_info    0x000000000000e001      0x2f3 ./libcfe.a(cfe_mem.o)
+ .debug_info    0x000000000000e2f4      0x1f1 ./libcfe.a(cfe_timer.o)
+ .debug_info    0x000000000000e4e5      0x18f ./libcfe.a(cfe_background.o)
+ .debug_info    0x000000000000e674       0x5c ./libcfe.a(build_date.o)
+ .debug_info    0x000000000000e6d0      0x848 ./libcfe.a(cfe_xreq.o)
+ .debug_info    0x000000000000ef18      0x53f ./libcfe.a(cfe_filesys.o)
+ .debug_info    0x000000000000f457      0xe64 ./libcfe.a(ui_command.o)
+ .debug_info    0x00000000000102bb      0x531 ./libcfe.a(ui_cmddisp.o)
+ .debug_info    0x00000000000107ec      0x8cc ./libcfe.a(net_tftp.o)
+ .debug_info    0x00000000000110b8      0x8d9 ./libcfe.a(net_ip.o)
+ .debug_info    0x0000000000011991      0x3ef ./libcfe.a(net_dns.o)
+ .debug_info    0x0000000000011d80      0xa24 ./libcfe.a(net_arp.o)
+ .debug_info    0x00000000000127a4      0xcb3 ./libcfe.a(net_api.o)
+ .debug_info    0x0000000000013457     0x1344 ./libcfe.a(net_tcp.o)
+ .debug_info    0x000000000001479b      0x35a ./libcfe.a(net_tcpbuf.o)
+ .debug_info    0x0000000000014af5      0x646 ./libcfe.a(7zlzma.o)
+ .debug_info    0x000000000001513b     0x20e4 ./libcfe.a(LZMADecoder.o)
+ .debug_info    0x000000000001721f      0x1ad ./libcfe.a(IInOutStreams.o)
+ .debug_info    0x00000000000173cc      0x184 ./libcfe.a(mips_arena.o)
+ .debug_info    0x0000000000017550      0x147 ./libcfe.a(lib_string2.o)
+ .debug_info    0x0000000000017697      0x7d7 ./libcfe.a(net_ether.o)
+ .debug_info    0x0000000000017e6e      0x747 ./libcfe.a(net_udp.o)
+
+.debug_abbrev   0x0000000000000000     0x5138
+ .debug_abbrev  0x0000000000000000       0x14 init_ram.o
+ .debug_abbrev  0x0000000000000014       0x14 exception.o
+ .debug_abbrev  0x0000000000000028      0x2cc dev_bcm6348_eth.o
+ .debug_abbrev  0x00000000000002f4      0x2aa bcmmii.o
+ .debug_abbrev  0x000000000000059e      0x130 dev_bcm63xx_uart.o
+ .debug_abbrev  0x00000000000006ce      0x1bb dev_bcm63xx_flash.o
+ .debug_abbrev  0x0000000000000889       0xff flash_api.o
+ .debug_abbrev  0x0000000000000988       0x14 bcm63xx_ram_boot.o
+ .debug_abbrev  0x000000000000099c      0x18b bcm63xx_devs.o
+ .debug_abbrev  0x0000000000000b27      0x15d bcm63xx_board.o
+ .debug_abbrev  0x0000000000000c84      0x25f bcm63xx_cmd.o
+ .debug_abbrev  0x0000000000000ee3      0x249 bcm63xx_util.o
+ .debug_abbrev  0x000000000000112c      0x18f bcm63xx_ldr_raw.o
+ .debug_abbrev  0x00000000000012bb      0x1d7 bcm63xx_ldr_elf.o
+ .debug_abbrev  0x0000000000001492      0x1e3 bcm63xx_main.o
+ .debug_abbrev  0x0000000000001675      0x138 bcm63xx_env_subr.o
+ .debug_abbrev  0x00000000000017ad      0x139 bcm63xx_net_icmp.o
+ .debug_abbrev  0x00000000000018e6      0x27a bcm63xx_httpd.o
+ .debug_abbrev  0x0000000000001b60      0x10a boardparms.o
+ .debug_abbrev  0x0000000000001c6a      0x1e3 cfiflash.o
+ .debug_abbrev  0x0000000000001e4d       0x4d ul.o
+ .debug_abbrev  0x0000000000001e9a       0x4d ulinfo.o
+ .debug_abbrev  0x0000000000001ee7      0x1cd ./libcfe.a(exchandler.o)
+ .debug_abbrev  0x00000000000020b4       0x14 ./libcfe.a(bcmcore_cpuinit.o)
+ .debug_abbrev  0x00000000000020c8       0x14 ./libcfe.a(bcmcore_l1cache.o)
+ .debug_abbrev  0x00000000000020dc       0xc7 ./libcfe.a(bcmcore_arena.o)
+ .debug_abbrev  0x00000000000021a3      0x1b9 ./libcfe.a(lib_malloc.o)
+ .debug_abbrev  0x000000000000235c      0x166 ./libcfe.a(lib_printf.o)
+ .debug_abbrev  0x00000000000024c2       0xfc ./libcfe.a(lib_queue.o)
+ .debug_abbrev  0x00000000000025be      0x135 ./libcfe.a(lib_string.o)
+ .debug_abbrev  0x00000000000026f3       0x14 ./libcfe.a(lib_setjmp.o)
+ .debug_abbrev  0x0000000000002707      0x1aa ./libcfe.a(lib_arena.o)
+ .debug_abbrev  0x00000000000028b1      0x186 ./libcfe.a(cfe_attach.o)
+ .debug_abbrev  0x0000000000002a37      0x204 ./libcfe.a(cfe_iocb_dispatch.o)
+ .debug_abbrev  0x0000000000002c3b      0x113 ./libcfe.a(cfe_devfuncs.o)
+ .debug_abbrev  0x0000000000002d4e      0x1b4 ./libcfe.a(cfe_console.o)
+ .debug_abbrev  0x0000000000002f02       0xff ./libcfe.a(cfe_mem.o)
+ .debug_abbrev  0x0000000000003001       0xdc ./libcfe.a(cfe_timer.o)
+ .debug_abbrev  0x00000000000030dd       0xca ./libcfe.a(cfe_background.o)
+ .debug_abbrev  0x00000000000031a7       0x40 ./libcfe.a(build_date.o)
+ .debug_abbrev  0x00000000000031e7       0xd8 ./libcfe.a(cfe_xreq.o)
+ .debug_abbrev  0x00000000000032bf      0x154 ./libcfe.a(cfe_filesys.o)
+ .debug_abbrev  0x0000000000003413      0x2b9 ./libcfe.a(ui_command.o)
+ .debug_abbrev  0x00000000000036cc      0x1c0 ./libcfe.a(ui_cmddisp.o)
+ .debug_abbrev  0x000000000000388c      0x1f2 ./libcfe.a(net_tftp.o)
+ .debug_abbrev  0x0000000000003a7e      0x20c ./libcfe.a(net_ip.o)
+ .debug_abbrev  0x0000000000003c8a      0x188 ./libcfe.a(net_dns.o)
+ .debug_abbrev  0x0000000000003e12      0x2ca ./libcfe.a(net_arp.o)
+ .debug_abbrev  0x00000000000040dc      0x220 ./libcfe.a(net_api.o)
+ .debug_abbrev  0x00000000000042fc      0x2cc ./libcfe.a(net_tcp.o)
+ .debug_abbrev  0x00000000000045c8      0x14f ./libcfe.a(net_tcpbuf.o)
+ .debug_abbrev  0x0000000000004717      0x146 ./libcfe.a(7zlzma.o)
+ .debug_abbrev  0x000000000000485d      0x23f ./libcfe.a(LZMADecoder.o)
+ .debug_abbrev  0x0000000000004a9c      0x114 ./libcfe.a(IInOutStreams.o)
+ .debug_abbrev  0x0000000000004bb0       0xb0 ./libcfe.a(mips_arena.o)
+ .debug_abbrev  0x0000000000004c60       0xbd ./libcfe.a(lib_string2.o)
+ .debug_abbrev  0x0000000000004d1d      0x213 ./libcfe.a(net_ether.o)
+ .debug_abbrev  0x0000000000004f30      0x208 ./libcfe.a(net_udp.o)
+
+.debug_aranges  0x0000000000000000      0x6e0
+ .debug_aranges
+                0x0000000000000000       0x20 init_ram.o
+ .debug_aranges
+                0x0000000000000020       0x20 exception.o
+ .debug_aranges
+                0x0000000000000040       0x20 dev_bcm6348_eth.o
+ .debug_aranges
+                0x0000000000000060       0x20 bcmmii.o
+ .debug_aranges
+                0x0000000000000080       0x20 dev_bcm63xx_uart.o
+ .debug_aranges
+                0x00000000000000a0       0x20 dev_bcm63xx_flash.o
+ .debug_aranges
+                0x00000000000000c0       0x20 flash_api.o
+ .debug_aranges
+                0x00000000000000e0       0x20 bcm63xx_ram_boot.o
+ .debug_aranges
+                0x0000000000000100       0x20 bcm63xx_devs.o
+ .debug_aranges
+                0x0000000000000120       0x20 bcm63xx_board.o
+ .debug_aranges
+                0x0000000000000140       0x20 bcm63xx_cmd.o
+ .debug_aranges
+                0x0000000000000160       0x20 bcm63xx_util.o
+ .debug_aranges
+                0x0000000000000180       0x20 bcm63xx_ldr_raw.o
+ .debug_aranges
+                0x00000000000001a0       0x20 bcm63xx_ldr_elf.o
+ .debug_aranges
+                0x00000000000001c0       0x20 bcm63xx_main.o
+ .debug_aranges
+                0x00000000000001e0       0x20 bcm63xx_env_subr.o
+ .debug_aranges
+                0x0000000000000200       0x20 bcm63xx_net_icmp.o
+ .debug_aranges
+                0x0000000000000220       0x20 bcm63xx_httpd.o
+ .debug_aranges
+                0x0000000000000240       0x20 boardparms.o
+ .debug_aranges
+                0x0000000000000260       0x20 cfiflash.o
+ .debug_aranges
+                0x0000000000000280       0x20 ./libcfe.a(exchandler.o)
+ .debug_aranges
+                0x00000000000002a0       0x20 ./libcfe.a(bcmcore_cpuinit.o)
+ .debug_aranges
+                0x00000000000002c0       0x20 ./libcfe.a(bcmcore_l1cache.o)
+ .debug_aranges
+                0x00000000000002e0       0x20 ./libcfe.a(bcmcore_arena.o)
+ .debug_aranges
+                0x0000000000000300       0x20 ./libcfe.a(lib_malloc.o)
+ .debug_aranges
+                0x0000000000000320       0x20 ./libcfe.a(lib_printf.o)
+ .debug_aranges
+                0x0000000000000340       0x20 ./libcfe.a(lib_queue.o)
+ .debug_aranges
+                0x0000000000000360       0x20 ./libcfe.a(lib_string.o)
+ .debug_aranges
+                0x0000000000000380       0x20 ./libcfe.a(lib_setjmp.o)
+ .debug_aranges
+                0x00000000000003a0       0x20 ./libcfe.a(lib_arena.o)
+ .debug_aranges
+                0x00000000000003c0       0x20 ./libcfe.a(cfe_attach.o)
+ .debug_aranges
+                0x00000000000003e0       0x20 ./libcfe.a(cfe_iocb_dispatch.o)
+ .debug_aranges
+                0x0000000000000400       0x20 ./libcfe.a(cfe_devfuncs.o)
+ .debug_aranges
+                0x0000000000000420       0x20 ./libcfe.a(cfe_console.o)
+ .debug_aranges
+                0x0000000000000440       0x20 ./libcfe.a(cfe_mem.o)
+ .debug_aranges
+                0x0000000000000460       0x20 ./libcfe.a(cfe_timer.o)
+ .debug_aranges
+                0x0000000000000480       0x20 ./libcfe.a(cfe_background.o)
+ .debug_aranges
+                0x00000000000004a0       0x20 ./libcfe.a(cfe_xreq.o)
+ .debug_aranges
+                0x00000000000004c0       0x20 ./libcfe.a(cfe_filesys.o)
+ .debug_aranges
+                0x00000000000004e0       0x20 ./libcfe.a(ui_command.o)
+ .debug_aranges
+                0x0000000000000500       0x20 ./libcfe.a(ui_cmddisp.o)
+ .debug_aranges
+                0x0000000000000520       0x20 ./libcfe.a(net_tftp.o)
+ .debug_aranges
+                0x0000000000000540       0x20 ./libcfe.a(net_ip.o)
+ .debug_aranges
+                0x0000000000000560       0x20 ./libcfe.a(net_dns.o)
+ .debug_aranges
+                0x0000000000000580       0x20 ./libcfe.a(net_arp.o)
+ .debug_aranges
+                0x00000000000005a0       0x20 ./libcfe.a(net_api.o)
+ .debug_aranges
+                0x00000000000005c0       0x20 ./libcfe.a(net_tcp.o)
+ .debug_aranges
+                0x00000000000005e0       0x20 ./libcfe.a(net_tcpbuf.o)
+ .debug_aranges
+                0x0000000000000600       0x20 ./libcfe.a(7zlzma.o)
+ .debug_aranges
+                0x0000000000000620       0x20 ./libcfe.a(LZMADecoder.o)
+ .debug_aranges
+                0x0000000000000640       0x20 ./libcfe.a(IInOutStreams.o)
+ .debug_aranges
+                0x0000000000000660       0x20 ./libcfe.a(mips_arena.o)
+ .debug_aranges
+                0x0000000000000680       0x20 ./libcfe.a(lib_string2.o)
+ .debug_aranges
+                0x00000000000006a0       0x20 ./libcfe.a(net_ether.o)
+ .debug_aranges
+                0x00000000000006c0       0x20 ./libcfe.a(net_udp.o)
+
+.mdebug.abi32   0x0000000000000000        0x0
+
+.debug_frame    0x0000000000000000     0x3694
+ .debug_frame   0x0000000000000000       0xf0 dev_bcm6348_eth.o
+ .debug_frame   0x00000000000000f0      0x154 bcmmii.o
+ .debug_frame   0x0000000000000244       0xb4 dev_bcm63xx_uart.o
+ .debug_frame   0x00000000000002f8      0x264 dev_bcm63xx_flash.o
+ .debug_frame   0x000000000000055c       0xc4 flash_api.o
+ .debug_frame   0x0000000000000620       0xe4 bcm63xx_devs.o
+ .debug_frame   0x0000000000000704       0xc0 bcm63xx_board.o
+ .debug_frame   0x00000000000007c4      0x1e0 bcm63xx_cmd.o
+ .debug_frame   0x00000000000009a4      0x41c bcm63xx_util.o
+ .debug_frame   0x0000000000000dc0       0x40 bcm63xx_ldr_raw.o
+ .debug_frame   0x0000000000000e00       0x44 bcm63xx_ldr_elf.o
+ .debug_frame   0x0000000000000e44       0xc8 bcm63xx_main.o
+ .debug_frame   0x0000000000000f0c       0xdc bcm63xx_env_subr.o
+ .debug_frame   0x0000000000000fe8       0x88 bcm63xx_net_icmp.o
+ .debug_frame   0x0000000000001070      0x17c bcm63xx_httpd.o
+ .debug_frame   0x00000000000011ec      0x26c boardparms.o
+ .debug_frame   0x0000000000001458      0x174 cfiflash.o
+ .debug_frame   0x00000000000015cc      0x11c ./libcfe.a(exchandler.o)
+ .debug_frame   0x00000000000016e8       0x3c ./libcfe.a(bcmcore_arena.o)
+ .debug_frame   0x0000000000001724       0x88 ./libcfe.a(lib_malloc.o)
+ .debug_frame   0x00000000000017ac       0xb8 ./libcfe.a(lib_printf.o)
+ .debug_frame   0x0000000000001864       0x88 ./libcfe.a(lib_queue.o)
+ .debug_frame   0x00000000000018ec      0x160 ./libcfe.a(lib_string.o)
+ .debug_frame   0x0000000000001a4c       0xac ./libcfe.a(lib_arena.o)
+ .debug_frame   0x0000000000001af8       0xc0 ./libcfe.a(cfe_attach.o)
+ .debug_frame   0x0000000000001bb8      0x20c ./libcfe.a(cfe_iocb_dispatch.o)
+ .debug_frame   0x0000000000001dc4      0x164 ./libcfe.a(cfe_devfuncs.o)
+ .debug_frame   0x0000000000001f28      0x118 ./libcfe.a(cfe_console.o)
+ .debug_frame   0x0000000000002040       0x48 ./libcfe.a(cfe_mem.o)
+ .debug_frame   0x0000000000002088       0x84 ./libcfe.a(cfe_timer.o)
+ .debug_frame   0x000000000000210c       0x5c ./libcfe.a(cfe_background.o)
+ .debug_frame   0x0000000000002168       0x40 ./libcfe.a(cfe_xreq.o)
+ .debug_frame   0x00000000000021a8       0xec ./libcfe.a(cfe_filesys.o)
+ .debug_frame   0x0000000000002294      0x38c ./libcfe.a(ui_command.o)
+ .debug_frame   0x0000000000002620       0xc0 ./libcfe.a(ui_cmddisp.o)
+ .debug_frame   0x00000000000026e0      0x124 ./libcfe.a(net_tftp.o)
+ .debug_frame   0x0000000000002804      0x148 ./libcfe.a(net_ip.o)
+ .debug_frame   0x000000000000294c       0x44 ./libcfe.a(net_dns.o)
+ .debug_frame   0x0000000000002990      0x1e4 ./libcfe.a(net_arp.o)
+ .debug_frame   0x0000000000002b74      0x2a4 ./libcfe.a(net_api.o)
+ .debug_frame   0x0000000000002e18      0x2a4 ./libcfe.a(net_tcp.o)
+ .debug_frame   0x00000000000030bc       0xe8 ./libcfe.a(net_tcpbuf.o)
+ .debug_frame   0x00000000000031a4       0x34 ./libcfe.a(7zlzma.o)
+ .debug_frame   0x00000000000031d8      0x11c ./libcfe.a(LZMADecoder.o)
+ .debug_frame   0x00000000000032f4       0x20 ./libcfe.a(IInOutStreams.o)
+ .debug_frame   0x0000000000003314       0x2c ./libcfe.a(mips_arena.o)
+ .debug_frame   0x0000000000003340       0x68 ./libcfe.a(lib_string2.o)
+ .debug_frame   0x00000000000033a8      0x188 ./libcfe.a(net_ether.o)
+ .debug_frame   0x0000000000003530      0x164 ./libcfe.a(net_udp.o)
+
+.debug_pubnames
+                0x0000000000000000     0x2090
+ .debug_pubnames
+                0x0000000000000000       0x23 dev_bcm6348_eth.o
+ .debug_pubnames
+                0x0000000000000023       0x3a bcmmii.o
+ .debug_pubnames
+                0x000000000000005d       0x23 dev_bcm63xx_uart.o
+ .debug_pubnames
+                0x0000000000000080      0x14f dev_bcm63xx_flash.o
+ .debug_pubnames
+                0x00000000000001cf      0x14c flash_api.o
+ .debug_pubnames
+                0x000000000000031b       0xc8 bcm63xx_devs.o
+ .debug_pubnames
+                0x00000000000003e3       0x90 bcm63xx_board.o
+ .debug_pubnames
+                0x0000000000000473       0x5c bcm63xx_cmd.o
+ .debug_pubnames
+                0x00000000000004cf      0x1ee bcm63xx_util.o
+ .debug_pubnames
+                0x00000000000006bd       0x38 bcm63xx_ldr_raw.o
+ .debug_pubnames
+                0x00000000000006f5       0x38 bcm63xx_ldr_elf.o
+ .debug_pubnames
+                0x000000000000072d      0x107 bcm63xx_main.o
+ .debug_pubnames
+                0x0000000000000834       0x79 bcm63xx_env_subr.o
+ .debug_pubnames
+                0x00000000000008ad       0x41 bcm63xx_net_icmp.o
+ .debug_pubnames
+                0x00000000000008ee       0x58 bcm63xx_httpd.o
+ .debug_pubnames
+                0x0000000000000946      0x348 boardparms.o
+ .debug_pubnames
+                0x0000000000000c8e       0x25 cfiflash.o
+ .debug_pubnames
+                0x0000000000000cb3       0x2f ul.o
+ .debug_pubnames
+                0x0000000000000ce2       0x37 ulinfo.o
+ .debug_pubnames
+                0x0000000000000d19       0xc6 ./libcfe.a(exchandler.o)
+ .debug_pubnames
+                0x0000000000000ddf       0x71 ./libcfe.a(bcmcore_arena.o)
+ .debug_pubnames
+                0x0000000000000e50       0x86 ./libcfe.a(lib_malloc.o)
+ .debug_pubnames
+                0x0000000000000ed6       0x55 ./libcfe.a(lib_printf.o)
+ .debug_pubnames
+                0x0000000000000f2b       0x5d ./libcfe.a(lib_queue.o)
+ .debug_pubnames
+                0x0000000000000f88      0x132 ./libcfe.a(lib_string.o)
+ .debug_pubnames
+                0x00000000000010ba       0x35 ./libcfe.a(lib_arena.o)
+ .debug_pubnames
+                0x00000000000010ef       0x91 ./libcfe.a(cfe_attach.o)
+ .debug_pubnames
+                0x0000000000001180       0x51 ./libcfe.a(cfe_iocb_dispatch.o)
+ .debug_pubnames
+                0x00000000000011d1       0xda ./libcfe.a(cfe_devfuncs.o)
+ .debug_pubnames
+                0x00000000000012ab       0xf8 ./libcfe.a(cfe_console.o)
+ .debug_pubnames
+                0x00000000000013a3       0x8b ./libcfe.a(cfe_mem.o)
+ .debug_pubnames
+                0x000000000000142e       0x62 ./libcfe.a(cfe_timer.o)
+ .debug_pubnames
+                0x0000000000001490       0x52 ./libcfe.a(cfe_background.o)
+ .debug_pubnames
+                0x00000000000014e2       0x2e ./libcfe.a(build_date.o)
+ .debug_pubnames
+                0x0000000000001510       0x21 ./libcfe.a(cfe_xreq.o)
+ .debug_pubnames
+                0x0000000000001531       0x8a ./libcfe.a(cfe_filesys.o)
+ .debug_pubnames
+                0x00000000000015bb      0x144 ./libcfe.a(ui_command.o)
+ .debug_pubnames
+                0x00000000000016ff       0x87 ./libcfe.a(ui_cmddisp.o)
+ .debug_pubnames
+                0x0000000000001786       0x23 ./libcfe.a(net_tftp.o)
+ .debug_pubnames
+                0x00000000000017a9       0xcd ./libcfe.a(net_ip.o)
+ .debug_pubnames
+                0x0000000000001876       0x21 ./libcfe.a(net_dns.o)
+ .debug_pubnames
+                0x0000000000001897       0xb6 ./libcfe.a(net_arp.o)
+ .debug_pubnames
+                0x000000000000194d      0x1e9 ./libcfe.a(net_api.o)
+ .debug_pubnames
+                0x0000000000001b36      0x110 ./libcfe.a(net_tcp.o)
+ .debug_pubnames
+                0x0000000000001c46       0x79 ./libcfe.a(net_tcpbuf.o)
+ .debug_pubnames
+                0x0000000000001cbf       0x46 ./libcfe.a(7zlzma.o)
+ .debug_pubnames
+                0x0000000000001d05      0x12f ./libcfe.a(LZMADecoder.o)
+ .debug_pubnames
+                0x0000000000001e34       0x23 ./libcfe.a(IInOutStreams.o)
+ .debug_pubnames
+                0x0000000000001e57       0x3a ./libcfe.a(mips_arena.o)
+ .debug_pubnames
+                0x0000000000001e91       0x4b ./libcfe.a(lib_string2.o)
+ .debug_pubnames
+                0x0000000000001edc      0x10d ./libcfe.a(net_ether.o)
+ .debug_pubnames
+                0x0000000000001fe9       0xa7 ./libcfe.a(net_udp.o)
+
+.debug_ranges   0x0000000000000000      0x5e0
+ .debug_ranges  0x0000000000000000       0x50 dev_bcm6348_eth.o
+ .debug_ranges  0x0000000000000050       0x48 bcm63xx_cmd.o
+ .debug_ranges  0x0000000000000098       0x18 bcm63xx_util.o
+ .debug_ranges  0x00000000000000b0       0x18 bcm63xx_ldr_raw.o
+ .debug_ranges  0x00000000000000c8       0x28 bcm63xx_ldr_elf.o
+ .debug_ranges  0x00000000000000f0       0x50 bcm63xx_main.o
+ .debug_ranges  0x0000000000000140       0x60 bcm63xx_httpd.o
+ .debug_ranges  0x00000000000001a0       0x18 cfiflash.o
+ .debug_ranges  0x00000000000001b8       0x18 ./libcfe.a(exchandler.o)
+ .debug_ranges  0x00000000000001d0       0x28 ./libcfe.a(cfe_console.o)
+ .debug_ranges  0x00000000000001f8       0x30 ./libcfe.a(ui_command.o)
+ .debug_ranges  0x0000000000000228       0x40 ./libcfe.a(net_tcp.o)
+ .debug_ranges  0x0000000000000268      0x360 ./libcfe.a(LZMADecoder.o)
+ .debug_ranges  0x00000000000005c8       0x18 ./libcfe.a(net_ether.o)
+
+.debug_str      0x0000000000000000     0x61a7
+ .debug_str     0x0000000000000000      0xaec dev_bcm6348_eth.o
+                                        0xc35 (taille avant relaxe)
+ .debug_str     0x0000000000000aec      0x1d4 bcmmii.o
+                                        0x9bd (taille avant relaxe)
+ .debug_str     0x0000000000000cc0      0x132 dev_bcm63xx_uart.o
+                                        0x4c2 (taille avant relaxe)
+ .debug_str     0x0000000000000df2      0x3a4 dev_bcm63xx_flash.o
+                                        0x515 (taille avant relaxe)
+ .debug_str     0x0000000000001196      0x1b4 flash_api.o
+                                        0x396 (taille avant relaxe)
+ .debug_str     0x000000000000134a      0x14a bcm63xx_devs.o
+                                        0x491 (taille avant relaxe)
+ .debug_str     0x0000000000001494      0x13d bcm63xx_board.o
+                                        0x399 (taille avant relaxe)
+ .debug_str     0x00000000000015d1      0x4c8 bcm63xx_cmd.o
+                                        0x76d (taille avant relaxe)
+ .debug_str     0x0000000000001a99      0x492 bcm63xx_util.o
+                                        0x92c (taille avant relaxe)
+ .debug_str     0x0000000000001f2b      0x154 bcm63xx_ldr_raw.o
+                                        0x339 (taille avant relaxe)
+ .debug_str     0x000000000000207f      0x216 bcm63xx_ldr_elf.o
+                                        0x479 (taille avant relaxe)
+ .debug_str     0x0000000000002295      0x262 bcm63xx_main.o
+                                        0x3c5 (taille avant relaxe)
+ .debug_str     0x00000000000024f7       0xb7 bcm63xx_env_subr.o
+                                        0x1fc (taille avant relaxe)
+ .debug_str     0x00000000000025ae      0x14a bcm63xx_net_icmp.o
+                                        0x28e (taille avant relaxe)
+ .debug_str     0x00000000000026f8      0x3c1 bcm63xx_httpd.o
+                                        0x57b (taille avant relaxe)
+ .debug_str     0x0000000000002ab9      0x708 boardparms.o
+                                        0x89d (taille avant relaxe)
+ .debug_str     0x00000000000031c1      0x2b3 cfiflash.o
+                                        0x562 (taille avant relaxe)
+ .debug_str     0x0000000000003474        0x5 ul.o
+                                         0xa8 (taille avant relaxe)
+ .debug_str     0x0000000000003479        0x9 ulinfo.o
+                                         0xb4 (taille avant relaxe)
+ .debug_str     0x0000000000003482      0x189 ./libcfe.a(exchandler.o)
+                                        0x2f3 (taille avant relaxe)
+ .debug_str     0x000000000000360b       0xc2 ./libcfe.a(bcmcore_arena.o)
+                                        0x206 (taille avant relaxe)
+ .debug_str     0x00000000000036cd      0x176 ./libcfe.a(lib_malloc.o)
+                                        0x2c2 (taille avant relaxe)
+ .debug_str     0x0000000000003843       0xd8 ./libcfe.a(lib_printf.o)
+                                        0x1eb (taille avant relaxe)
+ .debug_str     0x000000000000391b       0x5b ./libcfe.a(lib_queue.o)
+                                        0x16e (taille avant relaxe)
+ .debug_str     0x0000000000003976       0xf9 ./libcfe.a(lib_string.o)
+                                        0x204 (taille avant relaxe)
+ .debug_str     0x0000000000003a6f       0xd7 ./libcfe.a(lib_arena.o)
+                                        0x26c (taille avant relaxe)
+ .debug_str     0x0000000000003b46       0x8b ./libcfe.a(cfe_attach.o)
+                                        0x3d3 (taille avant relaxe)
+ .debug_str     0x0000000000003bd1      0x33f ./libcfe.a(cfe_iocb_dispatch.o)
+                                        0x80b (taille avant relaxe)
+ .debug_str     0x0000000000003f10       0xd6 ./libcfe.a(cfe_devfuncs.o)
+                                        0x536 (taille avant relaxe)
+ .debug_str     0x0000000000003fe6       0xe4 ./libcfe.a(cfe_console.o)
+                                        0x251 (taille avant relaxe)
+ .debug_str     0x00000000000040ca       0x62 ./libcfe.a(cfe_mem.o)
+                                        0x263 (taille avant relaxe)
+ .debug_str     0x000000000000412c       0xc7 ./libcfe.a(cfe_timer.o)
+                                        0x1ff (taille avant relaxe)
+ .debug_str     0x00000000000041f3       0x6f ./libcfe.a(cfe_background.o)
+                                        0x164 (taille avant relaxe)
+ .debug_str     0x0000000000004262        0xd ./libcfe.a(build_date.o)
+                                         0x99 (taille avant relaxe)
+ .debug_str     0x000000000000426f      0x256 ./libcfe.a(cfe_xreq.o)
+                                        0x67e (taille avant relaxe)
+ .debug_str     0x00000000000044c5       0xa2 ./libcfe.a(cfe_filesys.o)
+                                        0x260 (taille avant relaxe)
+ .debug_str     0x0000000000004567      0x2e8 ./libcfe.a(ui_command.o)
+                                        0x4cf (taille avant relaxe)
+ .debug_str     0x000000000000484f       0xc3 ./libcfe.a(ui_cmddisp.o)
+                                        0x2d0 (taille avant relaxe)
+ .debug_str     0x0000000000004912      0x19b ./libcfe.a(net_tftp.o)
+                                        0x3f3 (taille avant relaxe)
+ .debug_str     0x0000000000004aad      0x2aa ./libcfe.a(net_ip.o)
+                                        0x47c (taille avant relaxe)
+ .debug_str     0x0000000000004d57       0x6a ./libcfe.a(net_dns.o)
+                                        0x227 (taille avant relaxe)
+ .debug_str     0x0000000000004dc1      0x164 ./libcfe.a(net_arp.o)
+                                        0x4d1 (taille avant relaxe)
+ .debug_str     0x0000000000004f25       0xfa ./libcfe.a(net_api.o)
+                                        0x5c0 (taille avant relaxe)
+ .debug_str     0x000000000000501f      0x407 ./libcfe.a(net_tcp.o)
+                                        0x808 (taille avant relaxe)
+ .debug_str     0x0000000000005426       0x77 ./libcfe.a(net_tcpbuf.o)
+                                        0x1f7 (taille avant relaxe)
+ .debug_str     0x000000000000549d      0x3a1 ./libcfe.a(7zlzma.o)
+                                        0x4e1 (taille avant relaxe)
+ .debug_str     0x000000000000583e      0x5bc ./libcfe.a(LZMADecoder.o)
+                                        0xa56 (taille avant relaxe)
+ .debug_str     0x0000000000005dfa       0x4f ./libcfe.a(IInOutStreams.o)
+                                        0x195 (taille avant relaxe)
+ .debug_str     0x0000000000005e49       0x7f ./libcfe.a(mips_arena.o)
+                                        0x1f2 (taille avant relaxe)
+ .debug_str     0x0000000000005ec8       0x4c ./libcfe.a(lib_string2.o)
+                                        0x168 (taille avant relaxe)
+ .debug_str     0x0000000000005f14      0x162 ./libcfe.a(net_ether.o)
+                                        0x368 (taille avant relaxe)
+ .debug_str     0x0000000000006076      0x131 ./libcfe.a(net_udp.o)
+                                        0x362 (taille avant relaxe)

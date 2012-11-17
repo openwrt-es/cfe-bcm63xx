@@ -1,0 +1,32 @@
+
+ifeq ($(CONFIG_MIPS_BRCM),y)
+
+# Linux
+
+obj-y		+= flash_api.o
+
+ifeq ($(strip $(BRCM_CHIP)),6338)
+INC_CFI_FLASH_DRIVER=1
+INC_SPI_FLASH_DRIVER=1
+endif
+ifeq ($(strip $(BRCM_CHIP)),6348)
+INC_CFI_FLASH_DRIVER=1
+INC_SPI_FLASH_DRIVER=0
+endif
+ifeq ($(strip $(BRCM_CHIP)),6358)
+INC_CFI_FLASH_DRIVER=1
+INC_SPI_FLASH_DRIVER=1
+endif
+
+ifeq ($(strip $(INC_CFI_FLASH_DRIVER)),1)
+obj-y		+= cfiflash.o
+endif
+ifeq ($(strip $(INC_SPI_FLASH_DRIVER)),1)
+obj-y		+= spiflash.o
+endif
+
+EXTRA_CFLAGS += -DCONFIG_BCM9$(BRCM_CHIP) -I$(INC_BRCMDRIVER_PUB_PATH)/$(BRCM_BOARD) -I$(INC_BRCMSHARED_PUB_PATH)/$(BRCM_BOARD) -DINC_CFI_FLASH_DRIVER=$(INC_CFI_FLASH_DRIVER) -DINC_SPI_FLASH_DRIVER=$(INC_SPI_FLASH_DRIVER)
+
+endif
+
+

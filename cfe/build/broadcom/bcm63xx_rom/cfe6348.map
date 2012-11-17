@@ -1,0 +1,275 @@
+Membre de l'archive est inclu en raison du fichier (symbole)
+
+./libcfe.a(bcmcore_cpuinit.o)
+                              init_mips.o (bcmcore_cpuinit)
+./libcfe.a(bcmcore_l1cache.o)
+                              ./libcfe.a(bcmcore_cpuinit.o) (bcmcore_l1cache_init)
+./libcfe.a(lib_malloc.o)      bcm63xx_main.o (kmeminit)
+./libcfe.a(7zlzma.o)          bcm63xx_main.o (decompress_lzma_7z)
+./libcfe.a(LZMADecoder.o)     ./libcfe.a(7zlzma.o) (LzmaDecoderConstructor)
+./libcfe.a(IInOutStreams.o)   ./libcfe.a(LZMADecoder.o) (InStreamRead)
+
+Allocation des symboles communs
+Symbole commun      taille            fichier
+
+out_stream          0x10              ./libcfe.a(7zlzma.o)
+out_window          0x8               ./libcfe.a(LZMADecoder.o)
+in_stream           0x8               ./libcfe.a(7zlzma.o)
+__junk              0x4               init_mips.o
+kmempool            0xc               ./libcfe.a(lib_malloc.o)
+
+Configuration mémoire
+
+Nom              Origine            Longueur           Attributs
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Script de l'éditeurs de liens and table de projection mémoire
+
+                0x000000009fc00000                . = 0x9fc00000
+
+.text           0x000000009fc00000     0xf070 address de chargement 0x00000000bfc00000
+                0x000000009fc00000                _ftext = .
+ *(.init)
+                0x000000009fc00000                eprol = .
+ *(.text)
+ .text          0x000000009fc00000     0x1160 init_mips.o
+                0x000000009fc009ac                init_table
+                0x000000009fc00984                segment_table
+                0x000000009fc00500                vec_apientry
+                0x000000009fc010f8                _getticks
+                0x000000009fc00fb4                cpu_apientry
+                0x000000009fc01110                _setcontext
+                0x000000009fc00280                vec_xtlbfill
+                0x000000009fc00e4c                _cfe_flushcache
+                0x000000009fc00480                vec_ejtag
+                0x000000009fc01144                _wbflush
+                0x000000009fc00380                vec_exception
+                0x000000009fc00200                vec_tlbfill
+                0x000000009fc00000                vec_reset
+                0x000000009fc00300                vec_cacheerr
+                0x000000009fc00f14                RunProgram
+                0x000000009fc00de8                cfe_warmstart
+                0x000000009fc0111c                _getsegtbl
+                0x000000009fc01104                _setalarm
+                0x000000009fc010d4                _getstatus
+                0x000000009fc010e0                _setstatus
+                0x000000009fc00f54                cfe_leds
+                0x000000009fc00580                nvram_data_storage
+                0x000000009fc010ec                _getcause
+                0x000000009fc010b8                cpu_kseg0_switch
+                0x000000009fc00ec4                cfe_launch
+                0x000000009fc00400                vec_interrupt
+ .text          0x000000009fc01160      0x3c4 bcm6348_rom_boot.o
+                0x000000009fc01470                board_draminit
+                0x000000009fc01230                board_earlyinit
+                0x000000009fc01160                pll_table
+                0x000000009fc01468                board_draminfo
+                0x000000009fc0151c                board_setleds
+ .text          0x000000009fc01524       0xcc bcm63xx_main.o
+                0x000000009fc01544                cfe_main
+                0x000000009fc0153c                cfe_ledstr
+                0x000000009fc0152c                cfe_command_restart
+                0x000000009fc01524                _exc_entry
+                0x000000009fc01534                cfe_doxreq
+ .text          0x000000009fc015f0     0xaf2c flashimg.o
+                0x000000009fc0c519                _binArrayEnd
+                0x000000009fc015f0                _binArrayStart
+ .text          0x000000009fc0c51c      0x34c ./libcfe.a(bcmcore_cpuinit.o)
+                0x000000009fc0c530                bcmcore_cp0_init
+                0x000000009fc0c6f8                bcmcore_cpurestart
+                0x000000009fc0c7f0                bcmcore_tlbhandler
+                0x000000009fc0c6d4                bcmcore_kseg0_switch
+                0x000000009fc0c6f0                bcmcore_null
+                0x000000009fc0c5d4                bcmcore_cpuinit
+                0x000000009fc0c700                bcmcore_cacheops
+ .text          0x000000009fc0c868      0x274 ./libcfe.a(bcmcore_l1cache.o)
+                0x000000009fc0c974                bcmcore_l1cache_inval_i
+                0x000000009fc0ca00                bcmcore_l1cache_flush_d
+                0x000000009fc0c868                bcmcore_l1cache_init
+ .text          0x000000009fc0cadc      0x344 ./libcfe.a(lib_malloc.o)
+                0x000000009fc0cb20                kfree
+                0x000000009fc0cbe0                lib_outofmemory
+                0x000000009fc0cb18                kmempoolsize
+                0x000000009fc0cd1c                kmemstats
+                0x000000009fc0cbe8                kmalloc
+                0x000000009fc0cb10                kmempoolbase
+                0x000000009fc0cadc                kmeminit
+ .text          0x000000009fc0ce20       0xa0 ./libcfe.a(7zlzma.o)
+                0x000000009fc0ce20                decompress_lzma_7z
+ .text          0x000000009fc0cec0     0x215c ./libcfe.a(LZMADecoder.o)
+                0x000000009fc0d034                LzmaDecoderInit
+                0x000000009fc0cf70                LzmaDecoderSetPosBitsProperties
+                0x000000009fc0cec0                LzmaDecoderSetDictionarySize
+                0x000000009fc0cfa0                LzmaDecoderCreate
+                0x000000009fc0cee8                LzmaDecoderSetLiteralProperties
+                0x000000009fc0eeb8                LzmaDecoderCode
+                0x000000009fc0eef8                LzmaDecoderReadCoderProperties
+                0x000000009fc0d4c0                LzmaDecoderCodeReal
+                0x000000009fc0d490                AAlertLed_On
+                0x000000009fc0d028                LzmaDecoderConstructor
+ .text          0x000000009fc0f01c       0x54 ./libcfe.a(IInOutStreams.o)
+                0x000000009fc0f01c                InStreamRead
+ *(.fini)
+ *(.rodata)
+                0x000000009fc0f070                _etext = .
+
+.data           0x0000000080600000       0x8c address de chargement 0x00000000bfc0f070
+                0x0000000080600000                _fdata = ALIGN (0x10)
+ *(.data)
+                0x0000000080600000                . = ALIGN (0x10)
+                0x0000000080608000                _gp = (. + 0x8000)
+ *(.sdata)
+ .sdata         0x0000000080600000       0x24 init_mips.o
+                0x0000000080600000                mem_textreloc
+                0x000000008060001c                mem_datareloc
+                0x0000000080600018                mem_bottomofmem
+                0x0000000080600020                cpu_prid
+                0x000000008060000c                mem_totalsize
+                0x0000000080600008                mem_textsize
+                0x0000000080600010                mem_topofmem
+                0x0000000080600004                mem_textbase
+                0x0000000080600014                mem_heapstart
+ .sdata         0x0000000080600024       0x68 ./libcfe.a(LZMADecoder.o)
+                0x0000000080600090                . = ALIGN (0x10)
+                0x0000000080600090                _edata = .
+                0x0000000080600090                _fbss = .
+
+.sbss           0x0000000080600090      0xa74
+ *(.sbss)
+ .sbss          0x0000000080600090      0x980 ./libcfe.a(7zlzma.o)
+ .sbss          0x0000000080600a10       0xe0 ./libcfe.a(LZMADecoder.o)
+ *(.scommon)
+ .scommon       0x0000000080600af0        0x4 init_mips.o
+                                          0x0 (taille avant relaxe)
+                0x0000000080600af0                __junk
+ .scommon       0x0000000080600af4        0x8 ./libcfe.a(7zlzma.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080600af4                in_stream
+ .scommon       0x0000000080600afc        0x8 ./libcfe.a(LZMADecoder.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080600afc                out_window
+
+.bss            0x0000000080600b04       0x1c
+ *(.bss)
+ *(COMMON)
+ COMMON         0x0000000080600b04        0xc ./libcfe.a(lib_malloc.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080600b04                kmempool
+ COMMON         0x0000000080600b10       0x10 ./libcfe.a(7zlzma.o)
+                                          0x0 (taille avant relaxe)
+                0x0000000080600b10                out_stream
+
+.rel.dyn
+                0x0000000080600b20                . = ALIGN (0x10)
+                0x0000000080600b20                _end = .
+LOAD init_mips.o
+LOAD bcm6348_rom_boot.o
+LOAD bcm63xx_main.o
+LOAD flashimg.o
+LOAD ./libcfe.a
+OUTPUT(cfe6348 elf32-bigmips)
+
+.reginfo        0x0000000000000000       0x18
+ .reginfo       0x0000000000000000       0x18 init_mips.o
+
+.pdr            0x0000000000000000      0x6a0
+ .pdr           0x0000000000000000      0x1e0 init_mips.o
+ .pdr           0x00000000000001e0       0x80 bcm6348_rom_boot.o
+ .pdr           0x0000000000000260       0xa0 bcm63xx_main.o
+ .pdr           0x0000000000000300       0xe0 ./libcfe.a(bcmcore_cpuinit.o)
+ .pdr           0x00000000000003e0       0x60 ./libcfe.a(bcmcore_l1cache.o)
+ .pdr           0x0000000000000440       0xe0 ./libcfe.a(lib_malloc.o)
+ .pdr           0x0000000000000520       0x20 ./libcfe.a(7zlzma.o)
+ .pdr           0x0000000000000540      0x140 ./libcfe.a(LZMADecoder.o)
+ .pdr           0x0000000000000680       0x20 ./libcfe.a(IInOutStreams.o)
+
+.debug_line     0x0000000000000000     0x1258
+ .debug_line    0x0000000000000000      0x1d0 init_mips.o
+ .debug_line    0x00000000000001d0      0x105 bcm6348_rom_boot.o
+ .debug_line    0x00000000000002d5       0xee bcm63xx_main.o
+ .debug_line    0x00000000000003c3       0x1a flashimg.o
+ .debug_line    0x00000000000003dd       0xe8 ./libcfe.a(bcmcore_cpuinit.o)
+ .debug_line    0x00000000000004c5       0x9e ./libcfe.a(bcmcore_l1cache.o)
+ .debug_line    0x0000000000000563      0x129 ./libcfe.a(lib_malloc.o)
+ .debug_line    0x000000000000068c      0x136 ./libcfe.a(7zlzma.o)
+ .debug_line    0x00000000000007c2      0x98f ./libcfe.a(LZMADecoder.o)
+ .debug_line    0x0000000000001151      0x107 ./libcfe.a(IInOutStreams.o)
+
+.debug_info     0x0000000000000000     0x3161
+ .debug_info    0x0000000000000000       0x97 init_mips.o
+ .debug_info    0x0000000000000097       0xa9 bcm6348_rom_boot.o
+ .debug_info    0x0000000000000140      0x1b1 bcm63xx_main.o
+ .debug_info    0x00000000000002f1       0xa2 ./libcfe.a(bcmcore_cpuinit.o)
+ .debug_info    0x0000000000000393       0xa2 ./libcfe.a(bcmcore_l1cache.o)
+ .debug_info    0x0000000000000435      0x458 ./libcfe.a(lib_malloc.o)
+ .debug_info    0x000000000000088d      0x646 ./libcfe.a(7zlzma.o)
+ .debug_info    0x0000000000000ed3     0x20e1 ./libcfe.a(LZMADecoder.o)
+ .debug_info    0x0000000000002fb4      0x1ad ./libcfe.a(IInOutStreams.o)
+
+.debug_abbrev   0x0000000000000000      0x77c
+ .debug_abbrev  0x0000000000000000       0x14 init_mips.o
+ .debug_abbrev  0x0000000000000014       0x14 bcm6348_rom_boot.o
+ .debug_abbrev  0x0000000000000028       0xda bcm63xx_main.o
+ .debug_abbrev  0x0000000000000102       0x14 ./libcfe.a(bcmcore_cpuinit.o)
+ .debug_abbrev  0x0000000000000116       0x14 ./libcfe.a(bcmcore_l1cache.o)
+ .debug_abbrev  0x000000000000012a      0x1b9 ./libcfe.a(lib_malloc.o)
+ .debug_abbrev  0x00000000000002e3      0x146 ./libcfe.a(7zlzma.o)
+ .debug_abbrev  0x0000000000000429      0x23f ./libcfe.a(LZMADecoder.o)
+ .debug_abbrev  0x0000000000000668      0x114 ./libcfe.a(IInOutStreams.o)
+
+.debug_aranges  0x0000000000000000      0x120
+ .debug_aranges
+                0x0000000000000000       0x20 init_mips.o
+ .debug_aranges
+                0x0000000000000020       0x20 bcm6348_rom_boot.o
+ .debug_aranges
+                0x0000000000000040       0x20 bcm63xx_main.o
+ .debug_aranges
+                0x0000000000000060       0x20 ./libcfe.a(bcmcore_cpuinit.o)
+ .debug_aranges
+                0x0000000000000080       0x20 ./libcfe.a(bcmcore_l1cache.o)
+ .debug_aranges
+                0x00000000000000a0       0x20 ./libcfe.a(lib_malloc.o)
+ .debug_aranges
+                0x00000000000000c0       0x20 ./libcfe.a(7zlzma.o)
+ .debug_aranges
+                0x00000000000000e0       0x20 ./libcfe.a(LZMADecoder.o)
+ .debug_aranges
+                0x0000000000000100       0x20 ./libcfe.a(IInOutStreams.o)
+
+.mdebug.abi32   0x0000000000000000        0x0
+
+.debug_frame    0x0000000000000000      0x258
+ .debug_frame   0x0000000000000000       0x70 bcm63xx_main.o
+ .debug_frame   0x0000000000000070       0x80 ./libcfe.a(lib_malloc.o)
+ .debug_frame   0x00000000000000f0       0x2c ./libcfe.a(7zlzma.o)
+ .debug_frame   0x000000000000011c      0x11c ./libcfe.a(LZMADecoder.o)
+ .debug_frame   0x0000000000000238       0x20 ./libcfe.a(IInOutStreams.o)
+
+.debug_pubnames
+                0x0000000000000000      0x282
+ .debug_pubnames
+                0x0000000000000000       0x64 bcm63xx_main.o
+ .debug_pubnames
+                0x0000000000000064       0x86 ./libcfe.a(lib_malloc.o)
+ .debug_pubnames
+                0x00000000000000ea       0x46 ./libcfe.a(7zlzma.o)
+ .debug_pubnames
+                0x0000000000000130      0x12f ./libcfe.a(LZMADecoder.o)
+ .debug_pubnames
+                0x000000000000025f       0x23 ./libcfe.a(IInOutStreams.o)
+
+.debug_str      0x0000000000000000      0xd37
+ .debug_str     0x0000000000000000      0x1a8 bcm63xx_main.o
+                                        0x1e1 (taille avant relaxe)
+ .debug_str     0x00000000000001a8      0x195 ./libcfe.a(lib_malloc.o)
+                                        0x2c2 (taille avant relaxe)
+ .debug_str     0x000000000000033d      0x3ae ./libcfe.a(7zlzma.o)
+                                        0x4e1 (taille avant relaxe)
+ .debug_str     0x00000000000006eb      0x5e6 ./libcfe.a(LZMADecoder.o)
+                                        0xa56 (taille avant relaxe)
+ .debug_str     0x0000000000000cd1       0x66 ./libcfe.a(IInOutStreams.o)
+                                        0x195 (taille avant relaxe)
+
+.debug_ranges   0x0000000000000000      0x360
+ .debug_ranges  0x0000000000000000      0x360 ./libcfe.a(LZMADecoder.o)
