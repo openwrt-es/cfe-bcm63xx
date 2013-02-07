@@ -43,7 +43,7 @@ export SSHD_DIR HOST_GENKEY CC STRIP
 #WARNINGS= -Wall
 
 #export DEFS		= -DDEBUG
-export CFLAGS		= $(DEFS) $(WARNINGS) -O2 -DGNU $(INCLUDEDIR)
+export CFLAGS		= -m32 $(DEFS) $(WARNINGS) -O2 -DGNU $(INCLUDEDIR)
 
 vpath %.cpp $(LZMADIR)
 
@@ -77,7 +77,7 @@ mksquashfs:  squashfs/*.c squashfs/*.h $(LZMAOBJS)
 	  exit ;\
         fi
 	gcc $(CFLAGS) -Isquashfs -c squashfs/*.c
-	g++  -o mksquashfs mksquashfs.o read_fs.o sort.o $(LZMAOBJS) -lz
+	g++ -m32 -o mksquashfs mksquashfs.o read_fs.o sort.o $(LZMAOBJS) -lz
 
 mkcramfs:  cramfs/mkcramfs.cpp $(LZMAOBJS)
 	@if [ ! -e /usr/include/zlib.h ]; then \
@@ -86,13 +86,13 @@ mkcramfs:  cramfs/mkcramfs.cpp $(LZMAOBJS)
 	  exit ;\
         fi
 	g++ $(CFLAGS) -I$(KERNEL_DIR)/include -c cramfs/mkcramfs.cpp
-	g++  -o mkcramfs mkcramfs.o $(LZMAOBJS) -lz -lm
+	g++ -m32 -o mkcramfs mkcramfs.o $(LZMAOBJS) -lz -lm
 
 build_cmplzma: cmplzma $(LZMAOBJS)
 
 cmplzma: cmplzma.cpp $(LZMAOBJS)
 	g++ $(CFLAGS) -c cmplzma.cpp
-	g++  -o cmplzma cmplzma.o $(LZMAOBJS) -lm
+	g++ -m32 -o cmplzma cmplzma.o $(LZMAOBJS) -lm
 
 
 ifeq ($(strip $(BUILD_CFM_SSHD)),y)
