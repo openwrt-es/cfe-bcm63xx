@@ -762,8 +762,7 @@ static int runDelay(int delayCount)
 {
     int goAuto = 0;
     
-    //if (delayCount == 0)
-    if (1)
+    if (delayCount == 0)
     {
         goAuto = 1;
         return goAuto;
