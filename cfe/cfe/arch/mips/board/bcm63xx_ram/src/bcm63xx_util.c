@@ -718,11 +718,6 @@ int flashImage(uint8_t *imagePtr)
         unsigned int totalSize = (unsigned int) flash_get_total_size();
         unsigned int availableSizeOneImg = totalSize -
             ((unsigned int) rootfsAddr - baseAddr) - FLASH_RESERVED_AT_END;
-        unsigned int reserveForTwoImages =
-            (FLASH_LENGTH_BOOT_ROM > FLASH_RESERVED_AT_END)
-            ? FLASH_LENGTH_BOOT_ROM : FLASH_RESERVED_AT_END;
-        unsigned int availableSizeTwoImgs =
-            (totalSize / 2) - reserveForTwoImages;
         unsigned int newImgSize = atoi(pTag->rootfsLen)+atoi(pTag->kernelLen);
         PFILE_TAG pCurTag = getBootImageTag();
         UINT32 crc = CRC32_INIT_VALUE;
@@ -744,25 +739,6 @@ int flashImage(uint8_t *imagePtr)
             // will trash cfe memory, but cfe is already flashed
             tagFs = imagePtr + cfeSize;
             memcpy(tagFs, imagePtr, TAG_LEN);
-        }
-
-        // If the current image fits in half the flash space and the new
-        // image to flash also fits in half the flash space, then flash it
-        // in the partition that is not currently being used to boot from.
-        if( curImgSize <= availableSizeTwoImgs &&
-            newImgSize <= availableSizeTwoImgs &&
-            getPartitionFromTag( pCurTag ) == 1 )
-        {
-            // Update rootfsAddr to point to the second boot partition.
-            int offset = (totalSize / 2) + TAG_LEN;
-
-            sprintf(((PFILE_TAG) tagFs)->kernelAddress, "%lu",
-                (unsigned long) IMAGE_BASE + offset + (kernelAddr-rootfsAddr));
-            kernelAddr = baseAddr + offset + (kernelAddr - rootfsAddr);
-
-            sprintf(((PFILE_TAG) tagFs)->rootfsAddress, "%lu",
-                (unsigned long) IMAGE_BASE + offset);
-            rootfsAddr = baseAddr + offset;
         }
 
         UpdateImageSequenceNumber( ((PFILE_TAG) tagFs)->imageSequence );
