@@ -181,9 +181,8 @@ void board_final_init(void)
 
 int checkForResetHold( unsigned short pahrGpio )
 {
-    const int nInitPsiDelay = 3;
-    //const int nBreakIntoCfeDelay = 8;
-    const int nBreakIntoCfeDelay = 18; //roy
+    const int nInitPsiDelay = 2;
+    const int nBreakIntoCfeDelay = 5; //roy
     unsigned short gpio = 0;
     int ret = 0;
     int reinit = 0;
