@@ -18,5 +18,5 @@ gcc -m32 -D _BCM96348_ -I ../shared/opensource/include/bcm963xx/ \
 # -m ethernet MAC
 #####################################
 cd $currdir
-hostTools/nvramembed -b "96348GW-11" -n 4 -m 11:22:33:44:55:66 -i cfe6348.bin -o cfe6348-nvr.bin
+hostTools/nvramembed -b "blue5g9" -n 4 -m 11:22:33:44:55:66 -i cfe6348.bin -o cfe6348-nvr.bin
 
