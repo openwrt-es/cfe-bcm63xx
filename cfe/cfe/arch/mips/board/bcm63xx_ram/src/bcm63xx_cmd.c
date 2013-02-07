@@ -722,7 +722,7 @@ static int ui_init_bcm63xx_cmds(void)
     cmd_addcmd("c",
 	       ui_cmd_change_bootline,
 	       NULL,
-	       "Change booline parameters",
+	       "Change boot line parameters",
 	       "",
 	       "");
 
