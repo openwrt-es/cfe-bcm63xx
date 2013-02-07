@@ -531,8 +531,10 @@ int kerSysBcmImageSet( int flash_start_addr, char *string, int size, int fWholeI
             memcpy(pTempBuf, string, size);
             flash_sector_erase_int(blk_start);     // erase blk before flash
 
+            AlertLed_On();
             if (flash_write_buf(blk_start, 0, pTempBuf, sect_size) == sect_size) 
                 size = 0;   // break out and say all is ok
+            AlertLed_Off();
             break;
         }
         
@@ -544,9 +546,11 @@ int kerSysBcmImageSet( int flash_start_addr, char *string, int size, int fWholeI
                 size++;
             sect_size = size;
         }
+        AlertLed_On();
         if (flash_write_buf(blk_start, 0, string, sect_size) != sect_size) {
             break;
         }
+        AlertLed_Off();
     
         printf(".");
         blk_start++;
