@@ -214,7 +214,7 @@ int checkForResetHold( unsigned short pahrGpio )
         if (i == nBreakIntoCfeDelay)
         {
             ret = 1;
-            //setBreakIntoCfeLed();
+            setBreakIntoCfeLed();
             printf("\n*** Break into CFE console ***\n\n");
         }
 

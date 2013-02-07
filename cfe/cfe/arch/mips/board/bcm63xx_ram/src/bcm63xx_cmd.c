@@ -799,6 +799,5 @@ void bcm63xx_run(int breakIntoCfe)
     enet_init();
     if (!breakIntoCfe && runDelay(bootInfo.bootDelay))
         autoRun(NULL);        // never returns
-    setBreakIntoCfeLed();
 }
 
