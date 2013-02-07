@@ -469,9 +469,9 @@ AlertLed_On();//roy
 
 void AlertLed_On(void)
 { 
-    unsigned int GPIOVal1Mask1= 0xffffffdf; //GPIODIR use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
-    unsigned int GPIOVal2Mask1= 0xffffffdf; //GPIODATA use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
-    unsigned int GPIOVal2Mask2= 0x00000000; //GPIO5=0=>On, low activate
+    unsigned int GPIOVal1Mask1= 0xfffffffe; //GPIODIR use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
+    unsigned int GPIOVal2Mask1= 0xfffffffe; //GPIODATA use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
+    unsigned int GPIOVal2Mask2= 0x00000000; //GPIO0=0=>On, low activate
 	
 		//Set GPIODIR====================================================================
 		*((volatile unsigned int *)GPIODIR)=((*((volatile unsigned int *)GPIODIR)& GPIOVal1Mask1) | ~(GPIOVal1Mask1));
@@ -481,9 +481,9 @@ void AlertLed_On(void)
 
 void AlertLed_Off(void)
 { 
-    unsigned int GPIOVal1Mask1= 0xffffffdf; //GPIODIR use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
-    unsigned int GPIOVal2Mask1= 0xffffffdf; //GPIODATA use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
-    unsigned int GPIOVal2Mask3= 0x00000020; //GPIO5=1=>Off, low activate
+    unsigned int GPIOVal1Mask1= 0xfffffffe; //GPIODIR use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
+    unsigned int GPIOVal2Mask1= 0xfffffffe; //GPIODATA use, bit31(GPIO31)~bit0(GPIO0), control GPIO5
+    unsigned int GPIOVal2Mask3= 0x00000001; //GPIO0=1=>Off, low activate
 				
 		//Set GPIODIR====================================================================
 		*((volatile unsigned int *)GPIODIR)=((*((volatile unsigned int *)GPIODIR)& GPIOVal1Mask1) | ~(GPIOVal1Mask1));
