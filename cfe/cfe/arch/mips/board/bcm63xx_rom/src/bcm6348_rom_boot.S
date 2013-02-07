@@ -265,11 +265,18 @@ LEAF(board_draminit)
         or      t2,SDR_ADSL_HPE
         sw      t2,SDR_PRIOR(t1)
         
-        /* check memory config type 32MB and default to 8MB */
+        /* check memory config type 64MB, 32MB, 16MB and default to 8MB */
         li      t0,BOARD_SDRAM_TYPE_ADDRESS
         FIXUP(t0)
         lw      t0,0(t0)
 		
+        /* setting for 64MB, 2 chip */
+        li      t3,SDR_2_BANKS|SDR_32_BIT|SDR_9_COLS|SDR_13_ROWS
+        li      v0,64
+        li      t4,BP_MEMORY_64MB_2_CHIP
+        beq     t0,t4,1f
+        nop
+
         /* setting for 32MB, 2 chip */
         li      t3,SDR_2_BANKS|SDR_32_BIT|SDR_9_COLS|SDR_12_ROWS
         li      v0,32
@@ -277,6 +284,13 @@ LEAF(board_draminit)
         beq     t0,t4,1f
         nop
  
+        /* setting for 32MB, 16bit, 1 chip */
+        li      t3,SDR_2_BANKS|SDR_16_BIT|SDR_9_COLS|SDR_13_ROWS
+        li      v0,32
+        li      t4,BP_MEMORY_32MB_1_CHIP
+        beq     t0,t4,1f
+        nop
+
         /* setting for 16MB, 2 chip */
         li      t3,SDR_2_BANKS|SDR_32_BIT|SDR_8_COLS|SDR_12_ROWS
         li      v0,16
@@ -284,8 +298,15 @@ LEAF(board_draminit)
         beq     t0,t4,1f
         nop
       
-        /* Default SDRAM settings for BCM6348 board (8MB, 1 chip) */
-        li      t3,SDR_2_BANKS|SDR_32_BIT|SDR_8_COLS|SDR_11_ROWS
+        /* setting for 16MB, 16bit, 1 chip */
+        li      t3,SDR_2_BANKS|SDR_16_BIT|SDR_9_COLS|SDR_12_ROWS
+        li      v0,16
+        li      t4,BP_MEMORY_16MB_1_CHIP
+        beq     t0,t4,1f
+        nop
+
+        /* Default SDRAM setting for 8MB, 16bit, 1 chip) */
+        li      t3,SDR_2_BANKS|SDR_16_BIT|SDR_8_COLS|SDR_12_ROWS
         li      v0,8
 			
 1:

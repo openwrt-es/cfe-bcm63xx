@@ -86,6 +86,7 @@ extern "C" {
 #define SDR_CS1_EN          (1<<12)
 #define SDR_PEND            (1<<11)
 #define SDR_32_BIT          (1<<10)
+#define SDR_16_BIT          (0<<10)
 #define SDR_POWER_DOWN      (1<<9)
 #define SDR_SELF_REFRESH    (1<<8)
 #define SDR_11_COLS         (3<<6)
