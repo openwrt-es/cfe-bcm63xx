@@ -353,7 +353,7 @@ static BOARD_PARAMETERS board_blue5g9 =
       BP_NOT_DEFINED}},                 /* usReverseMii */
     {{BP_VOIP_NO_DSP},                  /* ucDspType */
      {BP_VOIP_NO_DSP}},                 /* ucDspType */
-    BP_MEMORY_16MB_1_CHIP,              /* usSdramSize */
+    BP_MEMORY_32MB_2_CHIP,              /* usSdramSize */
     BP_PSI_DEFAULT_SIZE,                /* usPsiSize */
     BP_NOT_DEFINED,                     /* usGpioRj11InnerPair */
     BP_NOT_DEFINED,                     /* usGpioRj11OuterPair */
