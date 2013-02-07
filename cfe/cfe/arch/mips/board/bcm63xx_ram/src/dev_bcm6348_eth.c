@@ -36,7 +36,7 @@
 //#define ENET_USE_EMAC1
 #define ENET_USE_EMAC2
 
-#if defined(ENET_USE_EMAC1)
+#if defined(_BCM96338_) || defined(ENET_USE_EMAC1)
 /* CFE Ethernet use EMAC 1 */
 #define EMAC                EMAC1
 #define EMAC_TX_CHAN        EMAC1_TX_CHAN
