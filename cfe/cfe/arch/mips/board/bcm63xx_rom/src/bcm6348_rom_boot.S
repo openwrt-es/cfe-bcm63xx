@@ -326,7 +326,7 @@ LEAF(board_draminit)
 			
 1:
         or      t3,SDR_MASTER_EN|SDR_MRS_CMD|SDR_PEND
-        li      t2,SDR_SLOW_MEM|SDR_FULL_PG
+        li      t2,SDR_FAST_MEM|SDR_FULL_PG
         sw      t2,SDR_CFG_REG(t1)    # Full page burst, fast memory
         li      t2,SDR_MASTER_EN|SDR_PRE_CMD
         sw      t2,SDR_INIT_CTL(t1)   # Pre-charge powerup sequence
