@@ -57,6 +57,8 @@
 #define NULL 0
 #endif
 
+#define CFI_WAIT_DOUBLE_READ
+
 #define MAXSECTORS  1024      /* maximum number of sectors supported */
 
 /* Standard Boolean declarations */
@@ -68,15 +70,19 @@
 #define FLASH_AMD       1
 #define FLASH_INTEL     2
 #define FLASH_SST       3
+#define FLASH_MIRROR    4
 
 /* Command codes for the flash_command routine */
-#define FLASH_RESET     0       /* reset to read mode */
-#define FLASH_READ_ID   1       /* read device ID */
-#define FLASH_CFIQUERY  2       /* CFI query */
-#define FLASH_UB        3       /* go into unlock bypass mode */
-#define FLASH_PROG      4       /* program a unsigned short */
-#define FLASH_UBRESET   5       /* reset to read mode from unlock bypass mode */
-#define FLASH_SERASE    6       /* sector erase */
+#define FLASH_RESET             0       /* reset to read mode */
+#define FLASH_READ_ID           1       /* read device ID */
+#define FLASH_CFIQUERY          2       /* CFI query */
+#define FLASH_UB                3       /* go into unlock bypass mode */
+#define FLASH_PROG              4       /* program a unsigned short */
+#define FLASH_UBRESET           5       /* reset to read mode from unlock bypass mode */
+#define FLASH_SERASE            6       /* sector erase */
+#define FLASH_BLOCK             7
+#define FLASH_PROG_BLOCK        8
+#define FLASH_MRESET            9
 
 /* Return codes from flash_status */
 #define STATUS_READY    0       /* ready for action */
@@ -108,6 +114,7 @@
 #define ID_SST39VF800A  0x2781
 #define ID_SST39VF1601  0x234B
 #define ID_SST39VF3201  0x235B
+#define ID_SST39VF6401  0x236B
 
 /* A list of Intel compatible device ID's - add others as needed */
 #define ID_I28F160C3T   0x88C2
@@ -115,6 +122,13 @@
 #define ID_I28F320C3T   0x88C4
 #define ID_I28F320C3B   0x88C5
 #define ID_I28F640J3	0x8916
+
+#define ID_M29W320EB	0x2257
+#define ID_M29W640FB	0x22FD
+
+#define ID_F29DL32BF	0x220A
+#define ID_S29GL032M	0x221A
+#define ID_S29GL064M	0x2210
 
 #define CFI_FLASH_DEVICES                   \
          {{ID_AM29DL800T, "AM29DL800T"},    \
@@ -138,11 +152,17 @@
           {ID_SST39VF800A, "SST39VF800A"},  \
           {ID_SST39VF1601, "SST39VF1601"},  \
           {ID_SST39VF3201, "SST39VF3201"},  \
+          {ID_SST39VF6401, "SST39VF6401"},  \
           {ID_I28F160C3T, "I28F160C3T"},    \
           {ID_I28F160C3B, "I28F160C3B"},    \
           {ID_I28F320C3T, "I28F320C3T"},    \
           {ID_I28F320C3B, "I28F320C3B"},    \
           {ID_I28F640J3,  "I28F640J3"},     \
+          {ID_M29W320EB, "STM29W320EB"},    \
+          {ID_M29W640FB, "STM29W640FB"},    \
+          {ID_F29DL32BF, "Fuji29DL32BF"},   \
+          {ID_S29GL032M, "S29GL032M"},      \
+          {ID_S29GL064M, "S29GL064M"},      \
           {0, ""}                           \
         }
 
@@ -209,6 +229,7 @@ static unsigned short cfi_flash_get_device_id(void);
 static int cfi_flash_get_cfi(struct cfi_query *query, unsigned short *cfi_struct,
     int flashFamily);
 
+static int flash_write_block(WORD sector, int offset, byte *buf, int block_pagesize);
 
 /** Variables. **/
 static flash_device_info_t flash_cfi_dev =
@@ -370,6 +391,9 @@ int cfi_flash_init(flash_device_info_t **flash_info)
         case ID_AM29LV320MT:
         case ID_AM29LV200BT:
         case ID_MX29LV640BT:
+        case ID_M29W320EB:
+        case ID_M29W640FB:
+        case ID_F29DL32BF:
             flashFamily = FLASH_AMD;
             break;
         case ID_SST39VF200A:
@@ -377,7 +401,12 @@ int cfi_flash_init(flash_device_info_t **flash_info)
         case ID_SST39VF800A:
         case ID_SST39VF1601:
         case ID_SST39VF3201:
+        case ID_SST39VF6401:
             flashFamily = FLASH_SST;
+            break;
+        case ID_S29GL032M:
+        case ID_S29GL064M:
+            flashFamily = FLASH_MIRROR;
             break;
         default:
             return FLASH_API_ERROR;           
@@ -401,6 +430,38 @@ int cfi_flash_init(flash_device_info_t **flash_info)
         }
     }
 
+    /* When having 8MB, lowest 4MB are put at the top of the highest 4MB     */
+    /* and we end with a different geometry. Overwrite the detected geometry */
+    if(device_id == ID_S29GL064M) {
+        long secsizeB = query.erase_block[0].sector_size;
+        long secsizeT = query.erase_block[1].sector_size;
+
+        /* Bottom Boot */
+        if(secsizeB == 8192){
+            query.num_erase_blocks = 3;
+            query.erase_block[0].num_sectors = 64;
+            query.erase_block[0].sector_size = secsizeT;
+            query.erase_block[1].num_sectors = 8;
+            query.erase_block[1].sector_size = secsizeB;
+            query.erase_block[2].num_sectors = 63;
+            query.erase_block[2].sector_size = secsizeT;
+        }
+
+        /* Top Boot */
+        if(secsizeT == 8192){
+            query.num_erase_blocks = 3;
+            query.erase_block[0].num_sectors = 63;
+            query.erase_block[0].sector_size = secsizeB;
+            query.erase_block[1].num_sectors = 8;
+            query.erase_block[1].sector_size = secsizeT;
+            query.erase_block[2].num_sectors = 64;
+            query.erase_block[2].sector_size = secsizeB;
+        }
+    }
+
+    /* Write to Chip Select0 our new flash start address, so later Linux can read it */
+    MPI->cs[0].base = ((FLASH_BASE & 0x1FFFFFFF) | EBI_SIZE_8M);
+
     // need to determine if it top or bottom boot here
     switch (device_id)
     {
@@ -417,9 +478,15 @@ int cfi_flash_init(flash_device_info_t **flash_info)
         case ID_I28F160C3T:
         case ID_I28F320C3T:
         case ID_SST39VF3201:
+        case ID_SST39VF6401:
         case ID_SST39VF200A:
         case ID_SST39VF400A:
         case ID_SST39VF800A:
+        case ID_M29W320EB:
+        case ID_M29W640FB:
+        case ID_F29DL32BF:
+        case ID_S29GL032M:
+        case ID_S29GL064M:
             flipCFIGeometry = FALSE;
             break;
         case ID_AM29DL800T:
@@ -532,20 +599,60 @@ static int cfi_flash_write_buf(unsigned short sector, int offset,
     int i;
     unsigned char *p = cfi_flash_get_memptr(sector) + offset;
 
-    /* After writing the flash block, compare the contents to the source
-     * buffer.  Try to write the sector successfully up to three times.
-     */
-    for( i = 0; i < 3; i++ ) {
-        ret = cfi_flash_write(sector, offset, buffer, numbytes);
-        if( !memcmp( p, buffer, numbytes ) )
-            break;
-        /* Erase and try again */
-        flash_sector_erase_int(sector);
-        ret = FLASH_API_ERROR;
-    }
+    int block_pagesize, wordsize, temp_offset;
+    unsigned char *temp_buffer, *word_p;
 
-    if( ret == FLASH_API_ERROR )
-        printk( "Flash write error.  Verify failed\n" );
+    if (flashFamily != FLASH_MIRROR) {
+        /* After writing the flash block, compare the contents to the source
+         * buffer.  Try to write the sector successfully up to three times.
+         */
+        for( i = 0; i < 3; i++ ) {
+            ret = cfi_flash_write(sector, offset, buffer, numbytes);
+            if( !memcmp( p, buffer, numbytes ) )
+                break;
+            /* Erase and try again */
+            flash_sector_erase_int(sector);
+            ret = FLASH_API_ERROR;
+        }
+
+        if( ret == FLASH_API_ERROR )
+            printk( "Flash write error.  Verify failed\n" );
+    } else {
+        block_pagesize = numbytes/32;
+        wordsize = numbytes - (block_pagesize * 32);
+        word_p = p + (block_pagesize * 32);
+        temp_buffer = buffer + (block_pagesize * 32);
+        temp_offset = offset + (block_pagesize * 32);
+
+        /* After writing the flash block, compare the contents to the source
+         * buffer.  Try to write the sector successfully up to three times.
+         */
+
+        for( i = 0; i < 3; i++ ) {
+            //Block Programming
+            if (block_pagesize > 0)
+                ret = flash_write_block(sector, offset, buffer, block_pagesize);
+            //Block Programming End
+
+            //Word Programming
+            if (wordsize > 0)
+                ret += cfi_flash_write(sector, temp_offset, temp_buffer, wordsize);
+            //Word Programming End
+
+            if (!memcmp( p, buffer, numbytes ))
+            {
+                break;
+            }
+
+            /* Erase and try again */
+            printk("Flash data comparison fail retry programming \n");
+            cfi_flash_sector_erase_int(sector);
+            ret = -1;
+        }
+
+        if( ret == -1 )
+            printk(" Flash write error.  Verify failed\n" );
+    }
 
     return( ret );
 }
@@ -678,6 +785,7 @@ static void cfi_flash_command(int command, unsigned short sector, int offset,
         }
         break;
     case FLASH_AMD:
+    case FLASH_MIRROR:
         switch (command) {
         case FLASH_RESET:
             flashptr[0] = 0xF0;
@@ -710,6 +818,20 @@ static void cfi_flash_command(int command, unsigned short sector, int offset,
             flashptr[0x555] = 0xAA;
             flashptr[0x2AA] = 0x55;
             flashptr[0] = 0x30;
+            break;
+        case FLASH_BLOCK:
+            flashptr[0x555] = 0xAA;
+            flashptr[0x2AA] = 0x55;
+            flashptr[0] = 0x25;
+            flashptr[0] = 0x0f;		/* write buffer 16 bytes each time */
+            break;
+        case FLASH_PROG_BLOCK:
+            flashptr[0] = 0x29;    	/* start to program a block */
+            break;
+        case FLASH_MRESET:
+            flashptr[0x555] = 0xAA;
+            flashptr[0x2AA] = 0x55;
+            flashptr[0] = 0xF0;
             break;
         default:
             break;
@@ -828,9 +950,11 @@ static int cfi_flash_wait(unsigned short sector, int offset, unsigned short data
 
     flashptr = (unsigned short *) cfi_flash_get_memptr(sector);
 
-    if (flashFamily == FLASH_AMD || flashFamily == FLASH_SST) {
+    if (flashFamily == FLASH_AMD || flashFamily == FLASH_SST || flashFamily == FLASH_MIRROR) {
 /* 6338 and 6358 for different reasons do a 'double read' when reading 16 bit from EBI */
-#if defined(_BCM96338_) || defined(CONFIG_BCM96338) || defined(_BCM96358_) || defined(CONFIG_BCM96358)
+//#if defined(_BCM96338_) || defined(CONFIG_BCM96338) || defined(_BCM96358_) || defined(CONFIG_BCM96358)
+/* Plab code enabled to improve support S29GL064A (Spansion MIRRORBIT) */
+#ifdef  CFI_WAIT_DOUBLE_READ
         do {
             d1 = flashptr[offset/2];
             if (d1 == data)
@@ -907,7 +1031,7 @@ static unsigned short cfi_flash_get_device_id(void)
     answer = *(fwp + 1);
     if (answer == ID_AM29LV320M) {
         answer = *(fwp + 0xe);
-        answer = *(fwp + 0xf);
+        //answer = *(fwp + 0xf);
     }
     
     cfi_flash_command(FLASH_RESET, 0, 0, 0);
@@ -967,5 +1091,47 @@ static int cfi_flash_get_cfi(struct cfi_query *query, unsigned short *cfi_struct
     
     cfi_flash_command(FLASH_RESET, 0, 0, 0);
     return(FLASH_API_OK);
+}
+
+static int flash_write_block(WORD sector, int offset, byte *buf, int block_pagesize)
+{
+    UINT16 *src;
+    volatile UINT16 *flashptr;
+    int i;
+
+    src = (UINT16 *)buf;
+    flashptr = (UINT16 *) flash_get_memptr(sector);
+
+    if ((offset) & 1) {	//The value of the offset must be word allignment
+        printk("The value of the offset must be word allignment\n");
+        return -1;
+    }
+
+    while (block_pagesize > 0)
+    {
+        cfi_flash_command(FLASH_BLOCK, sector, offset, *src);
+
+        for (i=0 ;i<16 ;i++)
+        {
+            flashptr[offset/2] = *src;
+            offset+=2;
+            src++;
+        }
+
+        cfi_flash_command(FLASH_PROG_BLOCK, sector, 0, 0);
+        offset-=2;
+        src--;
+
+        if (cfi_flash_wait(sector, offset, *src) != STATUS_READY)
+            break;
+
+        cfi_flash_command(FLASH_MRESET, 0, 0, 0);
+
+        offset+=2;
+        src++;
+        block_pagesize--;
+    }
+
+    return (unsigned char*)src - buf;
 }
 
