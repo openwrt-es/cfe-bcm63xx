@@ -128,6 +128,10 @@ extern "C" {
 */
 #define CS0BASE         0x00
 #define CS0CNTL         0x04
+#define CS1BASE         0x08
+#define CS1CNTL         0x0c
+#define CS3BASE         0x18
+#define CS3CNTL         0x1c
 
 /*
 # CSxBASE settings

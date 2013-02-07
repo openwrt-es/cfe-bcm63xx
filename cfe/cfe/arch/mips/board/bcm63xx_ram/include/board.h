@@ -35,6 +35,8 @@ extern "C" {
 
 #define PHYS_DRAM_BASE           0x00000000     /* Dynamic RAM Base */
 #define PHYS_FLASH_BASE          0x1FC00000     /* Flash Memory     */
+#define PHYS_FLASH_CS1_BASE      0x1F000000     /* Flash Memory     */
+#define PHYS_DSP_CS3_BASE        0x1F800000     /* DSP              */
 
 /*****************************************************************************/
 /* Note that the addresses above are physical addresses and that programs    */
@@ -48,7 +50,7 @@ extern "C" {
 
 /* Some chips support alternative boot vector */
 #if defined(_BCM96348_) || defined(CONFIG_BCM96348) || defined(_BCM96358_) || defined(CONFIG_BCM96358)
-#define FLASH_BASE          (0xA0000000 | (MPI->cs[0].base & 0xFFFFFF00))
+#define FLASH_BASE          (0xA0400000 | (MPI->cs[1].base & 0xFFFFFF00))
 #define BOOT_OFFSET         (FLASH_BASE - IMAGE_BASE)
 #else
 #define FLASH_BASE          (0xA0000000 | PHYS_FLASH_BASE)  /* uncached Flash  */

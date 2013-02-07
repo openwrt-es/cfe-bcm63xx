@@ -60,14 +60,6 @@ LEAF(board_earlyinit)
         /** platform specific code                                       **/
         /**--------------------------------------------------------------**/
 
-        /**----- Initialize EBI -----------------------------------------**/
-        li      t1, MPI_BASE            
-        li      t2, EBI_SIZE_16M
-        or      t2, a0
-        sw      t2, CS0BASE(t1)        # CS[0] Base
-        li      t2, THREEWT|EBI_WORD_WIDE|EBI_ENABLE
-        sw      t2, CS0CNTL(t1)        # CS[0] Control
-
         /**----- Enable I Cache -----------------------------------------**/
         mfc0    t1, C0_BCM_CONFIG
         nop
@@ -188,6 +180,29 @@ LEAF(board_earlyinit)
         and     t1, ~M_MPI_MASK
         or      t1, M_MPI_33MHZ << M_MPI_SHFT  # Set MPI clock to 33MHz
         sw      t1, SYSPLLCFG(t0)
+
+        /**----- Initialize EBI -----------------------------------------**/
+        li      t1, MPI_BASE
+        li      t2, PHYS_FLASH_BASE|EBI_SIZE_4M
+        sw      t2, CS0BASE(t1)        # CS[0] Base
+        /** inv_xde **/
+        li      t2, THREEWT|EBI_WORD_WIDE|EBI_ENABLE
+        /* li      t2, FIVEWT|EBI_WORD_WIDE|EBI_ENABLE */
+        sw      t2, CS0CNTL(t1)        # CS[0] Control
+
+        /** Initialisation of CS1 timings, base address and range **/
+        /** inv_xde: support of 8 MB flash **/
+        li      t1,MPI_BASE
+        li      t2,PHYS_FLASH_CS1_BASE|EBI_SIZE_16M
+        sw      t2,CS1BASE(t1)        # CS[1] Base
+        li      t2,THREEWT|EBI_WORD_WIDE|EBI_ENABLE
+        sw      t2,CS1CNTL(t1)        # CS[1] Control
+        /** inv_xde: DSP **/
+        li      t1,MPI_BASE
+        li      t2,PHYS_DSP_CS3_BASE|EBI_SIZE_4M
+        sw      t2,CS3BASE(t1)        # CS[3] Base
+        li      t2,FIVEWT|EBI_WORD_WIDE|EBI_ENABLE
+        sw      t2,CS3CNTL(t1)        # CS[3] Control
 
         /**----- Initialize Serial --------------------------------------**/
         li              t3, ((FPERIPH / 115200) / 16)
