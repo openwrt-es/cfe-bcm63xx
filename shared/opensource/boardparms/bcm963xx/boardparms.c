@@ -263,8 +263,55 @@ static BOARD_PARAMETERS g_bcm96338e4 =
     BP_NOT_DEFINED,                         /* usVcopeBoardRev */
     0,                                      /* usCMTThead */
 };
+static BOARD_PARAMETERS g_fast1704 =
+{
+    "F@ST1704",                              /* szBoardId */
+    {{BP_ENET_EXTERNAL_SWITCH,              /* ucPhyType */
+      0x0,                                  /* ucPhyAddress */
+      BP_NOT_DEFINED,                       /* usGpioPhySpiSck */
+      BP_NOT_DEFINED,                       /* usGpioPhySpiSs */
+      BP_NOT_DEFINED,                       /* usGpioPhySpiMosi */
+      BP_NOT_DEFINED,                       /* usGpioPhySpiMiso */
+      BP_NOT_DEFINED,                       /* usGpioPhyReset */
+      0x04,                                 /* numSwitchPorts */
+      BP_ENET_CONFIG_MDIO_PSEUDO_PHY,       /* usConfigType */
+      BP_ENET_REVERSE_MII},                 /* usReverseMii */
+     {BP_ENET_NO_PHY}},                     /* ucPhyType */
+    {{BP_VOIP_NO_DSP},                      /* ucDspType */
+     {BP_VOIP_NO_DSP}},                     /* ucDspType */
+    BP_MEMORY_16MB_1_CHIP,                   /* usSdramSize */
+    BP_PSI_DEFAULT_SIZE,                    /* usPsiSize */
+    BP_NOT_DEFINED,                         /* usGpioRj11InnerPair */
+    BP_NOT_DEFINED,                         /* usGpioRj11OuterPair */
+    BP_NOT_DEFINED,                         /* usGpioPressAndHoldReset */
+    BP_NOT_DEFINED,                         /* usGpioUartRts */
+    BP_NOT_DEFINED,                         /* usGpioUartCts */
+    BP_NOT_DEFINED,                         /* usGpioLedAdsl */
+    BP_NOT_DEFINED,                           /* usGpioLedAdslFail */
+    BP_NOT_DEFINED,                         /* usGpioLedWireless */
+    BP_NOT_DEFINED,                         /* usGpioLedUsb */
+    BP_NOT_DEFINED,                         /* usGpioLedHpna */
+    BP_NOT_DEFINED,                           /* usGpioLedWanData */
+    BP_NOT_DEFINED,                           /* usGpioLedPpp */
+    BP_NOT_DEFINED,                           /* usGpioLedPppFail */
+    BP_NOT_DEFINED,                           /* usGpioLedBlPowerOn */
+    BP_NOT_DEFINED,                           /* usGpioLedBlResetCfg */
+    BP_NOT_DEFINED,                           /* usGpioLedBlStop */
+    BP_HW_DEFINED,                          /* usExtIntrAdslDyingGasp */
+    BP_NOT_DEFINED,                         /* usExtIntrHpna */
+    BP_NOT_DEFINED,                         /* usCsHpna */
+    BP_NOT_DEFINED,                         /* usAntInUseWireless */
+    BP_NOT_DEFINED,                         /* usGpioSesBtnWireless */    
+    BP_NOT_DEFINED,                         /* usExtIntrSesBtnWireless */
+    BP_NOT_DEFINED,                         /* usGpioLedSesWireless */     
+    BP_NOT_DEFINED,                         /* usCsHpi */
+    BP_NOT_DEFINED,                         /* usVcopeResetGpio */
+    BP_NOT_DEFINED,                         /* usVcopeRelayGpio */
+    BP_NOT_DEFINED,                         /* usVcopeBoardRev */
+    0,                                      /* usCMTThead */
+};
 static PBOARD_PARAMETERS g_BoardParms[] =
-    {&g_bcm96338sv, &g_bcm96338l2m8m, &g_bcm96338gw, &g_bcm96338e4, 0};
+    {&g_bcm96338sv, &g_bcm96338l2m8m, &g_bcm96338gw, &g_bcm96338e4, &g_fast1704, 0};
 #endif
 
 #if defined(_BCM96348_) || defined(CONFIG_BCM96348)
