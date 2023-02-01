@@ -489,7 +489,7 @@ int spi_flash_init(flash_device_info_t **flash_info)
     break;
     
     case WNBDPART:
-	flashFamily = FLASH_WINBOND;
+	    flashFamily = FLASH_WINBOND;
         numsector = WINBW25Q32V_SECTOR;
         sectorsize = SECTOR_SIZE_4K;
         device_id &= 0xff00;
@@ -557,7 +557,7 @@ static int spi_flash_sector_erase_int(unsigned short sector)
         case FLASH_SPAN:
             buf[0] = SPAN_FLASH_SERASE;
             break;
-	case FLASH_WINBOND:
+	    case FLASH_WINBOND:
             buf[0] = WBND_FLASH_SERASE;
 	    break;
     };
@@ -963,6 +963,7 @@ static int spi_flash_write(unsigned short sector, int offset, unsigned char *buf
         case FLASH_AMD:
         case FLASH_SPAN:
         case FLASH_KH:
+        case FLASH_WINBOND:
             while (nbytes > 0) {
                 spi_flash_ub(sector); /* enable write */
                 maxwrite = (nbytes < (sizeof(SPI->spiMsgData)-CMD_LEN_4))
@@ -1045,28 +1046,6 @@ static int spi_flash_write(unsigned short sector, int offset, unsigned char *buf
                 
                 if (maxwrite<=1) printk("fjl:Error,writing %d byte to FLASH_NX is not allowed on NXW FLASH!\n",maxwrite);
                 // end fjl
-
-                wbuf[0] = FLASH_PROG;
-                wbuf[1] = (unsigned char)((dst & 0x00ff0000) >> 16);
-                wbuf[2] = (unsigned char)((dst & 0x0000ff00) >> 8);
-                wbuf[3] = (unsigned char)(dst & 0x000000ff);
-                memcpy(&wbuf[4], pbuf, maxwrite);
-                spi_write(wbuf, maxwrite+CMD_LEN_4);
-                while (spi_flash_status() != STATUS_READY) {}
-                pbuf += maxwrite;
-                nbytes -= maxwrite;
-                dst += maxwrite;
-            }
-            break;
-	    
-	    case FLASH_WINBOND:
-            while (nbytes) {
-                spi_flash_ub(sector); /* enable write */
-                maxwrite = (nbytes < (sizeof(SPI->spiMsgData)-CMD_LEN_4))
-                    ? nbytes : (sizeof(SPI->spiMsgData)-CMD_LEN_4);
-                /* maxwrite is limit to page boundary */
-                pagelimit = FLASH_PAGE_SIZE - (dst & 0x000000ff);
-                maxwrite = (maxwrite < pagelimit) ? maxwrite : pagelimit;
 
                 wbuf[0] = FLASH_PROG;
                 wbuf[1] = (unsigned char)((dst & 0x00ff0000) >> 16);
