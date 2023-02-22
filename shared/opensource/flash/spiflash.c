@@ -11,14 +11,14 @@
 #include "lib_types.h"
 #include "lib_printf.h"
 #include "lib_string.h"
-#include "bcm_map.h"       
+#include "bcm_map.h"  
 #define printk  printf
 #else       // linux
 #include <linux/param.h>
 #include <linux/sched.h>
 #include <linux/timer.h>
 #include <linux/kernel.h>
-#include <bcm_map_part.h>       
+#include <bcm_map_part.h> 
 #endif
 
 #include "bcmtypes.h"
@@ -38,7 +38,7 @@
 #define NULL 0
 #endif
 
-#define MAX_MEMORY_MAPPED_SIZE      0
+#define MAX_MEMORY_MAPPED_SIZE  0
 
 #define MAXSECTORS          1024    /* maximum number of sectors supported */
 
@@ -50,6 +50,11 @@
 #define SST25VF040_SECTOR   128 /* 4 Mbit */
 #define SST25VF080_SECTOR   256 /* 8 Mbit */
 #define SST25VF016B_SECTOR  512 /* 16 Mbit */
+#define WINBW25Q32V_SECTOR  1024 /* 32 Mbit */
+#define SPAN25FL004A_SECTOR 8
+#define SPAN25FL008A_SECTOR 16
+#define SPAN25FL016A_SECTOR 32
+#define SPAN25FL032A_SECTOR 64
 #define AT25F512_SECTOR     2
 #define AT25F2048_SECTOR    4
 #define AMD25FL_SECTOR      4
@@ -89,6 +94,16 @@
 #define AMD_FLASH_SERASE    0xD8    /* erase one sector in memroy array */
 #define AMD_FLASH_RDID      0xAB    /* read manufacturer and product id */
 
+#define SPAN_FLASH_CERASE   0xC7    /* erase all sectors in memory array */
+#define SPAN_FLASH_SERASE   0xD8    /* erase one sector in memory array */
+#define SPAN_FLASH_RDID     0x9F    /* read manufacturer and product id */
+
+#define ST_FLASH_RDID       0x9F   /* read manufacturer and product id */
+
+#define WBND_FLASH_CERASE   0xC7    /* erase all sectors in memory array */
+#define WBND_FLASH_SERASE   0x20    /* erase one sector in memroy array */
+#define WBND_FLASH_RDID     0x90    /* read manufacturer and product id */
+
 /* RDSR return status bit definition */
 #define SR_WPEN             0x80
 #define SR_BP2              0x10
@@ -112,7 +127,10 @@
 #define FLASH_SST           1
 #define FLASH_ATMEL         2
 #define FLASH_AMD           3
-
+#define FLASH_SPAN          4
+#define FLASH_NX            5 //dare add new flash
+#define FLASH_KH            6 //dare add new flash
+#define FLASH_WINBOND       7 // Winbond Flash
 /* ATMEL's manufacturer ID */
 #define ATMELPART           0x1F
 
@@ -132,6 +150,49 @@
 #define ID_SST25VF040       0x44
 #define ID_SST25VF080       0x80
 
+/* Winbond manufacturer ID*/
+#define WNBDPART            0xEF
+ 
+/* A list of WINBOND device ID's */
+#define ID_WINBW25Q32V      0x15
+
+
+/* NexFlash's manufacturer ID */
+#define NXPART              0xEF
+
+/* A list of NexFlash device ID's - add others as needed */
+#define ID_NX25P20          0x11
+#define ID_NX25P40          0x12
+
+
+/* StFlash's manufacturer ID */
+#define STPART              0x12 
+
+/* A list of StFlash device ID's - add others as needed */
+#define ID_M25P40           0x12
+
+/* SPANSION manufacturer ID */
+#define SPANPART            0x01
+#define SPANPART2           0x02
+
+/* SPANSION device ID's */
+#define ID_SPAN25FL004A     0x12
+#define ID_SPAN25FL008A     0x13
+#define ID_SPAN25FL016A     0x14
+#define ID_SPAN25FL032A     0x15
+
+/* Dare add NXT's manufacturer ID */
+#define NXPART              0xEF
+/* Dare sunmin add KH flash */
+#define KHPART              0x14
+
+/* Dare add A list of SST device ID's - add others as needed */
+#define ID_NXW25P16	0x14
+
+/* Dare sunmin add KH flash */
+#define ID_KH25L1605	0x14
+#define KH25L1605_SECTOR 512
+
 #define SPI_MAKE_ID(A,B)    \
     (((unsigned short) (A) << 8) | ((unsigned short) B & 0xff))
 
@@ -143,6 +204,16 @@
      {SPI_MAKE_ID(SSTPART, ID_SST25VF020), "SST25VF020"},   \
      {SPI_MAKE_ID(SSTPART, ID_SST25VF040), "SST25VF040"},   \
      {SPI_MAKE_ID(SSTPART, ID_SST25VF080), "SST25VF080"},   \
+     {SPI_MAKE_ID(NXPART, ID_NX25P20), "NX25P20"},          \
+     {SPI_MAKE_ID(NXPART, ID_NX25P40), "NX25P40"},          \
+     {SPI_MAKE_ID(STPART, ID_M25P40), "M25P40"},            \
+     {SPI_MAKE_ID(SPANPART, ID_SPAN25FL004A), "S25FL004A"}, \
+     {SPI_MAKE_ID(SPANPART, ID_SPAN25FL008A), "S25FL008A"}, \
+     {SPI_MAKE_ID(SPANPART, ID_SPAN25FL016A), "S25FL016A"}, \
+     {SPI_MAKE_ID(SPANPART, ID_SPAN25FL032A), "S25FL032A"}, \
+     {SPI_MAKE_ID(NXPART, ID_NXW25P16), "NXW25P16"},        \
+     {SPI_MAKE_ID(KHPART, ID_KH25L1605), "KH25L1605"},      \
+     {SPI_MAKE_ID(WNBDPART, ID_WINBW25Q32V), "W25Q32V"},   \
      {0,""}                                                 \
     }
 
@@ -296,7 +367,6 @@ int spi_flash_init(flash_device_info_t **flash_info)
     int i=0, count=0;
     int basecount=0L;
     unsigned short device_id;
-    unsigned short blkEnables;
     int sectorsize = 0;
     int numsector = 0;
 
@@ -314,15 +384,11 @@ int spi_flash_init(flash_device_info_t **flash_info)
     printk("flash_init: erase all sectors\n");
     return FLASH_API_OK;
 #endif
-    blkEnables = PERF->blkEnables;
-    if ((blkEnables & SPI_CLK_EN) == 0) {
-        blkEnables |= SPI_CLK_EN;
-        PERF->blkEnables = blkEnables;
-    }
 
     flash_spi_dev.flash_device_id = device_id = spi_flash_get_device_id(0);
 
-    if ((((char)(device_id >> 8)) == ATMELPART)) {
+    switch( device_id >> 8 ) {
+    case ATMELPART:
         flashFamily = FLASH_ATMEL;
         switch ((char)(device_id & 0x00ff)) {
             case ID_AT25F512:
@@ -336,8 +402,9 @@ int spi_flash_init(flash_device_info_t **flash_info)
             default:
                 break;
         }
-    }
-    else if (((char)(device_id >> 8)) == (char)SSTPART) {
+        break;
+
+    case SSTPART:
         flashFamily = FLASH_SST;
         sectorsize = SECTOR_SIZE_4K;
         switch ((unsigned char)(device_id & 0x00ff)) {
@@ -356,19 +423,84 @@ int spi_flash_init(flash_device_info_t **flash_info)
                 numsector = SST25VF020_SECTOR;
                 break;
         }
-    }
-    else if (((char)(device_id >> 8)) == (char)AMD_S25FL002D) {
-            flashFamily = FLASH_AMD;
-            numsector = AMD25FL_SECTOR;
-            sectorsize = SECTOR_SIZE_64K;
-            device_id &= 0xff00;
-    } 
-    else {
-            meminfo.addr = 0L;
-            meminfo.nsect = 1;
-            meminfo.sec[0].size = SECTOR_SIZE_4K;
-            meminfo.sec[0].base = 0x00000;
-            return FLASH_API_ERROR;
+        break;
+    
+   /* Dare sunmin add KH flash */
+    case KHPART:
+        flashFamily = FLASH_KH;
+        sectorsize = SECTOR_SIZE_4K;    	
+        switch ((unsigned char)(device_id & 0x00ff)) {
+            case ID_KH25L1605:
+                numsector = KH25L1605_SECTOR;
+                break;
+        }
+        break;
+        
+    case AMD_S25FL002D:
+        flashFamily = FLASH_AMD;
+        numsector = AMD25FL_SECTOR;
+        sectorsize = SECTOR_SIZE_64K;
+        device_id &= 0xff00;
+        break;
+
+    // case NXPART:
+    //     /* NexFlash parts are AMD compatible. */
+    //     flashFamily = FLASH_NX;
+    //     sectorsize = SECTOR_SIZE_64K;
+    //     switch ((unsigned char)(device_id & 0x00ff)) {
+    //         case ID_NX25P20:
+    //             numsector = 4; /* 4 * 64KB == 256KB flash size */
+    //             break;
+    //         case ID_NX25P40:
+    //             numsector = 8; /* 8 * 64KB == 512KB flash size */
+    //             break;
+    //         case ID_NXW25P16:  //dare add new flash
+    //             numsector = 32; 
+    //             break;
+    //     }
+    //     break;
+        
+    case STPART:
+        /* StFlash parts are AMD compatible. */
+        flashFamily = FLASH_AMD;
+        sectorsize = SECTOR_SIZE_64K;
+        
+        numsector = 8; /* 8 * 64KB == 512KB flash size */
+        break;
+
+    case SPANPART:
+        flashFamily = FLASH_SPAN;
+        sectorsize = SECTOR_SIZE_64K;
+        switch ((unsigned short)(device_id & 0x00ff)) {
+            case ID_SPAN25FL032A:
+                numsector = SPAN25FL032A_SECTOR;
+                break;
+            case ID_SPAN25FL016A:
+                numsector = SPAN25FL016A_SECTOR;
+                break;
+            case ID_SPAN25FL008A:
+                numsector = SPAN25FL008A_SECTOR;
+                break;
+            case ID_SPAN25FL004A:
+            default:
+                numsector = SPAN25FL004A_SECTOR;
+                break;
+        }
+    break;
+    
+    case WNBDPART:
+	    flashFamily = FLASH_WINBOND;
+        numsector = WINBW25Q32V_SECTOR;
+        sectorsize = SECTOR_SIZE_4K;
+        device_id &= 0xff00;
+	break;
+
+    default:
+        meminfo.addr = 0L;
+        meminfo.nsect = 1;
+        meminfo.sec[0].size = SECTOR_SIZE_4K;
+        meminfo.sec[0].base = 0x00000;
+        return FLASH_API_ERROR;
     }
 
     meminfo.addr = 0L;
@@ -387,7 +519,6 @@ int spi_flash_init(flash_device_info_t **flash_info)
             break;
         }
     }
-
     return (FLASH_API_OK);
 }
 
@@ -413,16 +544,23 @@ static int spi_flash_sector_erase_int(unsigned short sector)
 
     switch (flashFamily) {
         case FLASH_SST:
+        case FLASH_KH:
             buf[0] = SST_FLASH_SERASE;
             break;
         case FLASH_ATMEL:
             buf[0] = ATMEL_FLASH_SERASE;
             break;
         case FLASH_AMD:
+        case FLASH_NX:
             buf[0] = AMD_FLASH_SERASE;
             break;
+        case FLASH_SPAN:
+            buf[0] = SPAN_FLASH_SERASE;
+            break;
+	    case FLASH_WINBOND:
+            buf[0] = WBND_FLASH_SERASE;
+	    break;
     };
-
 
     /* erase the sector  */
     addr = (unsigned int) spi_get_flash_memptr(sector);
@@ -435,7 +573,6 @@ static int spi_flash_sector_erase_int(unsigned short sector)
     if (rc == SPI_STATUS_OK) {
         while (spi_flash_status() != STATUS_READY) {}
     }
-
     return(FLASH_API_OK);
 }
 
@@ -476,14 +613,19 @@ unsigned char spi_flash_chip_erase_int(void)
     
     switch (flashFamily) {
         case FLASH_SST:
+        case FLASH_KH:
             buf[0] = SST_FLASH_CERASE;
             break;
         case FLASH_ATMEL:
             buf[0] = ATMEL_FLASH_CERASE;
             break;
         case FLASH_AMD:
+        case FLASH_NX:	
             buf[0] = AMD_FLASH_CERASE;
             break;
+	case FLASH_WINBOND:
+            buf[0] = WBND_FLASH_CERASE;
+	    break;
     };
     /* erase the sector  */
     rc = spi_write(buf, 1);
@@ -533,7 +675,7 @@ static int spi_flash_read_buf(unsigned short sector, int offset,
     addr = (unsigned int) spi_get_flash_memptr(sector);
     addr += offset;
     idx = 0;
-    while (numbytes) {
+    while (numbytes > 0) {
         maxread = (numbytes < sizeof(buf)) ? numbytes : sizeof(buf);
         buf[0] = FLASH_READ;
         buf[1] = (unsigned char)((addr & 0x00ff0000) >> 16);
@@ -541,7 +683,7 @@ static int spi_flash_read_buf(unsigned short sector, int offset,
         buf[3] = (unsigned char)(addr & 0x000000ff);
         spi_read(buf, 4, maxread);
         while (spi_flash_status() != STATUS_READY) {}
-        memcpy(buffer+idx, buf, maxread);
+       memcpy(buffer+idx, buf, maxread);
         idx += maxread;
         numbytes -= maxread;
         addr += maxread;
@@ -612,7 +754,12 @@ static int spi_flash_write_status(unsigned char status)
 
     switch (flashFamily) {
         case FLASH_SST:
+        case FLASH_KH:
             buf[0] = FLASH_EWSR;
+            rc = spi_write(buf, 1);
+            break;
+        case FLASH_SPAN:
+            buf[0] = FLASH_WREN;
             rc = spi_write(buf, 1);
             break;
         default:
@@ -745,13 +892,14 @@ static unsigned char *spi_flash_get_memptr(unsigned short sector)
 static int spi_flash_write(unsigned short sector, int offset, unsigned char *buf,
     int nbytes, int ub)
 {
-    unsigned char wbuf[64];
+    unsigned char wbuf[FLASH_PAGE_SIZE+32];
     unsigned int addr;
     unsigned int dst;
     unsigned char *pbuf;
     int cmdlen;
     int maxwrite;
     int pagelimit;
+    unsigned char btmp1[2],btmp2[2];  //dare add new flash
 
     addr = (unsigned int) spi_get_flash_memptr(sector);
     dst = addr + offset;
@@ -812,7 +960,11 @@ static int spi_flash_write(unsigned short sector, int offset, unsigned char *buf
             break;
 
         case FLASH_ATMEL:
-            while (nbytes) {
+        case FLASH_AMD:
+        case FLASH_SPAN:
+        case FLASH_KH:
+        case FLASH_WINBOND:
+            while (nbytes > 0) {
                 spi_flash_ub(sector); /* enable write */
                 maxwrite = (nbytes < (sizeof(SPI->spiMsgData)-CMD_LEN_4))
                     ? nbytes : (sizeof(SPI->spiMsgData)-CMD_LEN_4);
@@ -833,14 +985,67 @@ static int spi_flash_write(unsigned short sector, int offset, unsigned char *buf
             }
             break;
 
-        case FLASH_AMD:
+        case FLASH_NX:
+            // fjl 060626, adjust buf since NX flash is written on word (2bytes) boundry
+            // printk( "fjl:size of btmp1[0] is %d\n", sizeof(btmp1[0]) );
+            if ( offset%2 == 1 ) {
+            // fjl 060626, add to head, this code path not tested
+            	// printk("fjl:btmp1[0]=%x,btmp1[1]=%x\n",btmp1[0],btmp1[1]);
+                spi_flash_read_buf(sector, offset-1, btmp1, 1);
+                btmp1[1] = *pbuf++;
+                dst--;
+                // printk("fjl:btmp1[0]=%x,btmp1[1]=%x\n",btmp1[0],btmp1[1]);
+            }
+            
+            if ( ( (offset%2 == 1) && (nbytes%2 == 0) ) || ( (offset%2 == 0) &&  (nbytes%2  == 1) ) ) {
+            // fjl 060626, add to tail, this code path not tested
+            	// printk("fjl:btmp2[0]=%x,btmp2[1]=%x\n",btmp2[0],btmp2[1]);
+                spi_flash_read_buf(sector, offset+nbytes, &(btmp2[1]), 1);
+                // printk("fjl:btmp1[0]=%x,btmp1[1]=%x\n",btmp2[0],btmp2[1]);
+	    }
+	    
+	    if ( offset%2 == 1 ) {
+            // fjl 060626, add to head, this code path not tested
+	    
+                spi_flash_ub(sector); /* enable write */
+                maxwrite = 2;
+                wbuf[0] = FLASH_PROG;
+                wbuf[1] = (unsigned char)((dst & 0x00ff0000) >> 16);
+                wbuf[2] = (unsigned char)((dst & 0x0000ff00) >> 8);
+                wbuf[3] = (unsigned char)(dst & 0x000000ff);
+                memcpy(&wbuf[4], btmp1, maxwrite);
+                spi_write(wbuf, maxwrite+CMD_LEN_4);
+                while (spi_flash_status() != STATUS_READY) {}
+                nbytes--;
+                dst += maxwrite;
+	    }            
+            
             while (nbytes) {
+            	
+            	if ( nbytes==1 ) {
+            	 // fjl 060626, add to head, this code path not tested
+            	    printk("fjl:occasional case, write the last one byte to FLASH NX\n");
+            	    btmp2[0] = *pbuf;
+            	    pbuf = btmp2;
+            	    nbytes = 2;
+            	}
+            	
                 spi_flash_ub(sector); /* enable write */
                 maxwrite = (nbytes < (sizeof(SPI->spiMsgData)-CMD_LEN_4))
                     ? nbytes : (sizeof(SPI->spiMsgData)-CMD_LEN_4);
                 /* maxwrite is limit to page boundary */
                 pagelimit = FLASH_PAGE_SIZE - (dst & 0x000000ff);
                 maxwrite = (maxwrite < pagelimit) ? maxwrite : pagelimit;
+                
+                // fjl 060626
+                if (maxwrite%2 == 1) 
+                {
+                    maxwrite--;
+                    // printk("-");
+                }
+                
+                if (maxwrite<=1) printk("fjl:Error,writing %d byte to FLASH_NX is not allowed on NXW FLASH!\n",maxwrite);
+                // end fjl
 
                 wbuf[0] = FLASH_PROG;
                 wbuf[1] = (unsigned char)((dst & 0x00ff0000) >> 16);
@@ -858,7 +1063,6 @@ static int spi_flash_write(unsigned short sector, int offset, unsigned char *buf
         default:
             return 0;
     }
-
     return (pbuf-buf);
 }
 
@@ -897,7 +1101,7 @@ static unsigned short spi_flash_get_device_id(unsigned short sector)
 {
     unsigned char buf[4];
     int prependcnt;
-    int i;
+    int i, j;
 
     for (i = 0; i < MAX_RETRY; i++) {
         /* read product id command */
@@ -907,23 +1111,46 @@ static unsigned short spi_flash_get_device_id(unsigned short sector)
         buf[3] = 0;
         prependcnt = 4;
         spi_read(buf, prependcnt, sizeof(unsigned short));
-        while (spi_flash_status() != STATUS_READY) {}
-
-        if (buf[0] == SSTPART) {
-            return( *(unsigned short *)&buf[0] );
+        for (j = 0; j < MAX_RETRY * 10; j++) {
+            if (spi_flash_status() == STATUS_READY) {
+                if (buf[0] == SSTPART || buf[0] == NXPART || buf[0] == KHPART
+			        || buf[0] == WNBDPART)
+                    return( *(unsigned short *)&buf[0] );
+            }
         }
     }
+    spi_flash_reset();
 
     for (i = 0; i < MAX_RETRY; i++) {
         buf[0] = ATMEL_FLASH_RDID;
         prependcnt = 1;
         spi_read(buf, prependcnt, sizeof(unsigned short));
-        while (spi_flash_status() != STATUS_READY) {}
-
-        if (buf[0] == ATMELPART) {
-            return( *(unsigned short *)&buf[0] );
+        for (j = 0; j < MAX_RETRY * 10; j++) {
+            if (spi_flash_status() == STATUS_READY) {
+                if (buf[0] == ATMELPART)
+                    return( *(unsigned short *)&buf[0] );
+            }
         }
     }
+    spi_flash_reset();
+
+    for (i = 0; i < MAX_RETRY; i++) {
+        buf[0] = SPAN_FLASH_RDID;
+        prependcnt = 1;
+        spi_read(buf, prependcnt, 3);
+        for (j = 0; j < MAX_RETRY * 10; j++) {
+            if (spi_flash_status() == STATUS_READY) {
+                if ((buf[0] == SPANPART) && (buf[1] == SPANPART2)) {
+                    buf[1] = buf[2];
+                    return( *(unsigned short *)&buf[0] );
+                }
+            }
+        }
+    }
+    spi_flash_reset();
+
+    // AMD_FLASH_RDID is the same as RES command for SPAN,
+    // so it has to be the last one.
 
     for (i = 0; i < MAX_RETRY; i++) {
         buf[0] = AMD_FLASH_RDID;
@@ -932,13 +1159,13 @@ static unsigned short spi_flash_get_device_id(unsigned short sector)
         buf[3] = 0;
         prependcnt = 4;
         spi_read(buf, prependcnt, sizeof(unsigned short));
-        while (spi_flash_status() != STATUS_READY) {}
-
-        if (buf[0] == AMD_S25FL002D) {
-            return( *(unsigned short *)&buf[0] );
+        for (j = 0; j < MAX_RETRY * 10; j++) {
+            if (spi_flash_status() == STATUS_READY) {
+                if (buf[0] == AMD_S25FL002D || buf[0] == STPART)
+                    return( *(unsigned short *)&buf[0] );
+            }
         }
-    }
-
+     }
     /* return manufacturer code and device code */
     return( *(unsigned short *)&buf[0] );
 }
@@ -984,3 +1211,4 @@ static int spi_flash_get_total_memory_mapped_size(void)
     return((totalSize < MAX_MEMORY_MAPPED_SIZE)
         ? totalSize : MAX_MEMORY_MAPPED_SIZE);
 }
+
